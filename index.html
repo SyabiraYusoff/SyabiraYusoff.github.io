@@ -1,0 +1,341 @@
+<!doctype html>
+<html>
+  <head>
+    <title>BDSeqCalc</title>
+    <link rel="icon" type="x-icon" href="htExpress_cartoon.ico">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div class="beta-banner" id="betaBanner">
+      <p>Dear awesome colleagues, <br>Please take 30 seconds to read this note. <br> This calculator is currently in beta testing. Some features might not work, or some information might be missing or incorrect. For feedback, please email <a href="mailto:syabira.yusoff@bd.com">syabira.yusoff@bd.com</a>.</p><br>
+      <p>What to look out for when going through the page:  
+        <ul>
+          <li>Compare the calculations with the original sequencing calculator</li>
+          <li>Check for typos, misleadding information, or any other information to be added.</li>
+          <li>For PhiX: please let me know if any assay combinations is incorrect.</li>
+          <li>The "Indexed Library Volume" is retrospectively calculated from total pooling and pooling ratio. Please check if the value is reflected correctly from the original sequencing calculator.</li>
+          <li>PDF output: The table should be contained within the page margin. if not, please send me the pdf output file for further toubleshooting.</li>
+          <li>Any other additional features, information or sections, such as Q&A, can be added. Please let me know and we can discuss.</li>
+          <li>Would it be worth adding a "Contact list" section for all FASs and sequencing facilities for customers' reference?</li>
+          <li>Would it be useful to add: <ol><li>Calculation steps used to calculate  each parameter.</li><li>Table of PhiX recommendations based on assay combinations.</li></ol></li>
+        </ul>
+      </p>
+      <button class="close-btn" onclick="closeBanner()">Close Testing Info</button>
+    </div>
+    <div class="wrapper">
+      <header class="header">
+        <img src="htExpress_cartoon.png" class="header-image">
+        <div class="header-text">
+          <h1 class="header-main-title" >BD Rhapsody</h1>
+        <h2 class="header-title">Sequencing Calculator</h2>
+       </div>
+      </header>
+
+      <main>
+        <div class="user-main-input">
+          <!-- Quick Instruction section -->
+         
+          <details>
+            <summary style="padding: 0px 0 5px 10px; font-size: 20px; color:#004593;"><b>Quick Instruction</b></summary>
+            <p>
+              Listed below are the important steps to use this sequencing
+              Calculator.
+            <ol>
+              <li>
+                <strong>Enter your Project Name and UserName</strong> <br />
+                This allows you to keep track of the saved PDF for future reference.
+              </li>
+              <li>
+                <strong>Enter the final Library concentration in nM:</strong
+                ><br />
+                Without this information, you can't proceed. The Library pooling calculation is dependent on the concentration needed to pool the library. If unsure, please speak to our FAS or your sequencing facility/provider.
+              </li>
+              <li>
+                <strong>Enter the Final Pooled Volume: </strong><br />
+                This is usually the amount of pooled library requested by the sequencing facility. Please contact our FAS or your sequencing facility/provider if you are unsure.
+              </li>
+              <li>
+                Hover and click on the Number of libraries you intend to pool together and click
+                <strong>Submit</strong>
+              </li>
+              <li>
+                <strong>New sections will appear:</strong>
+                <ol>
+                  <li>Select the assay from the dropdown menu</li>
+                  <li>Fill in the input section</li>
+                  <li>
+                    Continue to fill in the input until all the libraries are included
+                  </li>
+                  <li>Once done, click <strong>Submit All Values</strong></li>
+                </ol>
+              </li>
+              <li>The calculation for library dilution and pooling volume for each library would output a table for each assay. </li>
+              <li>The sequencing recommendation will appear below the tables.</li>
+              <li><strong>The table can be saved in PDF format:</strong><br>
+                Please enter the filename
+                and click <strong>Save as PDF.</strong>
+              </li>
+            </ol>
+            </p>
+          </details>
+          <br>
+
+          <!-- Sequencing library and recommended length information -->
+           
+           <details>
+            <summary style="padding: 0px 0 20px 10px; font-size: 20px;color:#004593;"><b>BD Rhapsody Library Information</b></summary>
+            <p>This section will show table for sequencing recommendation with Rhaspsody library, as well as the read structure and reads requirements. Please note this might be different when you are using Beads Version1. Please consult your local FAS for recommendation for Bead Version 1.</p>
+
+            <img src="libraryStructure.png" width="80%">
+            <br><br><br>
+
+            <table style="width: 80%;">
+              <caption>WTA, AbSeq, Targeted and SMK Read Length Recommendation
+                </caption>
+              <tr>
+              <th>Library</th>
+              <th>Read 1 (bp)</th>
+              <th>Read 2 (bp)</th>
+            </tr>
+            <tr>
+              <td>WTA</td>
+              <td>51 cycle</td>
+              <td>71 cycle</td>
+            </tr>
+            <tr>
+              <td>WTA + AbSeq </td>
+              <td>51 cycle</td>
+              <td>71 cycle</td></tr>
+            <tr>
+              <td> WTA + SMK</td>
+              <td>51 cycle</td>
+              <td>71 cycle</td></tr>
+            <tr>
+              <td>WTA + AbSeq + SMK</td>
+              <td>51 cycle</td>
+              <td>71 cycle</td></tr>
+              <tr>
+                <td>Targeted</td>
+                <td>51 cycle</td>
+                <td>71 cycle</td>
+              </tr>
+              <tr>
+                <td>Targeted + AbSeq </td>
+                <td>51 cycle</td>
+                <td>71 cycle</td></tr>
+              <tr>
+                <td> Targeted + SMK</td>
+                <td>51 cycle</td>
+                <td>71 cycle</td></tr>
+              <tr>
+                <td>Targeted + AbSeq + SMK</td>
+                <td>51 cycle</td>
+                <td>71 cycle</td></tr>
+            </table>
+            <br><br>
+            <table style="width: 80%;">
+              <caption>VDJ-Next Library Read Length Recommendation </caption>
+              <tr>
+              <th rowspan="2">Library</th>
+              <th colspan="2">Minimum read length</th>
+              <th colspan="2">Recommended read length</th>
+              <th colspan="2">Optimal read length</th>
+            </tr>
+            <tr>
+              <th>Read 1 (bp)</th>
+              <th>Read 2 (bp)</th>
+              <th>Read 1 (bp)</th>
+              <th>Read 2 (bp)</th>
+              <th>Read 1 (bp)</th>
+              <th>Read 2 (bp)</th>
+            </tr>
+            <tr>
+              <td>VDJ Next</td>
+              <td>65 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>85 cycle</td>
+              <td>215 cycle</td>
+            </tr>
+            <tr>
+              <td>VDJ Next + mRNA + SMK</td>
+              <td>65 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>85 cycle</td>
+              <td>215 cycle</td>
+            </tr>
+            <tr>
+              <td>VDJ Next + mRNA + AbSeq</td>
+              <td>65 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>85 cycle</td>
+              <td>215 cycle</td>
+            </tr>
+            <tr>
+              <td>VDJ Next + mRNA + AbSeq + SMK</td>
+              <td>65 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>150 cycle</td>
+              <td>85 cycle</td>
+              <td>215 cycle</td>
+            </tr>
+          </table>
+          <br><br>
+            <table style="width: 80%;">
+              <caption>VDJ CDR3 Library Read Length Recommendation</caption>
+              <tr>
+                <th>Library</th>
+                <th>Read 1 (bp)</th>
+                <th>Read 2 (bp)</th>
+              </tr>
+              <tr>
+              <td>VDJ CDR3</td>
+              <td>75 cycle</td>
+              <td>225 cycle</td>
+            </tr>
+            <tr>
+              <td>VDJ CDR3 + Targeted</td>
+              <td>75 cycle</td>
+              <td>225 cycle</td>
+            </tr>
+            <tr>
+              <td>VDJ CDR3 + Targeted + SMK</td>
+              <td>75 cycle</td>
+              <td>225 cycle</td>
+            </tr>
+            <tr>
+              <td>VDJ CDR3 + AbSeq</td>
+              <td>75 cycle</td>
+              <td>225 cycle</td>
+            </tr>
+              </table>
+              <br><br>
+
+              <table style="width:80%;"> 
+                <caption>ATAC Library Read Length Recommendation</caption>
+                <tr>
+                  <th>Library</th>
+                  <th> Read 1 (bp)</th>
+                  <th> Read 2 (bp)</th>
+                  <th> Index 1 (bp)</th>
+                  <th> Index 2 (bp)</th>
+                </tr>
+                <tr>
+                  <td> ATAC only</td>
+                  <td>50 cycle</td>
+                  <td>50 cycle </td>
+                  <td>8 cycle</td>
+                  <td>60 cycle</td>
+                </tr>
+                <tr>
+                  <td colspan="5">ATAC library need to be sequence independently. User may pool multiple ATAC libraries together, but not with other types of library. </td>
+                </tr>
+              </table>
+              <br><br>
+           </details>
+        </div>
+
+        <div class="user-main-input">
+            <h3>User Information</h3>
+            <div class="form-group">
+            <label for="project_name">Project Name:</label>
+            <input
+              type="text"
+              id="project_name" class="input-field"
+              placeholder="Your memorable project name here"
+            />
+            <span class="input-details"><b>Required</b>: This project name will be printed on your PDF output file.</span><br><br></div>
+
+            <div class="form-group">
+            <label for="userName">UserName:</label>
+            <input
+              type="text"
+              id="userName" class="input-field"
+              placeholder="Your name here"
+            />
+            <span style="font-size:15px;color:darkred;" class="input-details"> <b>Required</b>: Name of the person will be printed on PDF output file.</span><br /></div>
+
+            <h3>Per Pooled Library Information</h3>
+            <span style="font-size:15px;color:darkred;">Please consult your sequencing provider for the details below.</span><br><br>
+
+            <div class="form-group">
+            <label for="finalLibConc">Final library Concentration (nM):</label>
+            <input
+              type="number"
+              id="finalLibConc" class="input-field"
+              placeholder="Pooled library concentration"
+              required
+            />
+            <span style="font-size:15px;color:darkred;" class="input-details"> <b>Required</b>: General: NovoGene (xx nM)?; Macrogen ( xx nM)? etc.</span><br><br></div>
+
+            <div class="form-group">
+            <label for="finalPoolVol">Final pooled volume (&microl):</label>
+            <input
+              type="number"
+              id="finalPoolVol" class="input-field"
+              placeholder="Please enter required pooled volume for sequencing"
+              required
+            />
+            <span style="font-size:15px;color:darkred;" class="input-details"> <b>Required</b>: In general: 50 - 100 (&microL)</span>
+            <br><br></div>
+            <input type="checkbox" class="input-box" id="novaseq" onclick="showNovaseqMessage()">
+            <label for="novaseq">I am planning to use NovaSeqX sequencer</label>
+            <span style="font-size:15px;color:darkred;"><b>If applicable</b>: Please discuss and confirm with the sequencing provider</span><br />
+            <div id="novaseqMessage"></div>
+            <br>
+            <button type="reset" >Reset Input Values</button>
+          
+          <div class="infoDisplay" id="displayArea1"></div>
+
+          <h3>Select Numbers of Indexed Libraries to pool.</h3>
+          <select id="dropdown" size="10">
+            <option>
+              Hover and click number of libraries, then click Submit button
+            </option>
+            <option value="section1">1 Indexed Library</option>
+            <option value="section2">2 Indexed Libraries</option>
+            <option value="section3">3 Indexed Libraries</option>
+            <option value="section4">4 Indexed Libraries</option>
+            <option value="section5">5 Indexed Libraries</option>
+            <option value="section6">6 Indexed Libraries</option>
+            <option value="section7">7 Indexed Libraries</option>
+            <option value="section8">8 Indexed Libraries</option>
+            <option value="section9">9 Indexed Libraries</option>
+            <option value="section10">10 Indexed Libraries</option>
+          </select>
+          <br /><br />
+
+          <button onclick="showSections()">Submit</button>
+        </div>
+
+        <div id="sections-container"></div>
+
+        <div class="user-main-input">
+        <button onclick="submitAllValues()">Submit All Values</button>
+        <button id="resetForm" onclick="resetForm()">Reset Form</button>
+      
+        <div id="results-container"></div></div>
+
+        <script src="script.js"></script>
+      </main>
+
+      <footer>
+        <p style="font-size:10px;">
+          Developer: Syabira Yusoff | Bioinformatics Support Engineer <br />
+          <a href="mailto:syabira.yusoff@bd.com">syabira.yusoff@bd.com</a><br />
+          General Support: Maryam Rezaei | SCM Application Support Associate<br>
+          <a href="mailto:maryam.rezaei@bd.com">maryam.rezaei@bd.com</a><br>
+          Project(version) : Sequencing Calculator (Version1.0) | November 2024
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
