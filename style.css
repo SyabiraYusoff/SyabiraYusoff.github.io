@@ -1,73 +1,22 @@
 body{
     font-family: FS Albert Pro, Helvetica, Arial, Verdana, sans-serif;}
 
-.beta-banner{
-    position: fixed; 
-    top: 0;
-    width: 100%; 
-    background-color: #ff5900;
-    color: white; 
-    padding: 10px;
-    z-index: 10;
-}
-
-.beta-banner p{
-    margin: 0; 
-    padding: 5px 0 0 0;
-}
-
-.close-btn{
-    position: absolute; 
-    bottom: 10px; 
-    right: 90px;
-    background: none; 
-    border: none; 
-    font-size: 20px;
-    cursor: pointer;
-    color: white;
-}
-
-.close-btn hover{
-    color: rgb(209, 158, 245);
-}
-
 .header{
     display: flex; 
     align-items: center;
     padding: 50px 0px 10px 0px; 
     margin: 10px 0px 20px 0px;
     height: 25vh;
+    font-size: 40px;
     background-color: #004593;
+    color: white;
 }
 
 .header-image{
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: auto;
     margin-right: 20px;
-}
-
-.header-text{
-    display: flex;
-    flex-direction: column;
-    padding:0px;
-    margin:10px;
-    line-height: 0.1;
-}
-
-.header-main-title{
-    color: white; 
-    font-size: 60px; 
-    font-weight: bolder;
-    text-align: center;
-    transform: translateX(-150px);
-    margin:0px ; /*remove default margins*/
-}
-
-.header-title{
-    color: white; 
-    font-size: 80px; 
-    text-align: center;"
-    margin:0px;
 }
 
 .user-main-input{
@@ -76,12 +25,19 @@ body{
     border: 2px double #004593;
     border-radius: 5px;
     margin-bottom: 15px;
-    padding: 20px 15px 5px 20px;
+    padding: 20px 15px 20px 20px;
 }
 
 .form-group{
     display: grid;
-    grid-template-columns: 300px 500px 500px;
+    grid-template-columns: 300px 300px 500px;
+    align-items: left;
+    margin-left: 10px;
+}
+
+.form-group2{
+    display: grid;
+    grid-template-columns: 300px 800px ;
     align-items: left;
     margin-left: 10px;
 }
@@ -94,9 +50,9 @@ label{
 .input-field{
     border: none;
     outline: none;
-    padding: 7px;
-    border: 1px solid #ff5900;
-    width: 100%%;
+    padding: 5px;
+    border-bottom: 1px solid #004593;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -108,13 +64,6 @@ label{
     padding: 10px 0 10px 0;
 }
 
-.form-group2{
-    display: grid;
-    grid-template-columns: 300px 800px ;
-    align-items: left;
-    margin-left: 10px;
-}
-
 .form-input2{
     border: none;
     outline: none;
@@ -123,9 +72,6 @@ label{
     width:100%;
     border-radius: 5px;
 }
-
-
-
 
 caption{
     margin-bottom: 5px; 
@@ -141,26 +87,101 @@ table,th,td{
     border-collapse: collapse;
 }
 
+table {
+    max-width: 1500px;
+    width: 100%;
+}
+
 td{
     text-align: left;
+}
+
+.row-space{
+    margin-bottom: 15px;
 }
 
 h3,strong{
     color: #004593;
 }
 
-button{
+.primary-button{
     background-color:#004593;
     color: white; 
-    padding: 8px; 
+    margin: 10px 0 10px 0;
+    padding: 8px 15px 8px 15px; 
     border: 1px solid #ada1ef; 
     border-radius: 3px;
 }
 
-button:hover{
+.primary-button:hover{
     background-color:#ff5900;
     color: navy;
     font-weight: bold;
+}
+
+.tooltip {
+    position: relative;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    font-size: 12px;
+    background-color: #00459389;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .info-button{
+    background-color: #004593;
+    color: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    font-size: 10px;
+    position: relative;
+    cursor: pointer;
+    width:15px;
+    height:15px;
+  }
+
+  .info-button:hover::after {
+    content: attr(data-info);
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #121213b6;
+    color: white;
+    padding: 3px 5px 3px 5px;
+    border-radius: 3px;
+    white-space: normal;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.2s;
 }
 
 
