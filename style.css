@@ -111,6 +111,7 @@ h3,strong{
     padding: 8px 15px 8px 15px; 
     border: 1px solid #ada1ef; 
     border-radius: 3px;
+    font-size: 18px;
 }
 
 .primary-button:hover{
