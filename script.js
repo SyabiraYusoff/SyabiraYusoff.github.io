@@ -5,9 +5,15 @@ function showNovaseqMessage() {
 }
 
 function deleteRow(r) {
-  var i = r.parentNode.parentNode.rowIndex;
-  document.getElementById("inputRows").deleteRow(i);
+  var table = document.getElementById("inputRows");
+  var rowCount = table.rows.length;
+  if (rowCount > 0) {
+    var i = r.parentNode.parentNode.rowIndex;
+    table.deleteRow(i);
+  }
 }
+
+
 
 function showSections() {
 const projectNameInput = document.getElementById("project_name");
@@ -39,7 +45,6 @@ if (userNameInput.value) {
 
     for (let i = 0; i < rowNum; i++) {
       const row = document.createElement("tr"); 
-      console.log(`${i}`);
       row.innerHTML= `
       <td>
       <input type="text" id="input${i + 1}a" ></td>
@@ -329,7 +334,7 @@ phixPercentage = specifyPhix(rowsData);
 const phix = (rowsData[0].totalReadPairsForSequencing *(phixPercentage*0.01));
 const totalPhix = (rowsData[0].totalReadPairsForSequencing + phix);
 
-let negativeDilution = rowsData.some((input) => input.elutionBufferVolume < 1);
+let negativeDilution = rowsData.some((input) => input.elutionBufferVolume < 0);
 let lowSMK = rowsData.some((input) => input.assayName === "assay-smk" && input.volumeForPooling < 0.5);
 
 
