@@ -85,7 +85,7 @@ const assayInfo = {
     "assay-wta": {
         "infoe": "from-Qubit: >1ng/&microl",
         "infof": "Bioanalyzer/TapeStation: Average peak ~250-1000bp",
-        "infoh": "Unverified-Customer-Feedback(30,000rpc) Shallow(10,000rpc) Moderate(50,000rpc) Deep(100,000rpc)"
+        "infoh": "Shallow(10,000rpc) Moderate(20,000-50,000rpc) Deep(100,000rpc)"
     },
     "assay-abseq": {
         "infoe": "from-Qubit: >1.5ng/&microl",
