@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<head>
+
+<title>FASTQ Upload</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./pictures/favicon_rhapsody.ico/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="./pictures/favicon_rhapsody.ico/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="./pictures/favicon_rhapsody.ico/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="./pictures/favicon_rhapsody.ico/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="./pictures/favicon_rhapsody.ico/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="./pictures/favicon_rhapsody.ico/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="./pictures/favicon_rhapsody.ico/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="./pictures/favicon_rhapsody.ico/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="./pictures/favicon_rhapsody.ico/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="./pictures/favicon_rhapsody.ico/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./pictures/favicon_rhapsody.ico/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./pictures/favicon_rhapsody.ico/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./pictures/favicon_rhapsody.ico/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="./pictures/favicon_rhapsody.ico/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+    <div class="header">
+        <h1>BD Rhapsody&trade; Files Upload</h1>
+    </div>
+<!-- top nagivation -->
+    <div class="topnav">
+        <a href="#" data-target="velsera" onclick="showSection('velsera', this)">Upload via Velsera Interface</a>
+        <a href="#" data-target="macOSlinux" onclick="showSection('macOSlinux', this)">Via Command Line Interface Upload (MacOS)</a>
+        <a href="#" data-target="windows" onclick="showSection('windows', this)">Via Command Line Interface Upload (Windows)</a>
+        <a href="#" style="float:right"><i class="fa fa-home"></i></a>
+    </div>
+
+<!-- Content -->
+<div class="row">
+    <!-- Left Section -->
+    <div class="leftcolumn">
+        <!-- Section Details-->
+
+        <!--Velsera section-->
+        <div id="velsera" class="section">
+            <div class="card">
+                <h2>File Upload from Computer </h2>
+                <div class="notice">
+                    <ul>
+                        <li>Note that this method is suitable for small datasets.</li>
+                        <li>For larger uploads such as big FASTQ files, consider using command line uploads or FTP.</li>
+                        <li>Seven Bridges will log you out if there is no activity within 15 minutes. To prevent disruption of the upload progress, actively monitor and move your cursor during the process.</li>
+                        <li>Failure to do so may necessitate re-uploading the files.</li>
+                    </ul>
+                </div>
+                <ol>
+                    <li>On the project dashboard, click the <mark>Files.</mark> tab, and click <mark>+Add Files</mark></li>
+                    <li>Click on Add files and choose the source:<mark>Your Computer</mark></li>
+                    <li>Select files that you intend to upload. You may select multiple files to upload.</li>
+                    <li>Click <mark>Upload</mark> button.</li>
+                </ol>
+            </div>
+
+            <div class="card" style="background-color: #f1f1f1;">
+                <h2>File Upload from Other Project created on Velsera</h2>
+                <div class="notice">Note:<br>
+                    <ul>
+                        <li>This method of file transfer is beneficial when you have same files such as refence files that you might want to re-use from other projects. </li>
+                        <li>If you have any BD Rhapsody&trade; pipeline that has been tailored specific to your project, you may copy the app to your current project using similar approach availabe in App tab. </li>
+                    </ul>
+                </div>
+            <ol>
+                <li>From the main Project Dashboard, click <mark>Files</mark> tab to navigate to Files section on your project.</li>
+                <li>On the top right of the webpage, click <mark>Add files</mark> and select <mark>Projects</mark>. A new section would appear on the left side of the webpage. </li>
+                <li>Use the <mark>Search bar</mark> or <mark>select the project</mark> you want to copy the file/s listed in the appeared section.</li>
+                <li>Once selected, use the tickboxes to select files that you intend to copy and click <mark>Copy To Project</mark> button then select <mark>Copy</mark>. A pop-up message would appear confirming the files are now copied to your current project. </li>
+                <li>Refresh the Files tab on your current project and make sure the file copied successfully.</li>
+            </ol>
+            <center >
+            <div class="video-container" >
+                <video style="width: 500px;" controls poster = "./videos/SB_addFilesFromOtherProject_cover.png">
+                <source src="./videos/SB_importFIlesFromProject_edited.mov" type="video/mp4"></video>
+                </div>
+            </center>
+            </div>
+
+            <div class="card">
+                <h2>File Upload through ftp or https</h2>
+            
+            <div class="notice">
+                Note:<br> <ul>
+                    <li>This option is suitable when you have files from AWS or any other resource that is acessible through an ftp of https link. As an example, a reference files that is available publicly on a cloud platform.</li>
+                    <li>Make sure that you have a stable internet connection to avaoid any disconnection and file corruption. </li>
+                </ul>
+            </div>
+            <ol>
+                <li>From the main Project Dashboard, click <mark>Files</mark> tab to navigate to Files section on your project.</li>
+                <li>On the top right of the webpage, click <mark>Add files</mark> and select <mark>FTP/HTTP</mark>.</li>
+                <li> Paste the link of the file you want to transfer and click <mark>Import</mark>.</li>
+            </ol>
+            </div>
+
+            <div class="card" style="background-color: #f1f1f1;">
+                <h2>File Integrity Checks</h2>
+                <p>It is recommended to check your file integrity before setting up your analysis on the Velsera platform. Files that are corrupted, such as FASTQ files, could cause the pipeline to fail. File corruption might occur at any stage of data transfer; internet connection and storage methods are possible causes of file corruption.</p>
+                <ol>
+                    <li>To run on files on Seven Bridges, you will need to create a Data Studio Analysis. Navigate to the <mark>Data Studio</mark> tab and click <mark>Create new analysis</mark> as shown below.</li><br>
+                    <img src="./pictures/integrityCheck_velsera_step1.png">
+                    <li>Create a name <mark>Analysis name</mark> and select <mark>RStudio</mark> then  <mark>Start</mark> the analysis.<br>
+                    <img src="./pictures/integrityCheck_velsera_step2.png"></li>
+                    <li>A new window will be iniCalized. This might take a few minutes. <br>
+                    <img src="./pictures/integrityCheck_velsera_step3.png"></li>
+                    <li>RStudio terminal will start. Navigate to the terminal tab. <br>
+                    <img src="./pictures/integrityCheck_velsera_step4.png"></li>
+                    <li>Type to change the directory to your project files on Seven Bridges:
+                        <p class="code">cd /sbgenomics/project-files</p>
+                    </li>
+                    <li>To run integrity checks on files:
+                        <p class="code">gunzip --test --verbose filename.fastq.gz</p>
+                        <p>Please make sure to change the <mark>filename.fastq.gz</mark> to your own file name.</p>
+                    </li>
+                    <li>To test more files, add a space between fastq files. Example code below: 
+                        <p class="code">gunzip --test --verbose filename1.fastq.gz filename2.fastq.gz filename3.fastq.gz</p>
+                    </li>
+                    <li>To run md5sum checks on all file, type:
+                        <p class="code">md5sum *</p>
+                        <p>You can now compare the md5sum code for each individual files against the original code provided by your sequencing company.</p>
+                    </li>
+                    <li>If the file is corrupted, please reupload your fastq files. </li>
+                </ol>
+            </div>
+        </div>
+
+        <!--MacOS/LINUX upload command-->
+        <div id="macOSlinux" class="section">
+            <h1>Command Line Interface Upload (MacOS/LINUX)</h1>
+            <div class="notice">
+                There are TWO main steps to setup your file upload through Command Line Interface (CLI). 
+                <ul>
+                    <li>Generate API endpoint and Authentication Token on Velsera.</li>
+                    <li>Configure CLI using Windows/LINUX/Mac</li>
+                </ul>
+            </div>
+            
+            <div class="card" style="background-color: #f1f1f1;">
+                <h2>Generate API endpoint and Authentication Token on Velsera</h2>
+                Below are the steps to generate API Endpoint and Authentication Token: <br>
+                <ol>
+                    <li>Log in to your Seven Bridges account. Click <mark>Developer</mark> -> <mark>Authentication token</mark> -> <mark>Generate token</mark>.</li><br>
+                    <img src="./pictures/autehnticationstep1.png"><br><br>
+                    <li>You will find the TOken and API on the next page.Ensure to keep your Authentication Token secure and do not share it publicly.</li>
+                    <li>You may now use these credentials while setting up your upload process to authenticate and interact with Seven Bridges through the API.</li>
+                    <li>Picture below showing the API and Authentication Token:</li>
+                    <br><img src="./pictures/authenticationTokenStep2.png"><br>
+                </ol>
+            </div>
+            <div class="card">
+                <h2>Download and Configure CLI to your device</h2>
+                <ol>
+                    <li>To automatically download the SB command line interface, type or paste the command below:
+                        <p class="code">bash -c 'curl https://igor.sbgenomics.com/downloads/sb/install.sh -sSf | sudo -H sh'</p> </li>
+                    <li>You may be prompted to input your device password then press <mark>enter</mark>.</li>
+                    <li> If the tool is successfully installed, the below message will be printed out.<br>
+                    <img src="./pictures/CLI_successfull.png"></li>
+                    <p><b>CLI Configuration</b></p>
+                    <li>To authenticate your credential with the SB platform, launch the shell promt/terminal and enter:<br>
+                    <p class="code">sb configure</p></li>
+                    <li>The prompt will ask for the API endpoint and authentication token. Enter accordingly.</li>
+                    <li>Enter the command below and it should display the output:<br>
+                        <p class="code">sb</p>
+                    <img src="./pictures/sbCommandOutput.png"></li>
+                </ol>
+            </div>
+
+           <div class="card">
+                <h2>File Integrity Checks</h2>
+                <p>It is recommended to check your file integrity before upload to Velsera platform. Files that are corrupted, as an example FASTQ files would caused the pipeline failure.</p>
+                    <ol>
+                        <li>Navigate to the folder contain your project files using command line or terminal.</li>
+                        <p>If unsure, please refer to the video below (MacOS user). If using Linux, please see the link <a href="https://opensource.com/article/21/8/navigate-linux-directories">here</a> on how to navigate to your project folder.</p>
+                            <div class="video-container" >
+                            <video style="width: 500px;" controls poster = "./videos/MacOS_navigateFolder.png">
+                            <source src="./videos/web_navigatetoFolder.mov" type="video/mp4"></video></div>
+                            <li>To get the directory path of your files, type command below: <p class="code">pwd</p></li>
+                        <li>Enter command below to view the files available in current directory. <p class="code">ls</p></li>
+                        <li>To check file integrity, enter the command below in your console: <p class="code">gunzip --test --verbose filename.fastq.gz</p>
+                        <p>Please make sure to change the <mark>filename.fastq.gz</mark> to your own file name.</p></li>
+                        <li>To test more files, add a space between fastq files. Example code below: 
+                            <p class="code">gunzip --test --verbose filename1.fastq.gz filename2.fastq.gz filename3.fastq.gz</p>
+                        </li>
+                        <li>Once completed, the output for intact files would be "OK". If the file is corrupted, especially CRC error, please re-download the file from source and test again. </li>
+                        <div class="video-container" >
+                            <video style="width: 500px;" controls poster = "./videos/FIleIntegrityCheck.png">
+                            <source src="./videos/integrityChecks.mov" type="video/mp4"></video></div>
+            </ol>
+            </div>
+
+            <div class="card" style="background-color: #f1f1f1;">
+                <h2>File Upload</h2>
+                <ol>
+                    <li>Suppose the files are located in the Download folder. Copy and paste the following command to navigate to the Download folder:<br><p class="code">cd ~/Download</p></li>
+                    <li>To upload the files, enter command below:
+                        <p class="code">sb upload start path_to_file_to_upload --destination</p></li>
+                        <p>The <mark>--destination</mark> input string can be found on the link of your project on Seven Bridges.<br> Example: <mark>https://igor.sbgenomics.com/u/biox_support_emea/demo-project</mark>. Please use <mark>biox_support_emea/demo-project</mark> as the input for --destination flag on the command line. </p>
+                        
+                        <li>To find out more information about this tool, please copy and paste the link below to your browser.<br>
+                        <p class="code">https://docs.sevenbridges.com/docs/upload-via-the-command-line </p></li>
+                        <li>If you need to resume the upload, It is possible with the following command.<br><p class="code">sb upload resume your_file_to_upload</p></li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2>CLI Configuration and File Upload</h2>
+                <div class="video-container" >
+                    <video style="width: 500px;" controls poster = "./videos/sbConfigure_FileUpload.png">
+                    <source src="./videos/sbConfigure_FileUpload.mov" type="video/mp4"></video></div>
+            </div>
+        </div>
+
+        <!--Windows Upload-->
+        <div id="windows" class="section">
+            <h1>Command Line Interface Upload (Windows)</h1>
+            <div class="notice">
+                There are TWO main steps to setup your file upload through Command Line Interface (CLI). 
+                <ul>
+                    <li>Generate API endpoint and Authentication Token on Velsera.</li>
+                    <li>Configure CLI using Windows/LINUX/Mac</li>
+                </ul>
+            </div>
+            
+            <div class="card" style="background-color: #f1f1f1;">
+                <h2>Generate API endpoint and Authentication Token on Velsera</h2>
+                Below are the steps to generate API Endpoint and Authentication Token: <br>
+                <ol>
+                    <li>Log in to your Seven Bridges account. Click <mark>Developer</mark> -> <mark>Authentication token</mark> -> <mark>Generate token</mark>.</li><br>
+                    <img src="./pictures/autehnticationstep1.png"><br><br>
+                    <li>You will find the TOken and API on the next page.Ensure to keep your Authentication Token secure and do not share it publicly.</li>
+                    <li>You may now use these credentials while setting up your upload process to authenticate and interact with Seven Bridges through the API.</li>
+                    <li>Picture below showing the API and Authentication Token:</li>
+                    <br><img src="./pictures/authenticationTokenStep2.png"><br>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2>Download and Configure CLI to your device</h2>
+                <ol>
+                    <li>To download the SB command line interface, click the link below based on your system:
+                        <ul>
+                            <li><a href="https://igor.sbgenomics.com/downloads/sb/windows-386/sb.exe">32-bit Windows (sha1sum)</a></li>
+                            <li><a href="https://igor.sbgenomics.com/downloads/sb/windows-amd64/sb.exe">64-bit Windows (sha1sum)</a></li>
+                        </ul>
+                    <li>Once the command line interface downloaded, move the .exe file to the directory where you keep all the files to be uploaded.</li>
+                    <li>Open Command Prompt or other command-line shell programs.</li>
+                    <li>Navigate to your working folder in the command prompt.If unsure, please click the link <a href="https://www.howtogeek.com/674537/how-to-find-and-open-files-using-command-prompt/">here</a> on how to find files using command prompt.</li>
+                    <li>Enter command below to confirm the ".exe" and your files are in the correct folder. You should find the ".exe" file and the rest of the files you intend to upload listed on your console.<br>
+                    <p class="code">DIR</p>
+                <img src="./pictures/DIR_files.png"></li>
+                <p><b>Configure CLI</b></p>
+                <li>Use command below to configure CLI:
+                    <p class="code">sb configure</p>
+                </li>
+                <li>The prompt will ask for the API endpoint and authentication token. Enter accordingly. You only need to configure it once.</li>
+                </ol>
+            </div>
+
+            <div class="card" style="background-color: #f1f1f1;">
+                <h2>File Integrity Checks</h2>
+                <p>It is recommended to check your file integrity before upload to Velsera platform. Files that are corrupted, as an example FASTQ files would caused the pipeline failure.</p>
+                    <ol>
+                        <li>Navigate to the folder contain your project files using command line or terminal.</li>
+                        <li>Enter command below to confirm the files to upload is in the folder. <p class="code">DIR</p></li>
+                        <li>To check file integrity, enter the command below in your console: <p class="code">gunzip --test --verbose filename.fastq.gz</p>
+                        <p>Please make sure to change the <mark>filename.fastq.gz</mark> to your own file name.</p></li>
+                        <li>To test more files, add a space between fastq files. Example code below: 
+                            <p class="code">gunzip --test --verbose filename1.fastq.gz filename2.fastq.gz filename3.fastq.gz</p>
+                        </li>
+                        <li>Once completed, the output for intact files would be "OK". If the file is corrupted, especially CRC error, please re-download the file from source and test again. </li>
+                        <div class="video-container" >
+                            <video style="width: 500px;" controls poster = "./videos/FIleIntegrityCheck.png">
+                            <source src="./videos/integrityChecks.mov" type="video/mp4"></video></div>
+            </ol>
+            </div>
+
+           <div class="card" >
+                <h2>Upload Files</h2>
+                <p>It is recommended to check your file integrity before upload to Velsera platform. Files that are corrupted, as an example FASTQ files would caused the pipeline failure. Navigate to the folder using command line or teminal.</p>
+                <ol>
+                    <li>To upload the files, enter command below:
+                        <p class="code">sb upload start path_to_file_to_upload --destination</p></li>
+                        <p>The <mark>--destination</mark> input string can be found on the link of your project on Seven Bridges. <br> Example:<mark>https://igor.sbgenomics.com/u/biox_support_emea/demo-project</mark>. Please use <mark>biox_support_emea/demo-project</mark> as the input for --destination flag on the command line.</p>
+                        
+                        <li>To find out more information about this tool, please copy and paste the link below to your browser.<br>
+                        <p class="code">https://docs.sevenbridges.com/docs/upload-via-the-command-line </p></li>
+                        <li>If you need to resume the upload, It is possible with the following command.<br><p class="code">sb upload resume your_file_to_upload</p></li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2>CLI Configuration and File Upload</h2>
+                <div class="video-container" >
+                    <video style="width: 500px;" controls poster = "./videos/sbConfigure_FileUpload.png">
+                    <source src="./videos/sbConfigure_FileUpload.mov" type="video/mp4"></video></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="rightcolumn">
+        <!-- Section Details-->
+        <div id="introduction" class="section active">
+        </div>
+    </div>
+</div>
+<script>
+            function showSection(sectionId, element) {
+    // Hide all sections
+    var leftSections = document.querySelectorAll('.leftcolumn .section');
+    leftSections.forEach(function(section) {
+        section.classList.remove('active');
+    });
+    var rightSections = document.querySelectorAll('.rightcolumn .section');
+    rightSections.forEach(function(section) {
+        section.classList.remove('active');
+    });
+
+
+    // Show the selected section
+    var activeLeftSection = document.querySelector('.leftcolumn #' +  sectionId);
+    if (activeLeftSection){
+        activeLeftSection.classList.add('active');
+    }
+    var activeRightSection = document.querySelector('.rightcolumn #' +  sectionId);
+    if (activeRightSection){
+        activeRightSection.classList.add('active');
+    }
+
+    // Update tab styles
+    var tabs = document.querySelectorAll('.topnav a');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active-tab');
+    });
+
+    element.classList.add('active-tab');
+}
+
+// Display the first section on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Show the first section by default
+    showSection('velsera', document.querySelector('.topnav a'));
+});
+</script>
+</body>

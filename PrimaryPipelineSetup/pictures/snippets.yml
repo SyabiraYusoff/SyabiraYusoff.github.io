@@ -1,0 +1,48 @@
+
+
+# Specify the fastq file you want to check.
+Fastq:
+ - class: File
+   location: "./path/to/mySample_R1_.fastq.gz"
+
+
+# This is optional.
+Threads: 8
+
+
+
+
+
+#Specify the genome.fa
+Genome_fasta:
+ - class: File
+   location: "./GRCh38.primary_assembly.genome.fa.gz"
+
+#specify the genome annotation file
+Gtf:
+ - class: File
+   location: "./gencode.v45.primary_assembly.annotation.gtf.gz"
+
+#If you have any extra sequences 
+Extra_sequences:
+ - class: File
+   location: "./gfp.fasta"
+
+
+WTA_Only: True
+
+
+
+
+Reads:
+ - class: File
+   location: "test/mySample_R1_.fastq.gz"
+ - class: File
+   location: "test/mySample_R2_.fastq.gz"
+
+Maximum_Threads: 8
+
+
+
+
+
