@@ -1,0 +1,247 @@
+body {
+    font-family: FS Albert Pro, Helvetica, Arial, Verdana, sans-serif;
+}
+
+.header {
+    display: flex; 
+    align-items: center;
+    padding: 3.125rem 0 0.625rem 0; 
+    margin: 0.625rem 0 1.25rem 0;
+    height: auto;
+    font-size: 2.5rem;
+    color: white;
+    background-color: #004593;
+}
+
+.header-image {
+    padding: 0.625rem;
+    flex: 20%;
+    max-width: 21.875rem;
+}
+
+.header-text {
+    padding: 0.625rem;
+    flex: 50%;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 750px) {
+    .header-image, .header-text {
+        flex: 100%; /* Stack items vertically */
+        background-color: #004593;
+    }
+
+    .header-image {
+        margin-right: 0;
+        margin-bottom: 0.9375rem; /* Add space between image and text */
+        max-width: 30%;
+    }
+
+    .header h1 {
+        font-size: 1.5625rem; /* Adjust font size for smaller screens */
+    }
+
+    .header-title {
+        font-size: 1.25rem; /* Adjust font size for smaller screens */
+    }
+}
+
+.user-main-input {
+    color: rgb(31, 29, 29);
+    font-size: 1rem;
+    border: 2px double #004593;
+    border-radius: 0.3125rem;
+    margin-bottom: 0.9375rem;
+    padding: 1.25rem 0.9375rem 1.25rem 1.25rem;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: left;
+    margin-left: 0.625rem;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.form-group2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
+    align-items: left;
+    margin-left: 0.625rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+label {
+    font-size: 1.25rem;
+    text-align: left;
+}
+
+.input-field {
+    border: none;
+    outline: none;
+    padding: 0.3125rem;
+    border-bottom: 1px solid #004593;
+    width: 100%;
+    border-radius: 0.3125rem;
+}
+
+.input-details {
+    font-size: 0.9375rem;
+    color: darkred;
+    width: 100%;
+    margin-left: 0.625rem;
+    padding: 0.625rem 0;
+}
+
+.form-input2 {
+    border: none;
+    outline: none;
+    padding: 0.625rem 0;
+    border: 1px solid #ff5900;
+    width: 100%;
+    border-radius: 0.3125rem;
+}
+
+caption {
+    margin-bottom: 0.3125rem; 
+    font-weight: bolder;
+    font-size: 1.25rem;
+    color: #004593;
+}
+
+table, th, td {
+    border: 1px solid #01152c;
+    border-radius: 0.1875rem;
+    background-color: white;
+    padding: 0.4375rem;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+}
+
+td {
+    text-align: left;
+}
+
+.row-space {
+    margin-bottom: 0.9375rem;
+}
+
+h3, strong {
+    color: #004593;
+}
+
+.primary-button {
+    background-color: #004593;
+    color: white; 
+    margin: 0.625rem 0;
+    padding: 0.5rem 0.9375rem; 
+    border: 1px solid #ada1ef; 
+    border-radius: 0.1875rem;
+    font-size: 1.125rem;
+}
+
+.primary-button:hover {
+    background-color: #ff5900;
+    color: navy;
+    font-weight: bold;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 7.5rem;
+    font-size: 0.75rem;
+    background-color: #00459389;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.375rem;
+    padding: 0.3125rem 0.625rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -3.75rem;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -0.3125rem;
+    border-width: 0.3125rem;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.info-button {
+    background-color: #004593;
+    color: white;
+    border: 1px solid white;
+    border-radius: 50%;
+    font-size: 0.625rem;
+    position: relative;
+    cursor: pointer;
+    width: 0.9375rem;
+    height: 0.9375rem;
+}
+
+.info-button:hover::after {
+    content: attr(data-info);
+    max-width: 31.25rem;
+    height: auto;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #121213b6;
+    color: white;
+    padding: 0.1875rem 0.3125rem;
+    border-radius: 0.1875rem;
+    white-space: normal;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.submitInfoDisplay {
+    display: none;
+    background-color: #EBEDF0;
+    color: #044ED7;
+    border: 1px solid #BCBEC0;
+    font-size: 0.9375rem;
+    padding:0 2.5rem;
+    margin-bottom: 0.3125rem;
+
+}
+
+footer {
+    background-color: #004593;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+}
+
+a {
+    color: white;
+}
+
+

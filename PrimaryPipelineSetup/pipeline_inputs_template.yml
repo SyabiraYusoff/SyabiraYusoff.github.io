@@ -1,0 +1,155 @@
+#!/usr/bin/env cwl-runner
+cwl:tool: rhapsody
+
+##################################################################
+##### ATAC + SMK Input Template ######
+##################################################################
+
+
+## Path to your ATAC specific FASTQ.GZ formatted read files from ATAC-Seq libraries.
+## You may specify as many R1/R2/I2 files as you want.
+Reads_ATAC:
+
+ - class: File
+   location: "test/ATACLibrary_S2_L001_R1_001.fastq.gz"
+
+ - class: File
+   location: "test/ATACLibrary_S2_L001_R2_001.fastq.gz"
+
+ - class: File
+   location: "test/ATACLibrary_S2_L001_I2_001.fastq.gz"
+
+## WTA+ATAC-Seq Reference_Archive (required for ATAC-Seq or Multiomic ATAC-Seq (WTA+ATAC-Seq) assays). 
+## Path to Rhapsody WTA+ATAC-Seq Reference in the tar.gz format.
+Reference_Archive:
+  class: File
+    location: "test/RhapRef_Human_WTA-ATAC_2023-08.tar.gz"
+
+## If this is an SMK + ATAC-Seq only run (and not SMK + Multiomic ATAC-Seq (WTA+ATAC-Seq)), choose the "nuclei_atac_only" option.
+Sample_Tags_Version: nuclei_atac_only
+
+
+
+
+
+## If this is an SMK + Nuclei mRNA run or an SMK + Multiomic ATAC-Seq (WTA+ATAC-Seq) run (and not an SMK + ATAC-Seq only run), choose the "nuclei_includes_mrna" option.
+Sample_Tags_Version: nuclei_includes_mrna
+
+
+
+
+
+
+
+
+## Reads: Path to your other than ATAC FASTQ.GZ formatted read files. 
+## Add all your fastq files (R1 and R2)here.
+# You may specify as many R1/R2 read pairs as you want.
+Reads:
+ - class: File
+   location: "path/to/mySample_R1_.fastq.gz"
+ - class: File
+   location: "path/to/mySample_R2_.fastq.gz"
+
+
+
+
+
+
+
+## If Sample Tag Multiplexing was done, specify the appropriate version: human, mouse, flex
+Sample_Tags_Version: human
+
+
+
+## WTA Reference_Archive (required for WTA mRNA assay) - Path to Rhapsody WTA Reference in the tar.gz format.
+Reference_Archive:
+  class: File
+  location: "path/to/RhapRef_Human_WTA_2023-02.tar.gz"
+
+
+
+
+
+## Specify the appropriate option: human, mouse, humanBCR, humanTCR, mouseBCR, mouseTCR
+VDJ_Version: human
+
+
+## Path to the AbSeq reference file in FASTA format. Only needed if BD AbSeq Ab-Oligos are used.
+AbSeq_Reference:
+ - class: File
+   location: "path/to/AbSeq_reference.fasta"
+
+## Targeted_Reference: Path to the targeted reference file in FASTA format.
+## If you are using custom panel designed by us, please request the reference fasta file from us.
+Targeted_Reference:
+ - class: File
+   location: "path/to/BD_Rhapsody_Immune_Response_Panel_Hs.fasta"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Path to your ATAC specific FASTQ.GZ formatted read files from ATAC-Seq libraries.
+## You may specify as many R1/R2/I2 files as you want.
+Reads_ATAC:
+
+ - class: File
+   location: "test/ATACLibrary_S2_L001_R1_001.fastq.gz"
+
+ - class: File
+   location: "test/ATACLibrary_S2_L001_R2_001.fastq.gz"
+
+ - class: File
+   location: "test/ATACLibrary_S2_L001_I2_001.fastq.gz"
+
+## WTA+ATAC-Seq Reference_Archive (required for ATAC-Seq or Multiomic ATAC-Seq (WTA+ATAC-Seq) assays). 
+## Path to Rhapsody WTA+ATAC-Seq Reference in the tar.gz format.
+Reference_Archive:
+  class: File
+    location: "test/RhapRef_Human_WTA-ATAC_2023-08.tar.gz"
+
+
+
+## Putative cell calling dataset (optional) - Specify the dataset to be used for putative cell calling: mRNA, AbSeq 
+Cell_Calling_Data: AbSeq
+
+
+
+
+
+## Tag_Names (optional) - Specify the tag number followed by '-' and the desired sample name to appear in Sample_Tag_Metrics.csv
+# Do not use the special characters: &, (), [], {},  <>, ?, |
+# To enble the tag_names optiion, please remove the '#' in front of the Tag_Names in line-26 below. 
+#Tag_Names: [4-mySample, 9-myOtherSample, 6-alsoThisSample] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

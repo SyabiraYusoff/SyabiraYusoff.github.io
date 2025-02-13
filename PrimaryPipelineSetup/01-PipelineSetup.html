@@ -32,7 +32,7 @@
                 <a href="#" data-target="dockerLinux" onclick="showSection('dockerLinux', this)">Docker Based (LINUX)</a>
                 <a href="#" data-target="bundle" onclick="showSection('bundle', this)">Pipeline Bundle (LINUX only)</a>
                 <a href="#" data-target="extraUtil" onClick="showSection('extraUtil', this)">Extra Utilities</a>
-                <a href="index.html" style="float:right"><i class="fa fa-home"></i></a>
+                <a href="index.html" style="float:right"><i class="fa fa-home"></i>HOME</a>
     </div>
 
     <div class="row">
@@ -44,7 +44,7 @@
             <ul>
                 <li><b>Cloud Computing: </b><br>Known as Velsera (Previously known as Seven Bridges Genomics Platform). <br> Free as complimentary to all BD Rhapsody&trade; Customers.</li><br>
                 <li><b>Local Installation(Docker):</b><br> Compatible with MacOS and LINUX only. Windows is not supported. <br>Need Docker Image which need system administrator permission.</li><br>
-                <li><b>Pipeline bundle (Docker- free):</b><br> Compatible with MacOS and LINUX only. Windows and MacOS is not supported. <br> As easy as Download, Untar and run.  </li><br>
+                <li><b>Pipeline bundle (Docker- free):</b><br> For HPC user on LINUX/Ubuntu environment only. Windows and MacOS is not supported. <br> As easy as Download, Untar and run.  </li><br>
             </ul></div>
 
             <div class="card" style="background-color: #f1f1f1;">
@@ -61,22 +61,24 @@
                </li>
         <li>8-core processor (>16-core recommended)</li>
     <ul><li>Targeted assays: 32 GB RAM (>128 GB recommended)</li>
-    <li>Whole Transcriptome Analysis (WTA) assays: 96 GB (>192 GB recommended)</li></ul></ul></div>
+        <li>Whole Transcriptome Analysis (WTA) assays: 96 GB (>192 GB recommended)</li>
+        </ul>
+    </ul>
+    </div>
 
     <div class="card">
     <h2> Pipeline Extra Utilities</h2>
     <p>Our pipeline is equipped with multiple extra utlitilies that commonly requested by our valuable customers.</p>
     <ul>
-        <li><b>Make Rhapsody&trade; Reference: </b><br>Create a new WTA or WTA_ATAC Reference Archive for use as an input to the Rhapsody&trade; Sequence Analysis Pipeline.</li><br>
+        <li><b>Make BD Rhapsody&trade; Reference: </b><br>Create a new WTA or WTA_ATAC Reference Archive for use as an input to the BD Rhapsody&trade; Sequence Analysis Pipeline.</li><br>
         <li><b>PhiX Contamination Detection: </b><br>Check a FASTQ file for PhiX contamination, by aligning the reads to the PhiX genome. (uses Bowtie2)</li><br>
-        <li><b>Annotate Cell Label and UMI only: </b><br>Given pairs of R1/R2 FASTQ files from Rhapsody&trade; libraries, only annotate the cell label and UMI of R1 and put it in the header of R2.</li>
+        <li><b>Annotate Cell Label and UMI only: </b><br>Given pairs of R1/R2 FASTQ files from BD Rhapsody&trade; libraries, only annotate the cell label and UMI of R1 and put it in the header of R2.</li>
     </ul></div>
             </div>
             <div id="velsera" class="section">
                 <h1>Velsera Platform Setup</h1>
 <p>Seven Bridges Genomics Platform or now moved to Velsera is one of the cloud based platform available to run BD Rhapsody&trade; Analysis pipeline, suited for new or experiences customers that unfamiliar with coding in Bioinformatics. This web browser interface platform will generate output HTML from FASTQ input files from your sequencing service. </p><br>
-<h2> Create an acccount on
-Velsera </h2>
+<h2> Create an acccount on Velsera </h2>
 <ol>
 <li> Visit <a style="color: #004593; font-weight: bold;" href = "https://velsera.com/bd-rhapsody"> Velsera website</a> 
 to register your account.</li>
@@ -129,7 +131,7 @@ to register your account.</li>
                             
                             <div class="card">
                             <h2>Python Installation Using Homebrew:</h2>
-                            <p class="notice">This installation guide is tailored for the latest version of macOS M3 Apple Silicon chip. Unlike UNIX/Linux-based systems, macOS lacks a standard operation for installing third-party command-line tools beyond the standard Apple installer. To address this, we will leverage Homebrew to facilitate the installation and management of command-line utilities. </p>
+                            <p class="notice">This installation guide is tailored for the latest version of macOS M3 Apple Silicon chip. Unlike UNIX/Linux-based systems, macOS lacks a standard operation for installing third-party command-line tools beyond the standard Apple installer. To address this, we will leverage Homebrew to facilitate the installation and management of command-line utilities.</p>
                             <ol>
                             <li>Open terminal </li>
                             <li>paste the following command </li>
@@ -190,7 +192,7 @@ to register your account.</li>
             </div>
             <div id="dockerLinux" class="section">
                 <h1>Local Installation on LINUX</h1>
-                <p class="notice">The docker image features require root-level access to install. <br> For users operating on an institutional server,  please collaborate with your system administrator to determine the directories, system resources allocation for Docker image. <br> For those who do not have root access, you can skip the docker installation process and use "Docker-free" bundle. Please find the instruction on the available tab above.</p> 
+                <p class="notice">The Docker image features require root-level access to install. <br> For users operating on an institutional server, please collaborate with your system administrator to determine the directories and system resource allocation for the Docker image. <br> For those who do not have root access, you can skip the Docker installation process and use the "Docker-free" bundle. Please find the instructions on the available tab above.</p> 
                 <div class="card">
                 <h2>Software requirements for local installation</h2>
                         <ol>
@@ -297,13 +299,13 @@ Please continue to CWL runner installation for MasOS and LINUX systems.</p>
 
                 <p>Below are the extra utilities available:</p>
                 <ul>
-                    <li><b><a href="#extraUtil1">Make Rhapsody&trade; Reference: </a></b><br>Create a new WTA or WTA_ATAC Reference Archive for use as an input to the Rhapsody&trade; Sequence Analysis Pipeline.</li><br>
+                    <li><b><a href="#extraUtil1">Make BD Rhapsody&trade; Reference: </a></b><br>Create a new WTA or WTA_ATAC Reference Archive for use as an input to the BD Rhapsody&trade; Sequence Analysis Pipeline.</li><br>
                     <li><b><a href="#extraUtil2">PhiX Contamination Detection: </a></b><br>Check a FASTQ file for PhiX contamination, by aligning the reads to the PhiX genome. (uses Bowtie2)</li><br>
-                    <li><b><a href="#extraUtil3">Cell Label and UMI only:</a>  </b><br>Given pairs of R1/R2 FASTQ files from Rhapsody&trade; libraries, only annotate the cell label and UMI of R1 and put it in the header of R2.</li>
+                    <li><b><a href="#extraUtil3">Cell Label and UMI only:</a>  </b><br>Given pairs of R1/R2 FASTQ files from BD Rhapsody&trade; libraries, only annotate the cell label and UMI of R1 and put it in the header of R2.</li>
                 </ul>
 
                 <card  style="background-color: #f1f1f1;">
-                    <h2 id="extraUtil1">Make Rhapsody Reference</h2>
+                    <h2 id="extraUtil1">Make BD Rhapsody&trade; Reference</h2>
                     <ul>
                         <li><b>File:</b> make_rhap_reference_[version].cwl</li><br>
                         <li><b>Example Command:</b>
@@ -311,7 +313,7 @@ Please continue to CWL runner installation for MasOS and LINUX systems.</p>
                             <li>Local Installation (Docker):<br>
                             <p class="code">cwl-runner make_rhap_reference_2.2.cwl --Genome_fasta GRCh38.primary_assembly.genome.fa.gz --Gtf gencode.v42.primary_assembly.annotation.gtf.gz</p></li>
                             <li>Pipeline Bundle (Docker-free):Define the yml file and run the command line below.<br>
-                                <p class="code">./rhapsody makeRhapReference inputs.yml</p>The example of the pipeline bundle yml file for Make Rhapsody&trade; Reference:<br>
+                                <p class="code">./rhapsody makeRhapReference inputs.yml</p>The example of the pipeline bundle yml file for Make BD Rhapsody&trade; Reference:<br>
                                 <img src = "./pictures/extraUtils_generateRef_bundle.png" width = "500"></li>
                         </ul></li>
                         <br><li ><b>Input Parameters:</b>
