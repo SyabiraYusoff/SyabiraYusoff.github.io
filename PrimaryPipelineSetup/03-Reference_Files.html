@@ -3,6 +3,27 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Reference Files</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<head>
+    <title>Pipeline Setup</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./pictures/favicon_rhapsody.ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./pictures/favicon_rhapsody.ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./pictures/favicon_rhapsody.ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./pictures/favicon_rhapsody.ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./pictures/favicon_rhapsody.ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./pictures/favicon_rhapsody.ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./pictures/favicon_rhapsody.ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./pictures/favicon_rhapsody.ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./pictures/favicon_rhapsody.ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./pictures/favicon_rhapsody.ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./pictures/favicon_rhapsody.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./pictures/favicon_rhapsody.ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./pictures/favicon_rhapsody.ico/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./pictures/favicon_rhapsody.ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff"></head>
 
 </head>
 <body>
@@ -14,7 +35,7 @@
         <a href="#" data-target="refCheckbox" onclick="showSection('refCheckbox', this)">What Reference Files I need?</a>
         <a href="#" data-target="customRef" onclick="showSection('customRef', this)">Custom Reference</a>
         <a href="#" data-target="abseqRef" onclick="showSection('abseqRef', this)">AbSeq Reference</a>
-        <a href="index.html" style="float:right"><i class="fa fa-home"></i></a>
+        <a href="index.html" style="float:right"><i class="fa fa-home"></i>HOME</a>
     </div>
 
     <div class="row">
@@ -136,11 +157,11 @@
 
                     <div class="card" id="supptext" style="display:none;background-color: #f1f1f1;">
                         <h3>Reference file required for Targeted</h3>
-                        <p>Generally, when a supplemental genes used in Rhapsody&trade; assay, a custom panel design will be generated.<br>
+                        <p>Generally, when supplemental genes are used in a Rhapsody&trade; assay, a custom panel design will be generated.<br>
                             <b>Please email us as instructed below:</b><br>
                             <ul>
                                 <li>The reference file will be provided when a custom panel is designed by BD.</li>
-                                <li>Please email <a href="mailto:biox_support_EMEA@bd.com">BioInformatics Support Team</a> with your <b>Panel ID</b> to obtain your fasta reference file.</li>
+                                <li>Please email the <a href="mailto:biox_support_EMEA@bd.com">BioInformatics Support Team</a> with your <b>Panel ID</b> to obtain your FASTA reference file.</li>
                             </ul>
                         </p>
                     </div>
@@ -149,9 +170,9 @@
                         <h3>Reference file required for ATAC</h3>
                         <p>Pre-build specific ATAC reference.</p>
                         <ul>
-                            <li>If you are using pre-designed panel, please click the link below to download the fasta file.</li>
-                            <li>Alternatively, if you are Velsera platform user, right click and copy the link address to add the file through https on your Velsera platform. Tutorial can be found here.</li>
-                            <br><li>Please find the link below to download applicable reference file.<br>
+                            <li>If you are using a pre-designed panel, please click the link below to download the FASTA file.</li>
+                            <li>Alternatively, if you are a Velsera platform user, right-click and copy the link address to add the file through HTTPS on your Velsera platform. A tutorial can be found here.</li>
+                            <br><li>Please find the link below to download the applicable reference file.<br>
                                 <ul>
                                     <li><b>Human (GRCh38|M43):</b><a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Human_WTA-ATAC_2023-08.tar.gz">RhapRef_Human_WTA-ATAC_2023-08.tar.gz</a></li>
                                     <li><b>Mouse (GRCm39|M31):</b><a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Mouse_WTA-ATAC_2023-09.tar.gz">RhapRef_Mouse_WTA-ATAC_2023-09.tar.gz</a></li>
@@ -185,8 +206,38 @@
                     </div>
             </div>
 
+            <div id="customRef" class="section">
+                <h2>Custom Reference</h2>
+                <p>Custom Reference is a feature that allows you to upload your own reference files to the BD Rhapsody&trade; Pipeline. This feature is useful when you have a custom panel design that is not available in the pre-built references provided by BD. </p>
+                <p><b>Reference files from public database</b>
+                <ul>
+                    <li>NCBI</li>
+                    <li><a href="https://www.ensembl.org/index.html">Ensembl</a>
+                        <ol>
+                            <p>To generate custom reference files compatible with BD Rhapsody Pipeline, you can download the necessary files from Ensembl.<br>
+                            <img src="./pictures/ensemble.png">
+                        </p> 
+                            <p>Follow the steps below to retrieve files to generate custom genome:</p>
+                            <li>Navigate to <b>"Download FASTA"</b> and download Primary Assembly or an equivalent of Top-level assembly. </li>
+                            <li>Navigate to <b>"Download GTF"</b> to download the gtf file. </li>
+                        </ol>
+                    </li>
+                </ul></p>
+            </div>
+
+            <div id="abseqRef" class="section">
+                <h2>AbSeq Reference</h2>
+                <p>AbSeq Reference is a feature that allows you to upload your own reference files to the BD Rhapsody&trade; Pipeline. This feature is useful when you have a custom AbSeq panel design that is not available in the pre-built references provided by BD.</p>
+                <p>For more information on how to upload your custom AbSeq reference, please refer to the <a href="https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/BD_Rhapsody_Pipeline_AbSeq_Reference_Guide.pdf">BD Rhapsody Pipeline AbSeq Reference Guide</a>.</p>  
+            </div>
+        </div>
+
         <div class="rightcolumn">
-            <div id="refCheckbox" class="section active">
+            <div id="customRef" class="section ">
+                <p>this is the right side of the custom reference</p>
+            </div>
+            <div id="abseqRef" class="section ">
+                <p>this is the right side of the abseq reference</p>
             </div>
         </div>
     </div>

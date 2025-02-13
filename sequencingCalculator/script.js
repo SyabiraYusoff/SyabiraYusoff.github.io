@@ -13,8 +13,6 @@ function deleteRow(r) {
   }
 }
 
-
-
 function showSections() {
 const projectNameInput = document.getElementById("project_name");
 if (projectNameInput.value){
@@ -32,6 +30,16 @@ if (userNameInput.value) {
 
     const mainFormSubmitMessage = document.getElementById("mainFormSubmitMessage");
     mainFormSubmitMessage.style.display="block";
+    mainFormSubmitMessage.innerHTML += `
+    <p><b>User Input</b>:
+    <ul>
+    <li>Date: ${new Date().toLocaleDateString()}</li>
+    <li>Project Name: ${projectNameInput.value}</li>
+    <li>Username: ${userNameInput.value}</li>
+    <li>Plexity: ${plexity.value}</li></ul></p>
+    <p>Please enter the desired Final Library Concentration and Total Pooling Volume below.</p>
+    <p>Enter your Library Name and select your assay details. The info button will provide you with the recommended values for Qubit, Bioanalyzer, Cell Number, and Reads per Cell as guidance.</p>
+    `;
 
     //parse number of plexity input and create a table with a dropdown value. 
     //The asssay by row, values by column  
@@ -88,37 +96,37 @@ if (userNameInput.value) {
 function getAssayInfo(assay, buttonId) {
 const assayInfo = {
     "assay-wta": {
-        "infoe": "from-Qubit: >1ng/&microl",
+        "infoe": "from-Qubit: >1ng/µL",
         "infof": "Bioanalyzer/TapeStation: Average peak ~250-1000bp",
         "infoh": "Shallow(10,000rpc) Moderate(20,000-50,000rpc) Deep(100,000rpc)"
     },
     "assay-abseq": {
-        "infoe": "from-Qubit: >1.5ng/&microl",
+        "infoe": "from-Qubit: >1.5ng/µL",
         "infof": "Bioanalyzer/TapeStation: peak ~264bp",
         "infoh": "Unverified Customer Feedback(300-500rpc) 40 plex(40,000rpc) N plex(1,000rpc*n) "
     },
     "assay-targeted": {
-        "infoe": "from-Qubit: >1ng/&microl",
+        "infoe": "from-Qubit: >1.5ng/µL",
         "infof": "Bioanalyzer/TapeStation: Average-peak ~500-600bp",
         "infoh": "Shallow(2,000rpc) Deep(10,000rpc)"
     },
     "assay-smk": {
-        "infoe": "from-Qubit: >1ng/&microl",
+        "infoe": "from-Qubit: >1.5ng/µL",
         "infof": "Bioanalyzer/TapeStation: peak~276bp",
         "infoh": "(600-1200rpc)"
     },
     "assay-tcr": {
-        "infoe": "from-Qubit: >1ng/&microl",
+        "infoe": "from-Qubit: >1.5ng/µL",
         "infof": "Bioanalyzer/TapeStation: Average-peak ~600-800bp",
         "infoh": "Recommended(5,000rpc)"
     },
     "assay-bcr": {
-        "infoe": "from-Qubit: >1ng/&microl",
+        "infoe": "from-Qubit: >1.5ng/µL",
         "infof": "Bioanalyzer/TapeStation: Average-peak ~600-800bp",
         "infoh": "Recommended(5,000rpc)"
     },
     "assay-atac": {
-        "infoe": "from-Qubit: >1ng/&microl",
+        "infoe": "from-Qubit: >1ng/µL",
         "infof": "Bioanalyzer/TapeStation: Library size  ~300-2000bp",
         "infoh": "Recommended(50,000rpc)"
     },
@@ -252,7 +260,7 @@ rowsData.forEach((input) => {
 
     // Calc#5: Volume for pooling
   let volumeForPooling = poolingRatio * finalPoolVol;
-  if (input.assayType === "assay-SMK") {
+  if (input.assayType === "assay-smk") {
     volumeForPooling *= 10;
     console.log(`${input.assayName}: Adjusted SMK pooling volume: ${volumeForPooling}`);
   }
@@ -319,9 +327,11 @@ rowsData.forEach((input, index) => {
   row.innerHTML += `
     <td>${input.libraryName}</td>
     <td>${input.assayName}</td>
+    <td>${input.index7}</td>
+    <td>${input.qubitnMConc}</td>
     <td>${parseFloat(document.getElementById("finalLibConc").value||0)}</td>
-    <td>${input.indexedLibraryNeededForPooling}</td>
-    <td>${input.elutionBufferVolume}</td>
+    <td>${(input.indexedLibraryNeededForPooling * 1.1).toFixed(2)}</td>
+    <td>${(input.elutionBufferVolume * 1.1).toFixed(2)}</td>
     <td>${input.volumeForPooling}</td>
   `;
 
@@ -335,207 +345,220 @@ const phix = (rowsData[0].totalReadPairsForSequencing *(phixPercentage*0.01));
 const totalPhix = (rowsData[0].totalReadPairsForSequencing + phix);
 
 let negativeDilution = rowsData.some((input) => input.elutionBufferVolume < 0);
-let lowSMK = rowsData.some((input) => input.assayName === "assay-smk" && input.volumeForPooling < 0.5);
+let lowVolWarnig = rowsData.some((input) => input.volumeForPooling < 1 && input.volumeForPooling > 0 && input.assayName === "assay-smk");
+let highVolWarning = rowsData.some((input) => input.elutionBufferVolume > 20);
 
 
 if (negativeDilution) {
   section.innerHTML += `
-  <p style="color: red;"><b>Warning:</b> The current Final Library Concentration is too high for some assay. Please consider a lower Final Library Concentration value and re-calculate the table.</p>`;
+  <p style="color: red;"><b>Warning:</b> The current Final Library Concentration is too high for some assays, and there isn't a high enough concentration of Indexed Library Volume to dilute. Please consider a lower Final Library Concentration value and re-calculate the table.</p>`;
 }
 
-if (lowSMK) {
-  section.innerHTML += `<p style="color: red;"><b>Warning:</b> The pipette volume for pooling (SMK) is too low. Consider to increase the reads per cell in the table input above and re-calculate the table. </p>`;
+if (lowVolWarnig) {
+  section.innerHTML += `
+  <p style="color: red;"><b>Warning:</b> The pipette volume for pooling is too low, <1 µL for SMK library. Please consider increasing the reads per cell. Otherwise, please make sure to pipette the solution carefully to avoid any error in library pooling. </p>`;
+}
+
+if (highVolWarning) {
+  section.innerHTML += `<p style="color: red;"><b>Beware:</b> Amount of Indexed Library volume for pooling is > 20 &micro;L. You are using the majority of your sample for dilution and pooling – so there might not be much leftover in case re-sequencing is needed.<br>
+Recommendation: Please consult with the sequencing provider for the possibility to reduce the final library concentration (nM).</p>`;
 }
 
 section.innerHTML += `
 <p>How to use this table to prepare your library dilution and pooling: <br>
-<ul><li>STEP1: Mix the Indexed Library and Elution Buffer to Normalize the library concentration.</li><li>STEP2: In a tube, add all the Library Pooling Volume by row until the end.</li></ul></p><br>
+<ul><li>STEP1: In a new tube, mix the Indexed Library and Elution Buffer to Normalize the library concentration.</li><li>STEP2: In a new tube, add the respective normalized Library Pooling Volumes.</li></ul></p><br>
 <p><b>Final Library Concentration:
 ${parseInt(document.getElementById("finalLibConc").value)} nM </p>
 <p><b>Total Library Volume:</b> ${parseInt(document.getElementById("finalPoolVol").value)} &microL </p>
-<p><b>Total Read Pairs Needed for Sequencing  :</b> ${parseFloat(rowsData[0].totalReadPairsForSequencing.toFixed(2))} Million Reads Pairs or Clusters per Flow Cell</p>
+<p><b>Total Read Pairs Needed for Sequencing  :</b> ${parseFloat(rowsData[0].totalReadPairsForSequencing.toFixed(2))} Million Reads Pairs or Clusters</p>
 <p><b>Percentage PhiX for Sequencing:</b> ${parseFloat(phixPercentage.toFixed(2))} %</p>
-<p><b>Read Pairs Needed for Phix Library :</b> ${parseFloat(phix.toFixed(2))} Million Reads Pairs or Clusters per Flow Cell</p>
-<p><b>Total Number of Reads + PhiX: </b> ${parseFloat(totalPhix.toFixed(2))} Million Reads Pairs or Clusters per Flow Cell</p>`;
+<p><b>Read Pairs Needed for Phix Library :</b> ${parseFloat(phix.toFixed(2))} Million Reads Pairs or Clusters</p>
+<p><b>Total Number of Reads + PhiX: </b> ${parseFloat(totalPhix.toFixed(2))} Million Reads Pairs or Clusters</p>`;
 }
 
 
 
-function filterTableByValue(threshold){
-const section = document.getElementById("recommendationContainer");
-section.style.display = "block";
+function filterTableByValue(threshold) {
+    const section = document.getElementById("recommendationContainer");
+    section.style.display = "block";
 
-const rows = document.getElementById("recommendationRows");
-rows.innerHTML = ""; 
+    const rows = document.getElementById("recommendationRows");
+    rows.innerHTML = "";
 
-// Add the filtered rows back
-const allRows = [
-  { platform: "Miniseq Mid Output", cycle: "300", pairs: 7, concentration: "1.4-1.8pM" },
-  { platform: "Miseq Reagent kit v2", cycle: "300, 500", pairs: 12, concentration: "contact local FAS" },
-  { platform: "Miniseq High Output", cycle: "150, 300", pairs: 22, concentration: "1.4-1.8pM" },
-  { platform: "Miseq Reagent kit v3", cycle: "150, 600", pairs: 22, concentration: "contact local FAS" },
-  { platform: "NextSeq 1000/2000 P1", cycle: "300", pairs: 100, concentration: "contact local FAS" },
-  { platform: "NextSeq 550 Mid Output", cycle: "150, 300", pairs: 130, concentration: "1.4-1.8pM" },
-  { platform: "HiSeq 4000 (Single Lane)", cycle: "150, 300", pairs: 313, concentration: "contact local FAS" },
-  { platform: "NovaSeq 6000 S Prime (Single Lane)", cycle: "100, 200, 300, 500 ***", pairs: 325, concentration: "180-250pM (XP workflow)" },
-  { platform: "NextSeq 550 High Output", cycle: "150, 300", pairs: 400, concentration: "1.4-1.8pM" },
-  { platform: "NextSeq 1000/2000 P2", cycle: "200, 300", pairs: 400, concentration: "contact local FAS" },
-  { platform: "NovaSeq 6000 S Prime (Single Flow Cell)", cycle: "100, 200, 300, 500 ***", pairs: 650, concentration: "350-650 pM (standard workflow)" },
-  { platform: "NovaSeq 6000 S1 (Single Lane)", cycle: "100, 200, 500 ***", pairs: 650, concentration: "180-250pM (XP workflow)" },
-  { platform: "NextSeq 2000 P3", cycle: "200, 300", pairs: 1200, concentration: "contact local FAS" },
-  { platform: "NovaSeq 6000 S1 (Single Flow Cell)", cycle: "100, 200, 300 ***", pairs: 1300, concentration: "350-650 pM (standard workflow)" },
-  { platform: "NovaSeq 6000 S4 (Single Lane)", cycle: "200, 300", pairs: 2000, concentration: "180-250pM (XP workflow)" },
-  { platform: "HiSeq 4000 (Single Flow Cell)", cycle: "150, 300", pairs: 2500, concentration: "contact local FAS" },
-  { platform: "NovaSeq 6000 S2 (Single Flow Cell)", cycle: "100, 200, 300 ***", pairs: 3300, concentration: "350-650 pM (standard workflow)" },
-  { platform: "NovaSeq 6000 S4 (Single Flow Cell)", cycle: "200, 300", pairs: 8000, concentration: "350-650 pM (standard workflow)" },
-  { platform: "NovaSeq X 10B", cycle: "200, 300", pairs: 10000, concentration: "contact local FAS" }
-];
+    const novaSeqCheckbox = document.getElementById("novaseq");
+    const allRows = [
+        { platform: "Miniseq Mid Output", cycle: "300", pairs: 7, concentration: "1.4-1.8pM" },
+        { platform: "Miseq Reagent kit v2", cycle: "300, 500", pairs: 12, concentration: "contact local FAS" },
+        { platform: "Miniseq High Output", cycle: "150, 300", pairs: 22, concentration: "1.4-1.8pM" },
+        { platform: "Miseq Reagent kit v3", cycle: "150, 600", pairs: 22, concentration: "contact local FAS" },
+        { platform: "NextSeq 1000/2000 P1", cycle: "300", pairs: 100, concentration: "contact local FAS" },
+        { platform: "NextSeq 550 Mid Output", cycle: "150, 300", pairs: 130, concentration: "1.4-1.8pM" },
+        { platform: "HiSeq 4000 (Single Lane)", cycle: "150, 300", pairs: 313, concentration: "contact local FAS" },
+        { platform: "NovaSeq 6000 S Prime (Single Lane)", cycle: "100, 200, 300, 500 ***", pairs: 325, concentration: "180-250pM (XP workflow)" },
+        { platform: "NextSeq 550 High Output", cycle: "150, 300", pairs: 400, concentration: "1.4-1.8pM" },
+        { platform: "NextSeq 1000/2000 P2", cycle: "200, 300", pairs: 400, concentration: "contact local FAS" },
+        { platform: "NovaSeq 6000 S Prime (Single Flow Cell)", cycle: "100, 200, 300, 500 ***", pairs: 650, concentration: "350-650 pM (standard workflow)" },
+        { platform: "NovaSeq 6000 S1 (Single Lane)", cycle: "100, 200, 500 ***", pairs: 650, concentration: "180-250pM (XP workflow)" },
+        { platform: "NextSeq 2000 P3", cycle: "200, 300", pairs: 1200, concentration: "contact local FAS" },
+        { platform: "NovaSeq 6000 S1 (Single Flow Cell)", cycle: "100, 200, 300 ***", pairs: 1300, concentration: "350-650 pM (standard workflow)" },
+        { platform: "NovaSeq 6000 S4 (Single Lane)", cycle: "200, 300", pairs: 2000, concentration: "180-250pM (XP workflow)" },
+        { platform: "HiSeq 4000 (Single Flow Cell)", cycle: "150, 300", pairs: 2500, concentration: "contact local FAS" },
+        { platform: "NovaSeq 6000 S2 (Single Flow Cell)", cycle: "100, 200, 300 ***", pairs: 3300, concentration: "350-650 pM (standard workflow)" },
+        { platform: "NovaSeq 6000 S4 (Single Flow Cell)", cycle: "200, 300", pairs: 8000, concentration: "350-650 pM (standard workflow)" },
+        { platform: "NovaSeq X 10B", cycle: "200, 300", pairs: 10000, concentration: "contact local FAS" }
+    ];
 
-// Filter rows based on the threshold value
-const filteredRows = allRows.filter(row => row.pairs > threshold);
+    let filteredRows;
+    if (novaSeqCheckbox.checked) {
+        filteredRows = allRows.filter(row => row.platform === "NovaSeq X 10B");
+    } else {
+        filteredRows = allRows.filter(row => row.pairs > threshold);
+    }
 
-// Populate the table with the filtered rows
-filteredRows.forEach(row => {
-  const newRow = rows.insertRow();
-  const platformCell = newRow.insertCell(0);
-  const cycleCell = newRow.insertCell(1);
-  const pairsCell = newRow.insertCell(2);
-  const concentrationCell = newRow.insertCell(3);
+    filteredRows.forEach(row => {
+        const newRow = rows.insertRow();
+        const platformCell = newRow.insertCell(0);
+        const cycleCell = newRow.insertCell(1);
+        const pairsCell = newRow.insertCell(2);
+        const concentrationCell = newRow.insertCell(3);
 
-  platformCell.textContent = row.platform;
-  cycleCell.textContent = row.cycle;
-  pairsCell.textContent = row.pairs;
-  concentrationCell.textContent = row.concentration;
-});
-console.log(filteredRows);
-console.log(`Filtered table to show platforms with pairs > ${threshold}`);
+        platformCell.textContent = row.platform;
+        cycleCell.textContent = row.cycle;
+        pairsCell.textContent = row.pairs;
+        concentrationCell.textContent = row.concentration;
+    });
 
-section.innerHTML +=`
-<p>*NovaSeq 100 cycle kit (v1.0 or v1.5) can be used. The 100-cycle kit contains enough reagents for up to 130 cycles.</p>`;
+    console.log(filteredRows);
+    console.log(`Filtered table to show platforms with pairs > ${threshold}`);
+
+    section.innerHTML += `
+    <p>*NovaSeq 100 cycle kit (v1.0 or v1.5) can be used. The 100-cycle kit contains enough reagents for up to 130 cycles.</p>`;
 }
 
 //for each row, extract the values from a to h
 const rowsData = [];
 function submit() {
-rowsData.length = 0;
-const rowNum = plexity.value;
+    const tableMessage = document.getElementById("tableSubmitMessage");
+    tableMessage.style.display = "block";
+    const novaSeqCheckbox = document.getElementById("novaseq");
+    if (novaSeqCheckbox.checked) {
+        tableMessage.innerHTML += `<p>User checked the NovaSeq option. The <b>Correction Factor:</b> for TCR/BCR library pooling is set to 1</p>`;
+    }
 
-for (let row = 1; row <= rowNum; row++){
+    rowsData.length = 0; // clear the array
+    const rowNum = plexity.value; // get the number of rows
 
-  const libraryName = document.getElementById(`input${row}a`);
-  if (libraryName){
-    const input = {
-      libraryName: libraryName.value, 
-      assayName: document.getElementById(`input${row}b`).value||"", 
-      index5: document.getElementById(`input${row}c`).value||"", 
-      index7: document.getElementById(`input${row}d`).value||"", 
-      qubit: parseFloat(document.getElementById(`input${row}e`).value)||0, 
-      bioanalyzer: parseFloat(document.getElementById(`input${row}f`).value)||0, 
-      cellNumber: parseFloat(document.getElementById(`input${row}g`).value)||0, 
-      readsPerCell: parseFloat(document.getElementById(`input${row}h`).value)||0,
-    };
-    rowsData.push(input);
-  }
-}
+    for (let row = 1; row <= rowNum; row++) { // loop through each row
+        const libraryName = document.getElementById(`input${row}a`); // get the library name
+        if (libraryName) { // if the library name is not empty, extract the values from a to h
+            const input = {
+                libraryName: libraryName.value,
+                assayName: document.getElementById(`input${row}b`).value || "",
+                index5: document.getElementById(`input${row}c`).value || "",
+                index7: document.getElementById(`input${row}d`).value || "",
+                qubit: parseFloat(document.getElementById(`input${row}e`).value) || 0,
+                bioanalyzer: parseFloat(document.getElementById(`input${row}f`).value) || 0,
+                cellNumber: parseFloat(document.getElementById(`input${row}g`).value) || 0,
+                readsPerCell: parseFloat(document.getElementById(`input${row}h`).value) || 0,
+            };
+            rowsData.push(input);
+        }
+    }
 
+    console.log(`rows data collected:`, rowsData);
+    calculateValues(rowsData);
+    resultSection(rowsData);
 
-console.log(`rows data collected:`, rowsData);
-calculateValues(rowsData);
-resultSection(rowsData);
+    phixPercentage = specifyPhix(rowsData);
+    const phix = (rowsData[0].totalReadPairsForSequencing * (phixPercentage * 0.01));
+    const totalPhix = (rowsData[0].totalReadPairsForSequencing + phix);
 
-phixPercentage = specifyPhix(rowsData);
-const phix = (rowsData[0].totalReadPairsForSequencing *(phixPercentage*0.01));
-const totalPhix = (rowsData[0].totalReadPairsForSequencing + phix);
+    filterTableByValue(totalPhix);
 
-filterTableByValue(totalPhix);
+    // Add an input field for the user to specify the PDF name
+    const pdfNameInput = document.createElement("input");
+    pdfNameInput.type = "text";
+    pdfNameInput.id = "pdfName";
+    pdfNameInput.placeholder = "Enter file name";
+    pdfNameInput.style.marginRight = "15px";
 
+    // Add "Save as PDF" button below the last table
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save as .PDF";
+    saveButton.onclick = saveAsPDF;
+    saveButton.classList.add("primary-button");
 
-// Add an input field for the user to specify the PDF name
-const pdfNameInput = document.createElement("input");
-pdfNameInput.type = "text";
-pdfNameInput.id = "pdfName";
-pdfNameInput.placeholder = "Enter file name";
-pdfNameInput.style.marginRight = "15px";
+    // Append input field and button to resultsContainer
+    const pdfSection = document.getElementById("savePDFsection");
+    pdfSection.style.display = "block";
+    pdfSection.appendChild(pdfNameInput);
+    pdfSection.appendChild(saveButton);
 
-// Add "Save as PDF" button below the last table
-const saveButton = document.createElement("button");
-saveButton.textContent = "Save as .PDF";
-saveButton.onclick = saveAsPDF;
-saveButton.classList.add("primary-button");
+    async function saveAsPDF() {
+        const { jsPDF } = window.jspdf;
 
-// Append input field and button to resultsContainer
-const pdfSection = document.getElementById("savePDFsection");
-pdfSection.style.display = "block";
-pdfSection.appendChild(pdfNameInput);
-pdfSection.appendChild(saveButton);
+        const resultsContainer = document.getElementById("results-container");
+        const pdfNameInput = document.getElementById("pdfName");
+        const saveButton = pdfNameInput.nextElementSibling;
 
-async function saveAsPDF() {
-const { jsPDF } = window.jspdf;
+        // Temporarily hide the PDF name input and save button
+        pdfNameInput.style.display = "none";
+        saveButton.style.display = "none";
 
-const resultsContainer = document.getElementById("results-container");
-const pdfNameInput = document.getElementById("pdfName");
-const saveButton = pdfNameInput.nextElementSibling;
+        const margin = 15;
+        const headerHeight = 40; // Space for header
+        const footerHeight = 40; // Space for footer
 
-// Temporarily hide the PDF name input and save button
-pdfNameInput.style.display = "none";
-saveButton.style.display = "none";
+        const pdf = new jsPDF("p", "pt", "a4");
 
+        // Function to add a section to the PDF
+        async function addSectionToPDF(sectionId, yOffset) {
+            const section = document.getElementById(sectionId);
+            await html2canvas(section, {
+                scale: 2,
+                useCORS: true,
+            }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const imgWidth = pdf.internal.pageSize.getWidth() - 2 * margin;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                pdf.addImage(imgData, "PNG", margin, yOffset, imgWidth, imgHeight);
+                yOffset += imgHeight + margin; // Adjust yOffset for the next section
+            });
+            return yOffset; // Return the new yOffset
+        }
 
-const margin = 15;
-const headerHeight = 40; // Space for header
-const footerHeight = 40; // Space for footer
+        // Header text
+        const currentDate = new Date();
+        const dateString = currentDate.toLocaleDateString();
+        const timeString = currentDate.toLocaleTimeString();
+        const projectName = document.getElementById("project_name")?.value || "not specified";
+        const userName = document.getElementById("userName")?.value || "not specified";
 
-const pdf = new jsPDF("p", "pt", "a4");
+        pdf.setFontSize(10);
+        pdf.text(`Date: ${dateString} | Time: ${timeString}`, margin, 20);
+        pdf.text(`Project Name: ${projectName}`, margin, 30);
+        pdf.text(`UserName: ${userName}`, margin, 40);
 
-// Function to add a section to the PDF
-async function addSectionToPDF(sectionId, yOffset) {
-  const section = document.getElementById(sectionId);
-  await html2canvas(section, {
-    scale: 2,
-    useCORS: true,
-  }).then((canvas) => {
-    const imgData = canvas.toDataURL("image/png");
-    const imgWidth = pdf.internal.pageSize.getWidth() - 2 * margin;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
-    pdf.addImage(imgData, "PNG", margin, yOffset, imgWidth, imgHeight);
-    yOffset += imgHeight + margin; // Adjust yOffset for the next section
-  });
-  return yOffset; // Return the new yOffset
-}
+        let yOffset = headerHeight + margin;
 
-// Header text
-const currentDate = new Date();
-const dateString = currentDate.toLocaleDateString();
-const timeString = currentDate.toLocaleTimeString();
-const projectName = document.getElementById("project_name")?.value || "not specified";
-const userName = document.getElementById("userName")?.value || "not specified";
+        // Add multiple sections to the PDF
+        yOffset = await addSectionToPDF("resultsContainer", yOffset);
+        yOffset = await addSectionToPDF("recommendationContainer", yOffset);
 
-pdf.setFontSize(10);
-pdf.text(`Date: ${dateString} | Time: ${timeString}`, margin, 20);
-pdf.text(`Project Name: ${projectName}`, margin, 30);
-pdf.text(`UserName: ${userName}`, margin, 40);
+        // Footer text
+        const footerY = yOffset + 10;
+        const emailNote = "This is an initial release for our Sequencing Calculator. Please contact syabira.yusoff@bd.com if you have any comments, improvement or any details are not clear from the Sequencing calculator";
+        const wrappedText = pdf.splitTextToSize(emailNote, pdf.internal.pageSize.getWidth() - 2 * margin);
+        pdf.text(wrappedText, margin, footerY);
 
-let yOffset = headerHeight + margin;
+        // Save the PDF with the specified file name or default to "results.pdf"
+        const fileName = pdfNameInput.value || "results";
+        pdf.save(`${fileName}.pdf`);
 
-// Add multiple sections to the PDF
-yOffset = await addSectionToPDF("resultsContainer", yOffset);
-yOffset = await addSectionToPDF("recommendationContainer", yOffset);
-
-// Footer text
-const footerY = yOffset + 10;
-const emailNote = "This is an initial release for our Sequencing Calculator. Please contact syabira.yusoff@bd.com if you have any comments, improvement or any details are not clear from the Sequencing calculator";
-const wrappedText = pdf.splitTextToSize(emailNote, pdf.internal.pageSize.getWidth() - 2 * margin);
-pdf.text(wrappedText, margin, footerY);
-
-// Save the PDF with the specified file name or default to "results.pdf"
-const fileName = pdfNameInput.value || "results";
-pdf.save(`${fileName}.pdf`);
-
-// Restore visibility of the input and save button
-pdfNameInput.style.display = "inline";
-saveButton.style.display = "inline";
-}
-
+        // Restore visibility of the input and save button
+        pdfNameInput.style.display = "inline";
+        saveButton.style.display = "inline";
+    }
 }
 
 

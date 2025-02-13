@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <meta charset="UTF-8">
+    <meta name=""viewport" content="width=device-width, initial scale=1.0">
+    <title>BD Rhapsody</title>
+        <style>
+            /* General layout style */ 
+            body {
+                display: flex; 
+                height : 100vh; 
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+            }
+
+            h2{
+                font-size: 35px; 
+                color: rgb(197, 71, 3);
+            }
+
+            /* sidebar for chapters */ 
+            .sidebar {
+                width: 300px; 
+                background-color: aliceblue;
+                padding: 10px;
+            }
+
+            .sidebar button{
+                display: block;
+                width: 100%; 
+                padding: 10px; 
+            }
+
+            .sidebar button.active{ 
+                background-color: blue;
+                color: whitesmoke;
+            }
+
+            .sidebar button:hover{ 
+                background-color: blanchedalmond;
+                color: crimson;
+            }
+
+            /* top nav section*/
+            .topnav{ 
+                width: 100%; 
+                background-color: beige; 
+                padding: 10px;
+                position: fixed; 
+                top: 0; 
+                left: 250px;/* offset for sidebar */
+                display: none; /* initially hidden*/
+            }
+            .topnav button {
+            margin-right: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .topnav button.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .topnav button:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        /* Content section */
+        .content {
+            margin-left: 50px; /* Offset for sidebar */
+            padding: 50px 20px;
+            width: 100%;
+        }
+
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* video content */
+        .video-container{
+            position: relative;
+            width : 100%;
+            max-width : 640px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        
+        video::cue {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: darkOrange;
+            font-size : 18px;
+            padding: 5px;
+            opacity : 0.7;
+        }
+        
+        /* formatting */
+        .nobreak{white-space:nowrap}
+
+        /* Reference Generator */
+        .bordered{border: 2px double darkorange; padding:10px 10px 10px 
+            0px;/* top right bottom left*/
+        }
+        .container {
+            display: block;
+            width: 60%;
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Hide the browser's default checkbox */
+        .container input {
+             position: absolute;
+             opacity: 0;
+             cursor: pointer;
+             height: 0;
+             width: 0;
+            }
+            
+        /* Create a custom checkbox */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: LavenderBlush;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {background-color: LightPink;
+        }
+
+        /* When the checkbox is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+            background-color: DarkOrange;
+        }
+
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the checkmark when checked */
+        .container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the checkmark/indicator */
+        .container .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+
+        /* container and image gallery */
+        .btn-group .button {
+            background-color: darkOrange; 
+            border: 3px double moccasin;
+            color: mistyrose;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 250px;
+            display: block; /* for vertical ,use inline-block */
+        }
+        
+        .btn-group .button:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
+        
+        .btn-group .button:hover {
+            background-color: mistyrose;
+            color: orangeRed;
+            font-weight: bold;
+            border: 3px double orangeRed;
+        }
+
+        .scroll {
+            margin: 4px 4px;
+            padding: 5px;
+            background-color:rgba(255, 228, 196, 0.644);
+            border: 2px solid darkorange;
+            width: 910px;
+            height: 600px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            text-align: justify;
+        }
+        
+        .image-display img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .image-container{
+            display: flex;
+        }
+
+        </style>
+    </head>
+<body>
+
+    <!--Sidebar for Chapters-->
+<div class="sidebar">
+    <button class="chapter-tab active" onclick="openChapter(event, 'Chapter1')">Introduction</button>
+        <button class="chapter-tab" onclick="openChapter(event, 'Chapter2')">Pipeline Installation</button>
+        <button class="chapter-tab" onclick="openChapter(event, 'Chapter3')">FASTQ File Upload</button>
+        <button class="chapter-tab" onclick="openChapter(event, 'Chapter4')">Genome Reference Files</button>
+        <button class="chapter-tab" onclick="openChapter(event, 'Chapter5')">Pipeline Setup</button>
+        <button class="chapter-tab" onclick="openChapter(event, 'Chapter6')">Output Files</button>
+    </div>
+
+     <!-- Top navigation for sections (appears dynamically based on chapter) -->
+     <div id="topnav" class="topnav"></div>
+
+     <!-- Main content area -->
+     <div class="content">
+ 
+         <!-- Introduction sections -->
+         <div id="Chapter1" class="chapter-content">
+             <h2>BD Rhapsody Pipeline</h2>
+             <p>Is a tool to conduct bioinformatics analysis on either 
+                the Seven Bridges cloud-based platform or on a local
+                installation.<br><br> 
+                It involves pre-processing, quality control, cell
+                calling, normalization, and clustering for all types of 
+                assay using BD Rhapsody kit. <br><br> 
+                For a quick overview of our bioinformatics pipeline,
+                refer to the provided documentation <a href = "https://players.brightcove.net/81909694001/smS3oTdDk_default/index.html?videoId=6099510942001">here.</a><br><br> 
+                <strong style= "color: rgb(246, 138, 6);">Why this is 
+                    called as "Quick Start Guide"?</strong><br> <br> 
+                    This document will guide you through *five* major steps to complete your primary analysis to answer "How to": 
+                <ul>
+                    <li>Setup my Rhapsody Pipeline</li>
+                    <li>FASTQ file upload to Seven Bridges (not applicable to local installation user)</li>
+                    <li>What reference file I need?</li>
+                    <li>How to set up my pipeline analysis? </li>
+                    <li>Pipeline output files</li>
+                </ul><br><br>
+                If you encounter any problem, please reach out to us Biox_support_EMEA@bd.com
+            </p>
+
+            <p><h3>Platforms Setup</h3><br>
+                Specific instructions for setting up each platform are outlined below:
+                <ul>
+                    <li><strong>Seven Bridges Genomics platform:</strong></li>
+                    This cloud-based platform is free to all our customers, complimentary of BD Rhapsody. Once user created an account, a project can be created and ready to run the pipeline analysis.<br><br>
+                    <li><strong>Local installation:</strong></li>
+                    Users familiar with coding or concerned about data security due to GDPR regulations and with access to University HPC may be able to utilise the local installation setup.<br><br>
+                    <li><strong>(NEW!!)Docker Free Pipeline Bundle</strong></li>
+                    The Docker-free Pipeline Bundle is as easy as Download, unTAR and go. Customers who facing challenges to setup Docker Image in computer clusters would find this bundle useful to expedite their data analysis progress. <br><br>
+
+                </ul>
+            </p>
+         </div>
+ 
+         <!-- Step_01: Platforms setup Tab Content -->
+         <div id="Chapter2" class="chapter-content" style="display: none;">
+            <!-- SB registration setup Content --> 
+            <div id="Chapter2-Section1" class="section-content active">
+                 <h2>How to setup Rhapsody Pipeline on Cloud Computing</h2>
+<p>Seven Bridges Genomics Platform or now moved to Velsera is one of the cloud based platform available to run BD Rhapsody Analysis pipeline, suited for new or experiences customers that unfamiliar with coding in Bioinformatics. This web browser interface platform will generate output HTML from FASTQ input files from your sequencing service. </p><br>
+<strong style= "color:darkorange;"> Create an acccount on
+Velsera </strong>
+<ol>
+<li> Visit <a href = "https://velsera.com/bd-rhapsody"> Velsera website</a> 
+to register your account.</li>
+<li>Click Request Access.</li>
+<li>In the request access window, enter your email address to receive an email invitation for the Seven Bridges Genomics platform within 24 hours</li>
+<li>Click the link in the email invitation and complete the registration process. Velsera will then displays the dashboard with demo projects to help you familiarized yourself with the platform.</li>
+<li>At the top of the dashboard, click Projects > Create a project.</li>
+<li>Enter a descriptive and concise project name for easy identification, and adjust the project URL if necessary.</li>
+<li>Ensure that the Billing Group and Location remain unchanged. Confirm that Spot instances and Memoization are enabled. Memoization facilitates the automatic reuse of intermediate files during reruns.</li>
+<img src = "./createproject.png" width = "300" height = "300" style="vertical-align:middle"> 
+<li>Click on Create. Seven Bridges Genomics will then present the new project dashboard.</li>
+<li>After the project is successfully created, if you wish to modify the retention period of intermediate files, navigate to Settings in the top right corner. Input an integer value between 1 and 120 in the Retention period box to specify the desired number of hours for retention, and then click "Save".</li>
+</ol>
+<center>
+<div class="video-container" >
+<video controls poster = "SB_createProject_cover.png">
+<source src="SB_createNewProject.mp4" type="video/mp4"></video>
+</div>
+</center>
+
+            </div>
+            <!-- Local Installation Mac Tab Content --> 
+            <div id="Chapter2-Section2" class="section-content">
+                 <h2>Local Installation on MacOS</h2>
+                 <p>BD Rhapsody pipline through local installation is compatible 
+                    with Linux or MacOS operating system only. The  system and
+                    software specifications to run this pipeline locally will be 
+                    covered in the next section.</p>
+                    <strong style= "color:darkorange;">Minimum system
+                        requirements for local installation</strong>
+                        <ul>
+                            <li>Operating system: macOS® or Linux®. Microsoft® Windows® is not supported.</li>
+                            <li>8-core processor (>16-core recommended)</li>
+                            <ul>
+                                <li>Targeted assays: 32 GB RAM (>128 GB recommended)</li>
+                                <li>Whole Transcriptome Analysis (WTA) assays: 96 GB (>192 GB recommended)</li></ul>
+                            <li>250 GB free disk space (>1 TB recommended)</li></ul><br>
+                            
+                            <strong style= "color:darkorange;">Software requirements for local installation</strong>
+                            <ol>
+                            <li>Docker container: </li>
+                            <ul>
+                            <li>A Docker container is a self-contained environment for pipeline analysis and is obtained by "pulling" or downloading a Docker image to your local computer.</li>
+                            <li>It encompasses all the necessary libraries and settings required by the pipeline to execute the analysis.</li></ul><br>
+                            <li>CWL-runner:</li>
+                            <ul>
+                            <li>The CWL-runner is the tool responsible for managing Docker containers to complete the pipeline run.</li>
+                            <li>It utilizes two inputs:</li>
+                            <li>"CWL workflow" file: This file describes each step in the pipeline and outlines how each Docker container should run to complete the step.</li>
+                            <li>"YML input specification" file: This file informs the CWL-runner about the location of the pipeline inputs to execute the tools during pipeline analysis. </li>
+                            <li>Once the pipeline run is completed, the CWL-runner retrieves the final outputs from the Docker containers and adds them to a designated output folder on your computer.</li></ul></ol><br>
+                            
+                            <strong style= "color:darkorange;">Docker installation</strong>
+                            <p>The docker image features require root-level access to install. For users operating on an institutional server,  please collaborate with your system administrator to determine the directories, system resources allocation for Docker image. For those who do not have root access, you can skip the docker installation process and use "Docker-free" bundle available in the next section.</p> 
+                            <ol>
+                            <li>Install the community edition from <https://docs.docker.com/get-docker/>, depending on your system (Mac/Linux). </li>
+                            <li>Ensure that you successfully complete the installation process and agree to the terms and conditions; failure to do so will prevent Docker from running.</li>
+                            <li>Open your terminal and validate that Docker is running properly by typing “docker”:<br>
+                            <code>docker</code>
+                            <li>Verify that the Docker manual is printed to the terminal screen.</li>
+                            <li>Proceed with the installation specific to your machine.</li></ol><br>
+                            
+                            <p>This installation guide is tailored for the latest version of macOS Sonoma, utilizing the M3 Apple Silicon chip. Unlike UNIX/Linux-based systems, macOS lacks a standard operation for installing third-party command-line tools beyond the standard Apple installer. To address this, we will leverage Homebrew to facilitate the installation and management of command-line utilities. </p>
+                            <strong style= "color:darkorange;">Python Installation Using Homebrew:</strong>
+                            <ol>
+                            <li>Open terminal </li>
+                            <li>paste the following command </li>
+                            <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code>
+                            <li>Press Return key</li>
+                            <li>You will be presented with a list of items to be installed, enter your admin password when prompted. </li>
+                            <li>Continue entering your password until you receive the notification of "installation successful". </li>
+                            <li>Type code below to make sure it is on your PATH; otherwise an error "brew command not found" will be displayed. </li>
+                            <code>brew</code>
+                            <li>Then we need to install Python. For Python version greater than 3.4, pip, a package manager for Pyhton will be installed simultaneously. Pip allow users to install and manage packages that are not part of the Pyhton standard library. </li>
+                            <li>To install Python, type the command below and press Return key. </li>
+                            <code>brew install python</code>
+                            <li>Now link the Homebrew Python version and set it as the default. Enter the command below and press Return key.</li>
+                            <code>brew unlink python && brew link python</code>
+                            <li>Check if a version of Python 3 is already installed by running the following command and press Return key.</li>
+                            <code>python3 --version</code>
+                            <li>Ensure that you are using a local installation of Python and not a system version by running following command.</li>
+                            <code>which python3</code>
+                            <li>This should return the path to a local installation, such as (/usr/bin/python for macOS intel) or (/opt/homebrew/bin/pyhton3 for Mac M1/M2/M3), and not to a system path (e.g., /c/mnt/Python/bin/python). Using a system installation of python may not grant sufficient permissions for installing required packages.</li>
+                            <li>Install/update pip in terminal by entering command line below.</li>
+                            <code>python3 -m pip install -upgrade pip</code><br><br>
+                            <p>Please continue to CWL runner installation for MasOS and LINUX systems.</p>
+                            </ol>
+                            <br>
+                            <strong style= "color:darkorange;">CWL-runner installation</strong>
+                            <br>
+                            <ol>
+                            <li>Update pip before installing cwlref-runner by using the command:</li>
+                            <code>pip install -U pip</code>
+                            <li>Install the package from PyPi. Enter:</li>
+                            <code>pip install cwlref-runner</code>
+                            <li>Ensure that cwl-runner is in your path. Type:</li>
+                            <code>cwl-runner</code>
+                            <li>If the command is not found, add the install location of the pip packages to $PATH. Find where cwl-runner is installed by entering:</li>
+                            <code>pip show cwlref-runner</code>
+                            <li>Add the above location to $PATH. For example:</li>
+                            <code>export</code>
+                            <br>
+                            <p>PATH=$PATH:<mark>`/Library/Frameworks/Python.framework/Versions/3.6/lib/python3`</mark></p>
+                            <p>You should substitute the <mark>`highlighhted`</mark> part after : with your <mark>`Location`</mark></p>
+                            <li>Restart the command line utility.</li></ol>
+                            
+                            <strong style= "color:darkorange;">Configure CWL and YML files:</strong>
+                            <br><ol>
+                            <li>Ensure that you are employing the correct CWL files for your pipeline; otherwise, the analysis may encounter failures.</li>
+                            <li>If necessary, establish a Bitbucket account by visiting bitbucket.org/CRSwDev/cwl.</li>
+                            <li>Navigate to the left pane and select Downloads > Download Repository. This action will result the downloading of CWL and YML files crucial for the analysis.</li>
+                            <li>Unzip the archive, and within it, you will find folders named after the respective pipeline versions they corresponds to.</li></ol>
+                            
+                            <strong style= "color:darkorange;">Configure pipeline image:</strong>
+                            <br><ol>
+                            <li>Confirm that Docker is operational. Navigate to the download directory where you saved the Docker application and double click on it to ensure it is running.</li>
+                            <li>Download (pull) the Docker image by executing the following command:</li>
+                            <code>docker pull bdgenomics/rhapsody</code>
+                            <li>Verify the availability of the pipeline image by entering:</li>
+                            <code>docker images</code>
+                            <li>The pull command automatically fetches the latest version of the pipeline. If you wish to download an earlier version, specify the version number in the following manner:</li>
+                            <code>docker pull bdgenomics/rhapsody:v1.0</code></ol>
+            </div>
+            <!-- Local Installation LINUX Tab Content --> 
+            <div id="Chapter2-Section3" class="section-content">
+                <h2>Local Installation setup for LINUX</h2>
+                <p>BD Rhapsody pipline through local installation is compatible with Linux or MacOS operating system only. The  system and software specifications to run this pipeline locally will be covered in the next section. <br><br>
+<strong style= "color:darkorange;">Minimum system requirements for local installation</strong></p>
+<ul>
+<li>Operating system: macOS® or Linux®. Microsoft® Windows® is not supported.</li>
+<li>8-core processor (>16-core recommended)</li>
+<ul>
+	<li>Targeted assays: 32 GB RAM (>128 GB recommended)</li>
+	<li>Whole Transcriptome Analysis (WTA) assays: 96 GB (>192 GB recommended)</li></ul>
+<li>250 GB free disk space (>1 TB recommended)</li></ul><br>
+
+<strong style= "color:darkorange;">Software requirements for local installation</strong>
+<ol>
+<li>Docker container: </li>
+<ul>
+<li>A Docker container is a self-contained environment for pipeline analysis and is obtained by "pulling" or downloading a Docker image to your local computer.</li>
+<li>It encompasses all the necessary libraries and settings required by the pipeline to execute the analysis.</li></ul><br>
+<li>CWL-runner:</li>
+<ul>
+<li>The CWL-runner is the tool responsible for managing Docker containers to complete the pipeline run.</li>
+<li>It utilizes two inputs:</li>
+<li>"CWL workflow" file: This file describes each step in the pipeline and outlines how each Docker container should run to complete the step.</li>
+<li>"YML input specification" file: This file informs the CWL-runner about the location of the pipeline inputs to execute the tools during pipeline analysis. </li>
+<li>Once the pipeline run is completed, the CWL-runner retrieves the final outputs from the Docker containers and adds them to a designated output folder on your computer.</li></ul></ol><br>
+
+<strong style= "color:darkorange;">Docker installation</strong>
+<p>The docker image features require root-level access to install. For users operating on an institutional server,  please collaborate with your system administrator to determine the directories, system resources allocation for Docker image. For those who do not have root access, you can skip the docker installation process and use "Docker-free" bundle available in the next section.</p> 
+<ol>
+<li>Install the community edition from <https://docs.docker.com/get-docker/>, depending on your system (Mac/Linux). </li>
+<li>Ensure that you successfully complete the installation process and agree to the terms and conditions; failure to do so will prevent Docker from running.</li>
+<li>Open your terminal and validate that Docker is running properly by typing “docker”:<br>
+<code>docker</code>
+<li>Verify that the Docker manual is printed to the terminal screen.</li>
+<li>Proceed with the installation specific to your machine.</li></ol><br>
+
+<strong style= "color:darkorange;">Python installation</strong>
+<ol>
+<li>First you need to check if you have any Python installed in your system by running the code below and press Enter.</li>
+<code>python3 --version </code>
+<p> If Python 3 is not installed, download and install it from <http://python.org/downloads>. Re-run the code above to check if the Python is now successfully installed. </p>
+<li> Ensure that you are using a local installation of Python and not a system version. Run the following command line. </li>
+<code>which python3 </code>
+<p>This should return the path to a local installation (usually /usr/bin/python) and not to a system path. <br>
+A system path will look like this (/c/mnt/Python/bin/python). <br>Using a system installation of python might not give you sufficient permissions to install the required packages.</ol><br><br>
+Please continue to CWL runner installation for MasOS and LINUX systems.</p>
+</ol>
+
+<br>
+<strong style= "color:darkorange;">CWL-runner installation</strong>
+<br>
+<ol>
+<li>Update pip before installing cwlref-runner by using the command:</li>
+<code>pip install -U pip</code>
+<li>Install the package from PyPi. Enter:</li>
+<code>pip install cwlref-runner</code>
+<li>Ensure that cwl-runner is in your path. Type:</li>
+<code>cwl-runner</code>
+<li>If the command is not found, add the install location of the pip packages to $PATH. Find where cwl-runner is installed by entering:</li>
+<code>pip show cwlref-runner</code>
+<li>Add the above location to $PATH. For example:</li>
+<code>export</code>
+<br>
+<p>PATH=$PATH:<mark>`/Library/Frameworks/Python.framework/Versions/3.6/lib/python3`</mark></p>
+<p>You should substitute the <mark>`highlighhted`</mark> part after : with your <mark>`Location`</mark></p>
+<li>Restart the command line utility.</li></ol>
+
+<strong style= "color:darkorange;">Configure CWL and YML files:</strong>
+<br><ol>
+<li>Ensure that you are employing the correct CWL files for your pipeline; otherwise, the analysis may encounter failures.</li>
+<li>If necessary, establish a Bitbucket account by visiting bitbucket.org/CRSwDev/cwl.</li>
+<li>Navigate to the left pane and select Downloads > Download Repository. This action will result the downloading of CWL and YML files crucial for the analysis.</li>
+<li>Unzip the archive, and within it, you will find folders named after the respective pipeline versions they corresponds to.</li></ol>
+
+<strong style= "color:darkorange;">Configure pipeline image:</strong>
+<br><ol>
+<li>Confirm that Docker is operational. Navigate to the download directory where you saved the Docker application and double click on it to ensure it is running.</li>
+<li>Download (pull) the Docker image by executing the following command:</li>
+<code>docker pull bdgenomics/rhapsody</code>
+<li>Verify the availability of the pipeline image by entering:</li>
+<code>docker images</code>
+<li>The pull command automatically fetches the latest version of the pipeline. If you wish to download an earlier version, specify the version number in the following manner:</li>
+<code>docker pull bdgenomics/rhapsody:v1.0</code></ol><br><br><br>
+            </div>
+            <!-- Pipeline Bundle Tab Content --> 
+            <div id="Chapter2-Section4" class="section-content">
+                <h2>Docker Free Pipeline Bundle (NEW)</h2>
+                <p>As easy as download, Untar and RUN<br><br>
+                    Please note that this approach only tested working in Linux-based system only:</p>
+                    <ul>
+                    <li>Ubuntu 16.04 / 20.04 / 22.04</li>
+                    <li>Red Hat 7</li>
+                    <li>CentOS 7 / 9</li></ul>
+                    <br>
+                    <ol>
+                    <li>Create a directory in your computer to store the bundle. Navigate to selected directory to Download the latest version. You can either download it  [here](https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-Install-Bundle/rhapsodyPipeline-latest.tar.gz) or use the command line below and press Return. </li>
+                    <code>wget https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-Install-Bundle/rhapsodyPipeline-latest.tar.gz</code>
+                    <li>In your command shell, extract the tar.gz bundle by entering the code below and press Return.</li>
+                    <code>tar -xvzf rhapsodyPipeline-[version].tar.gz</code><br>
+                    <code>cd rhapsodyPipeline-[version]</code>
+                    <li>Now the bundle is ready to run your analysis. please move forward to gather all the input files and folder for your BD Rhapsody Analysis Pipeline.</li>
+                    <li>Optional workflow: User can run a small test of the BD RHapsody pipeline with built-in demo data:</li>
+                    <code>./rhapsody pipeline --outdir test_results test_files/test_smallDemo.yml</code>
+                    </ol>
+            </div>
+            <!-- Extra Utilities Tab Content --> 
+            <div id="Chapter2-Section5" class="section-content">
+                <h2>Extra Utilities</h2>
+                <p>The pipeline comes with extra utilities for user. These utilities can be run in the same way as the main Sequence Analysis Pipeline, using cwl-runner and docker.<br>
+                    Then use the same docker image as the main Sequence Analysis Pipeline </p>
+                    <p>See Local Installation or Docker freefor installation instructions. Inputs are provided in a YML specification file, or on the command-line. 
+                    CWL documents for these utilities are also in the same location as the main pipeline CWL <a href="https://bitbucket.org/CRSwDev/cwl">versioned folders</a></p><br><br>
+                    <p>Navigate to the rhapsody utilities folder.</p>
+                    <code><span class='nobreak'>--</span> bdgenomics/rhapsody</code>
+                    <br>
+                    
+                    <ul>
+                    <li>Given pairs of R1/R2 FASTQ files from Rhapsody libraries, only annotate the cell label and UMI of R1 and put it in the header of R2:<br>
+                    <code>./rhapsody annotateCellLabelUmi inputs.yml</code></li><br>
+                    <li>To create a new WTA Reference Archive for use as an input to the Rhapsody Sequence Analysis Pipeline. Further details can be found [here](#custom_genome):<br>
+                    <code>./rhapsody makeRhapReference inputs.yml</code></li><br>
+                    <li>To determine the amount of phiX contamination for a fastq file:<br>
+                    <code>./rhapsody phiXContamination inputs.yml</code></li><br>
+                    </ul>
+            </div>
+        </div>
+
+        <!-- Step_02: FASTQ FIles Upload  -->
+        <div id="Chapter3" class="chapter-content" style="display: none;">
+            <!-- Files upload to SB --> 
+            <div id="Chapter3-Section1" class="section-content active">
+                <h3> How to Upload Your Files on SB</h3>
+                <p> There are multiple ways you can upload files to Velsera platfrom, depending on the size of the files and the source. On Velsera, you can upload you files from: <br><br>
+                    Important information:<br>Once you have created a folder on Velsera, the file cant be renamed.<br>If you left the server for more than 30 minutes without any activity, you will be logged out and the file upload will be interrupted.<br>
+                    This is crucial during FASTQ upload or large file upload because it will interfere and causing file corruption and the pipeline analysis would failed<br><br>
+                    <details>
+                        <summary>Upload from Computer</summary>
+                        <p>This approach is efficient for small files. For larger FASTQ files, please refer to Command Line Interface approach (CLI) Section<br>
+                            This is done by browsing for files on your local machine and selecting them for upload to the platform.<br> 
+                            The speed of your file upload will be dependent on your internet connection speed, your geographic location and the structure of the data upload.<br>
+                            For Futher information, please visit the Velsera Platform Upload Performance Benchmarking section <a href= "https://docs.sevenbridges.com/docs/upload-from-your-computer">here</a>.<br>
+                            Please follow the steps below:<br>
+                            <ol>
+                                <li>Access your project on Velsera/Seven Bridges platfrom</li>
+                                <li> Select the <strong>Files</strong> tab.</li>
+                                <li>Click <strong>Add Files > Your Computer</strong></li>
+                                <li>Click <strong>Browse Files</strong> and select one or more files from your local machine. 
+                                    Alternatively, you can drag and drop the files to the marked area in the upload dialog</li>
+                                <li><strong>Optional:</strong> You can add file tags to organize your files from the platform</li>
+                                <li>Click <strong>Start Upload</strong> and the upload process will begin.<br>
+                                    Please do not close the browser window or tab where the upload is taking place.</li>
+                                    <li> To continue working on the platform while the upload is still in progress, click <strong>Continue working in a new tab</strong> in the notification message.</li>
+                                    <br><br>
+                                    The <strong>Files uploaded successfully</strong> notification would indicate that the files upload successfully. You may now move forward to the next step. 
+                                </ol>
+                            </p>
+                        <summary> Upload from Other Projects on Velsera Platform</summary>
+                        <p>This upload style is useful when you have files in different project on Velsera platfrom to recycle. As an example the reference files used for your piepline run. <br> 
+                        Due to recent policy changes on Velsera platform, the file will be archive if not been used for more than 6 months.<br> 
+                        Please re-upload the backup file if your previous project pipeline run were done more than 6 months ago.
+                        </p>
+                                <li>Projects </li>
+                                <li>FTP/HTTP</li>
+
+                        
+                    </details>
+                
+                </ul></p>
+
+
+            </div>
+            <!-- CLI upload MacOS/LINUX --> 
+            <div id="Chapter3-Section2" class="section-content">
+                This is the second section
+            </div>
+            <!-- CLI upload Windows --> 
+            <div id="Chapter3-Section3" class="section-content">
+                This is the third section
+            </div>
+        </div>
+
+        <!-- Reference sections -->
+        <div id="Chapter4" class="chapter-content" style="display: none;">
+            <!-- Reference App --> 
+            <div id="Chapter4-Section1" class="section-content active">
+                <h2>What Reference File/s Do You Need</h2>
+            <div class='bordered' style="width:100%">
+                
+                <label class = "container">WTA Assay 
+                <input type="checkbox" id="wta" onclick="myFunction('wta', 'wtatext')" >
+                <span class = "checkmark"></span></label> 
+                
+                <label class = "container">AbSeq Assay
+                <input type="checkbox" id="abseq" onclick="myFunction('abseq', 'abseqtext')">
+                <span class = "checkmark"></span></label> 
+                
+                <label class = "container">Targeted Assay
+                <input type = "checkbox" id = "targeted" onClick="myFunction('targeted', 'targetedtext')">
+                <span class = "checkmark"></span></label>
+                
+                <label class = "container">Extra genes/viruses 
+                <input type = "checkbox" id = "trans" onClick="myFunction('trans', 'transtext')">
+                <span class = "checkmark"></span></label>
+                
+                <label class = "container">ATAC/Multiome (WTA+ATAC) Assay
+                <input type = "checkbox" id = "atac" onClick="myFunction('atac', 'atactext')">
+                <span class = "checkmark"></span></label>
+                
+                <label class = "container">VDJ Assay
+                <input type = "checkbox" id = "vdj" onClick="myFunction('vdj', 'vdjtext')">
+                <span class = "checkmark"></span></label>
+                
+                <label class = "container">SMK Assay
+                <input type = "checkbox" id = "smk" onClick="myFunction('smk', 'smktext')">
+                <span class = "checkmark"></span></label></div>
+                
+                
+                <div id="wtatext" style="display:none"><b style= "color:darkOrange;">When you are doing WTA, you need "Reference Archive" input file</b><br>
+                Please find the link below to download applicable pre-build reference file.<br>
+                For WTA+ATAC multiome user, use the ATAC reference file. <br>
+                <b>Human (GRCh38|M42):</b><br>
+                <a href="https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/RhapRef_Human_WTA_2023-02.tar.gz"> RhapRef_Human_WTA_2023-02.tar.gz</a><br>
+                <b>Mouse (GRCm39|M31): </b><br>
+                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/RhapRef_Mouse_WTA_2023-02.tar.gz">RhapRef_Mouse_WTA_2023-02.tar.gz</a><br>
+                <b>Human (GRCh38|M42) + Mouse (GRCm39|M31): </b><br>
+                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/RhapRef_Human42Mouse31_WTA_2023-02.tar.gz">RhapRef_Human42Mouse31_WTA_2023-02.tar.gz</a><br><br>Please refer to the section below on how to generate your own custom reference.<br><br>
+                <b>Note:</b>
+                <ul>
+                <li>The assembly annotation by Ensembl (GRCh38, GRCm39), by GENCODE (M42,M31)</li>
+                <li>These links may not be accessible using Internet Explorer browser.</li>
+                <li>The GTF file has been pre-processed to contain information for various gene types.</li>
+                </ul><br></div>
+                
+                
+                <p id="abseqtext" style="display:none"><b style= "color:darkOrange;">When AbSeq is used, you need "AbSeq reference" input file</b><br> You can generate your AbSeq reference <a href = "https://abseq-ref-gen.genomics.bd.com/">AbSeq Reference Generator</a><br>Please follow to the section on how to generate your AbSeq reference.Make sure the header and extension following the guidance.</p>
+                
+                
+                <p id="targetedtext" style="display:none"><b style= "color:darkOrange;">You need targeted reference input file</b><br>Please find the link below to download applicable reference file. <br>
+                <a href = "https://scomix.bd.com/hc/article_attachments/360059289752/BD_Rhapsody_Immune_Response_Panel_Hs_FASTA.fasta">BD Rhapsody™ Immune Response Panel Hs</a><br>
+                <a href = https://scomix.bd.com/hc/article_attachments/360059289792/BD_Rhapsody_Immune_Response_Panel_Mm_FASTA.fasta">BD Rhapsody™ Immune Response Panel Mm
+                </a><br>
+                <a href = "https://scomix.bd.com/hc/article_attachments/360059289712/BD_Rhapsody_Hs_T_Cell_Expression_FASTA.fasta">BD Rhapsody™ T Cell Expression Panel Hs</a><br>
+                <a href = "https://scomix.bd.com/hc/article_attachments/360059289812/BD_Rhapsody_OncoBC_FASTA.fasta">BD Rhapsody™ Onco-BC Panel Hs</a><br><br>If you are working with a custom targeted panel or wish to add on a supplementary panel, your local field application scientist or sales executive who helped you order the custom targeted panel will provide you with the fasta reference file. </p>
+                
+                
+                <div id="transtext" style="display:none"><b style= "color:darkOrange;">When supplemental gene is used, you need "Supplemental Reference" input file</b><br>
+                If additional transgene sequences are used, an additional FASTA file can be used as a Supplemental Reference.<br> 
+                <b>Note:</b>
+                <ul><li> You may download the sequence from a database such as ENSEMBL. </li>
+                <li>For CROP-seq customer, you can create a fasta file using the sequence amplicons.</li>
+                <li>You may add the transgene reference to generate a supplemental reference</ul><br>
+                Please refer <b>How to Generate Supplemental File</b> section below to ensure correct fasta format generated.<br>
+                </div>
+                
+                
+                <div id="atactext" style="display:none"><b style= "color:darkOrange;">When you are doing ATAC, you need pre-build specific ATAC reference.</b><br>For ATAC-Seq and Multiomic WTA+ATAC-Seq assays, obtain a pre-built reference genome archive file. Please find the link below to download applicable reference file.<br><br>
+                Human (GRCh38|M43):<br>
+                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Human_WTA-ATAC_2023-08.tar.gz">RhapRef_Human_WTA-ATAC_2023-08.tar.gz</a><br>
+                Mouse (GRCm39|M31):<br>
+                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Mouse_WTA-ATAC_2023-09.tar.gz">RhapRef_Mouse_WTA-ATAC_2023-09.tar.gz</a><br>
+                Human (GRCh38|M43) + Mouse (GRCm39|M31):<br>
+                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Human-Mouse_WTA-ATAC_2023-11.tar.gz">RhapRef_Human-Mouse_WTA-ATAC_2023-11.tar.gz</a><br><br>
+                <b>Note:</b>
+                <ul>
+                <li>The assembly annotation by Ensembl (GRCh38, GRCm39), by GENCODE (M42,M31)</li>
+                <li>These links may not be accessible using Internet Explorer browser.</li>
+                <li>The GTF file has been pre-processed to contain information for various gene types.</li>
+                </ul></div>
+                
+                
+                <p id="vdjtext" style="display:none"><b style= "color:darkOrange;">For VDJ assay, you don't need any reference file </b><br>
+                Please make sure to activate VDJ option in the pipeline settings. <br> </p>
+                
+                
+                <div id="smktext" style="display:none"><b style= "color:darkOrange;">For SMK assay, you don't need any reference file </b><br>Please make sure to activate SMK option in the pipeline settings<br><br>
+                The human and mouse sample kits provide up to 12 species-specific sample tags.<br><br> 
+                The Flex sample kit provides up to 24 species and cell type agnostic sample tags.<br>
+                The pipeline automatically adds the Sample Tag sequences to the FASTA reference file.</div>
+                
+
+            </div>
+
+            <!-- Custom Reference --> 
+            <div id="Chapter4-Section2" class="section-content">
+                <h2>What You Need To Know About Custom Reference</h2>
+            </div>
+
+            <!-- Supplemental Reference --> 
+            <div id="Chapter4-Section3" class="section-content">
+                <h2>What You Need To Know About Supplemental Reference</h2>
+            </div>
+
+            <!-- AbSeq Reference Generator--> 
+            <div id="Chapter4-Section4" class="section-content">
+                <h2>What You Need To Know About AbSeq Reference</h2>
+            </div>
+        </div>
+
+        <!-- Pipeline Setup Chapters -->
+        <div id="Chapter5" class="chapter-content" style="display: none;">
+            <div class=" image-container">
+                <div class="btn-group">
+                <button class="button" onclick="changeImage('SBsetup_WTA.png')">WTA</button>
+                <button class="button" onclick="changeImage('SBsetup_WTA_AbSeq.png')">WTA+AbSeq</button>
+                <button class="button"
+onclick="changeImage('SBsetup_WTA_AbSeq_SMK.png')">WTA+AbSeq+SMK</button>
+                <button class="button"onclick="changeImage('SBsetup_WTA_AbSeq_SMK_VDJ.png')">
+                    WTA+AbSeq+SMK+VDJ</button> 
+                <button class="button" onclick="changeImage('SBsetup_WTA_supplimental.png')">
+                    WTA+supplemental</button>
+                <button class="button" onclick="changeImage('SBsetup_targeted.png')">
+                    Targeted</button>
+                <button class="button" onclick="changeImage('SBsetup_Targeted_AbSeq.png')">
+                    Targeted+AbSeq</button>
+                <button class="button" onclick="changeImage('SBsetup_Targeted_AbSeq_SMK.png')">
+                    Targeted+AbSeq+SMK</button>
+                <button class="button" onclick="changeImage('SBsetup_Targeted_AbSeq_SMK_VDJ.png')">
+                    Targeted+AbSeq+SMK+VDJ</button>
+                <button class="button" onclick="changeImage('SBsetup_targeted_supplimental.png')">
+                Targeted+supplemental</button>
+                <button class="button" onclick="changeImage('SBsetup_ATAC.png')">ATAC</button>
+                <button class="button" onclick="changeImage('SBsetup_WTA_ATAC.png')">WTA+ATAC</button>
+        </div>
+        <div class="scroll">
+            <img id="defaultImage" src="igor_plainPipeline.png" width = "900">
+            </div>
+            </div>
+        </div>
+
+        
+         <!-- Add more chapters and sections here... -->
+ 
+     </div>
+ 
+     <script>
+        // Handle chapter switching
+function openChapter(evt, chapterName) {
+    var i, chapters, buttons;
+
+    // Hide all chapters
+    chapters = document.getElementsByClassName("chapter-content");
+    for (i = 0; i < chapters.length; i++) {
+        chapters[i].style.display = "none";
+    }
+
+    // Show the clicked chapter
+    document.getElementById(chapterName).style.display = "block";
+
+    // Remove active class from all buttons
+    buttons = document.getElementsByClassName("chapter-tab");
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove("active");
+    }
+
+    // Add active class to the clicked button
+    evt.currentTarget.classList.add("active");
+
+    // Load the section navigation for the selected chapter
+    loadSectionNavigation(chapterName);
+}
+
+// Handle section switching within chapters
+function openSection(evt, sectionName) {
+    var i, sections;
+
+    // Hide all sections
+    sections = document.getElementsByClassName("section-content");
+    for (i = 0; i < sections.length; i++) {
+        sections[i].classList.remove("active");
+    }
+
+    // Show the clicked section
+    document.getElementById(sectionName).classList.add("active");
+}
+
+// Load section navigation dynamically based on chapter
+
+function loadSectionNavigation(chapterName) {
+    var topnav = document.getElementById("topnav");
+    topnav.innerHTML = ''; // Clear the topnav
+
+    switch (chapterName) {
+        case 'Chapter2':
+            topnav.style.display = 'block'; // Show the topnav
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter2-Section1\')">Velsera Setup</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter2-Section2\')">Local MacOS</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter2-Section3\')">Local windows</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter2-Section4\')">Docker-free bundle</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter2-Section5\')">Extra Utilities</button>';
+            break;
+        case 'Chapter3':
+            topnav.style.display = 'block'; // Show the topnav
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter3-Section1\')">Cloud Upload (Velsera)</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter3-Section2\')">CLI MacOS/LINUX</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter3-Section3\')">CLI Windows</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter3-Section4\')">SFBS</button>';
+            break;
+            case 'Chapter4':
+            topnav.style.display = 'block'; // Show the topnav
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter4-Section1\')">Reference App</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter4-Section2\')">Custom Reference</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter4-Section3\')">Supplemental Reference</button>';
+            topnav.innerHTML += '<button class="section-tab" onclick="openSection(event, \'Chapter4-Section4\')">AbSeq Reference</button>';
+            break;
+        default:
+            topnav.style.display = 'none'; // Hide the topnav for chapters without sections
+            break;
+        }
+    }
+
+// Initialize the first chapter
+loadSectionNavigation('Chapter1');
+
+function myFunction(checkboxID, textID) {
+  var checkBox = document.getElementById(checkboxID);
+  var text = document.getElementById(textID);
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+     text.style.display = "none";
+  }
+}
+
+//button print image 
+function changeImage(imageSrc) {
+    document.getElementById("defaultImage").src = imageSrc;
+    displayedImage.style.display = 'block';
+}
+
+     </script>
+   
+</body>
+</html>
+
+

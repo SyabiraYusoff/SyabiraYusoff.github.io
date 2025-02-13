@@ -1,0 +1,29 @@
+## **Pre Release (FEB 2025)**
+[UI]: 
+* Responsive header design for different screen sizes. 
+[Technical]: 
+* Added 10% of Indexed library and Elution Buffer for pooling to consider pipetting error. 
+* Added index 7 and calculated Qubit nM conc to output table.
+* Qubit Concentration tooltip is checked for each assay against the Excel calculator. WTA and ATAC have a 1ng cutoff. The rest have a 1.5 ng/µL cutoff. 
+* NOVASEQX: Added a message that the volume correction factor is set to 1 when using NOVASEQX. 
+* NOVASEQX: Only NOVASEQX sequencer recommendations are displayed in the recommendation table when the user checks the box. 
+**If SMK libraries pipetting is lower than 1 µL, it will trigger warning. Recommendation either increase rpc pipette carefully.**
+**If any Indexed libraries pipetting is above 20 µL, it will trigger warning.  You are using the majority of your sample for dilution and pooling – so there might not be much leftover in case re-sequencing is needed.**
+Recommendation: Please consult with the sequencing provider for the possibility to reduce the final library concentration (nM). 
+
+## **First Round Feedback (JAN 2025)**
+**Improvements:**
+* Major restructure: Table input and output are now in a more concise format.
+* PhiX and calculation have been tested and validated, and should be fully functional.
+* Table for user input: Hover over the header for details. After an assay is selected, hover over the info button for assay-specific recommendations.
+* The library can go as high as 50 libraries for pooling.
+* If SMK is lower than 0.5 µL for pooling, it will trigger a warning with a recommendation.
+* If there aren’t enough indexed libraries, it will trigger a warning with a recommendation.
+* Testing feature: Customers can now remove libraries if needed (but not the last row).
+
+**What we keep:**
+* The calculation for library dilution is back-calculated from the volume for pooling, meaning there’s no leftover of normalized library after pooling.
+* The save PDF feature.
+* The Information tabs feature.
+* The retrospective calculation in the background, correction factor adjustment, and the PhiX percentage.
+* If ATAC is selected, no other libraries can be selected, and vice versa.

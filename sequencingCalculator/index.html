@@ -256,11 +256,13 @@
         </div>
        
           <div class="submitInfoDisplay" id="mainFormSubmitMessage" style="display:none">
-            <p>Your library plexity is received. Please enter the details in the table generated below. </p>
+            <p><b>User Info Submitted:</b> <br></p>
           </div>
           
           <div id="tableContainer" class="user-main-input"  style="display: none;">
+            <p><b>Please consult your sequencing provider for the Final Library Concentration and Volume needed to send for sequencing. Use the details as input below.</b></p>
             <div class="form-group">
+             
             <label for="finalLibConc">Final library Concentration (nM):</label>
             <input type="number" id="finalLibConc" class="input-field" placeholder="Pooled library concentration">
             <span style="font-size:15px;color:darkred;" class="input-details"><b>Required</b>: In general: 4 nM</span>
@@ -275,10 +277,10 @@
             <table>
               <thead id="inputHeader">
               <tr>
-              <th class="tooltip">Library Name<span class="tooltiptext">specify sample name</span></th>
-              <th class="tooltip">Assay Type<span class="tooltiptext">Select assay type</span></th>
-              <th class="tooltip">Index i5<span class="tooltiptext">Enter index 5 sequence</span></th>
-              <th class="tooltip">Index i7<span class="tooltiptext">Enter index7 sequence</span></th>
+              <th class="tooltip" style="width:10%">Library Name<span class="tooltiptext">specify sample name</span></th>
+              <th class="tooltip" style="width:10%">Assay Type<span class="tooltiptext">Select assay type</span></th>
+              <th class="tooltip" style="width:10%">Index i5<span class="tooltiptext">Enter index 5 sequence</span></th>
+              <th class="tooltip" style="width:10%">Index i7<span class="tooltiptext">Enter index7 sequence</span></th>
               <th class="tooltip" style="width:20%">Qubit Conc(ng/&microL)<span class="tooltiptext">Enter the number</span></th>
               <th class="tooltip" style="width:20%">Bioanalyzer Size (bp)<span class="tooltiptext">Enter the average bp size</span></th>
               <th class="tooltip">Cell Number<span class="tooltiptext">From scanner report/ estimate</span></th>
@@ -292,6 +294,12 @@
               <button id="submit" onclick="submit()" class="primary-button">Calculate</button>
           </div>
 
+          <div class = "submitInfoDisplay" id="tableSubmitMessage" style="display:none">
+            <p><b>Table Submitted!</b><ul>
+              <li>Your library normalisation and pooling volume is calculated. </li>
+              <li>User with TCR/BCR library, the Correction Factor for library normalisation is automatically applied.</li>
+            </ul>Please see the output below for library dilution, libraries pooling and sequencer recommendation.</p></div>
+
           <div class="overlay" id="overlay">
             <div class="overlayContent" id="overlayContent"></div>
           </div>
@@ -303,13 +311,15 @@
           <tr>
           <th rowspan="2">Library Name</th>
           <th rowspan="2">Library Type</th>
-          <th rowspan="2">Library Concentration (nM)</th>
+          <th rowspan="2">Index i7</th>
+          <th rowspan="2" >Calculated Qubit Conc (nM)</th>
+          <th rowspan="2" >Final Library Conc (nM)</th>
           <th colspan="2" class=".col1">STEP1: Library Dilution (&microL)</th>
-          <th rowspan="2" class=".col2">STEP2: Library Pooling Volume (&microL)</th>
+          <th rowspan="2" class=".col2" style="width:15%">STEP2: Library Pooling Volume (&microL)</th>
           </tr>
           <tr>
-          <th>Indexed Library Volume (&microL)</th>
-          <th>Elution Buffer (&microL)</th>
+          <th style="width:15%">Indexed Library Volume (&microL)</th>
+          <th style="width:15%">Elution Buffer (&microL)</th>
           </tr>
           </thead>
           <tbody id="dilutionTableRow"></tbody>
@@ -337,15 +347,16 @@
         <script src="script.js" ></script>
       </main>
 
-      <footer>
-        <p style="font-size:10px;">
-          Developer: Syabira Yusoff | Bioinformatics Support Engineer <br />
-          <a href="mailto:syabira.yusoff@bd.com">syabira.yusoff@bd.com</a><br />
-          General Support: Maryam Rezaei | SCM Application Support Associate<br>
-          <a href="mailto:maryam.rezaei@bd.com">maryam.rezaei@bd.com</a><br>
-          Project(version) : Sequencing Calculator (Version1.0) | November 2024
-        </p>
-      </footer>
+     
     </div>
+    <footer>
+      <p style="font-size:10px;">
+        Developer: Syabira Yusoff | Bioinformatics Support Engineer <br />
+        <a href="mailto:syabira.yusoff@bd.com">syabira.yusoff@bd.com</a><br />
+        General Support: Maryam Rezaei | SCM Application Support Associate<br>
+        <a href="mailto:maryam.rezaei@bd.com">maryam.rezaei@bd.com</a><br>
+        Project(version) : Sequencing Calculator (Version1.0) | November 2024
+      </p>
+    </footer>
   </body>
 </html>

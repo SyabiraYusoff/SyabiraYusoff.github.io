@@ -31,7 +31,7 @@
         <a href="#" data-target="velsera" onclick="showSection('velsera', this)">Upload via Velsera Interface</a>
         <a href="#" data-target="macOSlinux" onclick="showSection('macOSlinux', this)">Via Command Line Interface Upload (MacOS)</a>
         <a href="#" data-target="windows" onclick="showSection('windows', this)">Via Command Line Interface Upload (Windows)</a>
-        <a href="#" style="float:right"><i class="fa fa-home"></i></a>
+        <a href="index.html" style="float:right"><i class="fa fa-home"></i>HOME</a>
     </div>
 
 <!-- Content -->
@@ -47,16 +47,29 @@
                 <div class="notice">
                     <ul>
                         <li>Note that this method is suitable for small datasets.</li>
-                        <li>For larger uploads such as big FASTQ files, consider using command line uploads or FTP.</li>
+                        <li>For larger uploads such as FASTQ files, consider using command line uploads or FTP.</li>
                         <li>Seven Bridges will log you out if there is no activity within 15 minutes. To prevent disruption of the upload progress, actively monitor and move your cursor during the process.</li>
                         <li>Failure to do so may necessitate re-uploading the files.</li>
                     </ul>
                 </div>
                 <ol>
-                    <li>On the project dashboard, click the <mark>Files.</mark> tab, and click <mark>+Add Files</mark></li>
-                    <li>Click on Add files and choose the source:<mark>Your Computer</mark></li>
-                    <li>Select files that you intend to upload. You may select multiple files to upload.</li>
-                    <li>Click <mark>Upload</mark> button.</li>
+                    <li>On the project dashboard, click the <mark>Files.</mark> tab, and click <mark>+Add Files</mark>
+                        <img src="./pictures/step1_uploadFilefromCOmp.png">
+                        </li>
+                    <li>Click on Add files and choose the source:<mark>Your Computer</mark>
+                        <img src="./pictures/step2_uploadFilefromCOmp.png"></li>
+                    <li>Select files that you intend to upload. You may select multiple files to upload.<br>
+                        <img src="./pictures/step3_uploadFilefromCOmp.png">
+                    </li>
+                    <li>Click <mark>Upload</mark> button.<br>
+                        <img src="./pictures/step4_uploadFilefromCOmp.png"></li>
+                    <li>Monitor the upload progress. The upload speed depends on your internet connection and file size. Hover your mouse every 10 minutes to ensure you are not logged out from the webpage.</li>
+                        <img src="./pictures/step5_uploadFilefromCOmp.png">
+                    </li>
+                    <li>Once the upload is complete, the files will appear in the Files tab.
+                        <img src="./pictures/step6_uploadFilefromCOmp.png">
+                        </li>
+                    </li>
                 </ol>
             </div>
 
@@ -147,7 +160,7 @@
                 <ol>
                     <li>Log in to your Seven Bridges account. Click <mark>Developer</mark> -> <mark>Authentication token</mark> -> <mark>Generate token</mark>.</li><br>
                     <img src="./pictures/autehnticationstep1.png"><br><br>
-                    <li>You will find the TOken and API on the next page.Ensure to keep your Authentication Token secure and do not share it publicly.</li>
+                    <li>You will find the Token and API on the next page.Ensure to keep your Authentication Token secure and do not share it publicly.</li>
                     <li>You may now use these credentials while setting up your upload process to authenticate and interact with Seven Bridges through the API.</li>
                     <li>Picture below showing the API and Authentication Token:</li>
                     <br><img src="./pictures/authenticationTokenStep2.png"><br>
