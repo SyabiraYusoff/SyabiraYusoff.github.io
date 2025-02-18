@@ -1,0 +1,14 @@
+## Sequencing Calculator
+
+**Sequencing Calculator Tool** is tailored for BD Rhapsody™ Libraries. It helps users calculate the number of reads needed for sequencing based on various assay types, dependent on the final pooling concentration and volume needed by the sequencing facility.
+
+The tool provides a user-friendly interface to input project details, select assay types, specify cell numbers, and reads per cell intended for sequencing. It then calculates the values from individual libraries for library normalization and the pooling volume from each respective normalized library. The tool also provides platform recommendations suitable based on the sequencing reads needed.
+
+**Key Features:**
+
+- **User Input Section**: Allows users to enter project name, username, library plexity, and cell numbers.
+- **Assay Selection**: Users can select from various assay types such as WTA, Targeted, TCR, BCR, ATAC, AbSeq, and SMK.
+- **Calculation**: Computes the total reads needed for sequencing based on the selected assays and user inputs.
+- **Output Table**: Displays the volume needed for library normalization and pooling.
+- **Sequencing Platform Recommendations**: Provides recommendations for Illumina sequencing platforms based on the calculated read pairs.
+- **Save as PDF**: Users can save the results as a PDF file for future reference.
