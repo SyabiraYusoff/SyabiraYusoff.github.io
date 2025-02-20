@@ -5,12 +5,12 @@ body {
 .header {
     display: flex; 
     align-items: center;
-    padding: 3.125rem 0 0.625rem 0; 
+    padding: 0.625rem 0 0.625rem 0; 
     margin: 0.625rem 0 1.25rem 0;
     height: auto;
     font-size: 2.5rem;
     color: white;
-    background-color: #004593;
+    background-color: #044ED7;
 }
 
 .header-image {
@@ -28,7 +28,7 @@ body {
 @media (max-width: 750px) {
     .header-image, .header-text {
         flex: 100%; /* Stack items vertically */
-        background-color: #004593;
+        background-color: #044ED7;
     }
 
     .header-image {
@@ -49,7 +49,7 @@ body {
 .user-main-input {
     color: rgb(31, 29, 29);
     font-size: 1rem;
-    border: 2px double #004593;
+    border: 2px double #044ED7;
     border-radius: 0.3125rem;
     margin-bottom: 0.9375rem;
     padding: 1.25rem 0.9375rem 1.25rem 1.25rem;
@@ -86,7 +86,7 @@ label {
     border: none;
     outline: none;
     padding: 0.3125rem;
-    border-bottom: 1px solid #004593;
+    border-bottom: 1px solid #044ED7;
     width: 100%;
     border-radius: 0.3125rem;
 }
@@ -112,7 +112,7 @@ caption {
     margin-bottom: 0.3125rem; 
     font-weight: bolder;
     font-size: 1.25rem;
-    color: #004593;
+    color: #044ED7;
 }
 
 table, th, td {
@@ -137,11 +137,11 @@ td {
 }
 
 h3, strong {
-    color: #004593;
+    color: #044ED7;
 }
 
 .primary-button {
-    background-color: #004593;
+    background-color: #044ED7;
     color: white; 
     margin: 0.625rem 0;
     padding: 0.5rem 0.9375rem; 
@@ -192,7 +192,7 @@ h3, strong {
 }
 
 .info-button {
-    background-color: #004593;
+    background-color: #044ED7;
     color: white;
     border: 1px solid white;
     border-radius: 50%;
@@ -233,7 +233,7 @@ h3, strong {
 }
 
 footer {
-    background-color: #004593;
+    background-color: #060A3D;
     color: white;
     text-align: center;
     padding: 5px;

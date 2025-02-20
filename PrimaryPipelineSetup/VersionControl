@@ -1,0 +1,42 @@
+### Version updates
+
+## Webpage version (April 2025) | Pipeline Version 2.2.1 
+##### index page 
+[Improvements]: 
+- This is newly added section as a summary page. 
+- Add button to click and re-direct user to the specific steps page. 
+
+[BugsFixed]:
+
+
+##### Pipepine Setup and Local Installation 
+[Improvements]: 
+- Added pictures and videos on the local installation and Velsera creation. 
+- Rearrange content to make sure the most important information is visibly clear. 
+- Added a new separated section for Extra Utilities covering the instruction for Local and Pipeline Bundle. 
+- Added all code based for pipeline installation. 
+[BugsFixed]:
+- Fixed scrolling and adjust the main content width
+  
+
+##### Files Upload 
+[Improvements]:
+- Added information and warnings when upload the files on Velsera. 
+- Covers mutiple files upload method to Velsera platform (Computer, project, https link) with pictures and videos aid. 
+- Added ATAC ref info and the donwload link for ref files. 
+- For VDJ and SMK, a warning displayed that it does not need any reference file. 
+- Added a section of file integrity checks after file upload section. 
+- Addded videos and pictures for local Command Line Interfrace (CLI) for a better guidance and support for customers.
+[BugsFixed]:
+
+
+##### Pipeline Setup
+[Improvements]:
+- Added and interactive app to print specific reference files needed based on assays. 
+- Added the custom reference "How to Retrieve Files" from ENSEMBL
+[BugsFixed]:
+
+
+##### Run the Pipeline
+[Improvements]:
+[BugsFixed]:
