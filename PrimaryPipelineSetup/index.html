@@ -1,115 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="apple-touch-icon" sizes="57x57" href="./pictures/favicon_rhapsody.ico/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="./pictures/favicon_rhapsody.ico/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="./pictures/favicon_rhapsody.ico/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="./pictures/favicon_rhapsody.ico/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="./pictures/favicon_rhapsody.ico/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="./pictures/favicon_rhapsody.ico/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="./pictures/favicon_rhapsody.ico/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="./pictures/favicon_rhapsody.ico/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./pictures/favicon_rhapsody.ico/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="./pictures/favicon_rhapsody.ico/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./pictures/favicon_rhapsody.ico/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="./pictures/favicon_rhapsody.ico/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./pictures/favicon_rhapsody.ico/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="./pictures/favicon_rhapsody.ico/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-        <title>
-
-        </title>
-        <style>
-            .mainContent{
-                display: flex;
-                flex-direction: column;
-                margin: 10px 100px;
-                border:4px double #004593;
-                padding: 50px;
-                align-items: center;
-            }
-            .mainPageButton{
-                display: inline-block;
-                padding: 20px 50px;
-                margin-top: 10px;
-                font-size: 20px;
-                color: white;
-                text-decoration: none;
-                background-color: #004593;
-                border:5px double gray;
-                border-radius: 0px 10px 0px 10px;
-                cursor: pointer;
-                width: 900px;
-                line-height: 50px;
-                text-align: center;
-            }
-
-            .mainPageButton:hover {
-                background-color: lightgrey;
-                color: orangered;
-                font-weight: bold;
-            }
-
-            /* Styles for screens below than 769px */
-
-            @media (max-width: 768px) {
-                .mainContent {
-                    margin: 10px 20px;
-                    padding: 20px;
-                }
-                .mainPageButton {
-                    padding: 10px 20px;
-                    font-size: 16px;
-                    width: 80%;
-                }
-            }
-
-            /* Styles for screens between 769px and 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .mainContent {
-        margin: 15px 30px;
-        padding: 25px;
-    }
-    .mainPageButton {
-        padding: 12px 24px;
-        font-size: 18px;
-        width: 70%;
-    }
-}
-
-/* Styles for screens 1025px and above */
-@media (min-width: 1025px) {
-    .mainContent {
-        margin: 20px 40px;
-        padding: 30px;
-    }
-    .mainPageButton {
-        padding: 15px 30px;
-        font-size: 20px;
-        width: 60%;
-    }
-}
-        </style>
-
+    <head>  
+        <title>BDRhapsody&trade; Pipeline Quick Start Guide</title>
+        <link rel="stylesheet" href="assets/CSS/basicStyle.css">    
+        <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/XpressFavicon.ico/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/XpressFavicon.ico/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/XpressFavicon.ico/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/XpressFavicon.ico/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/XpressFavicon.ico/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/XpressFavicon.ico/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/XpressFavicon.ico/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/XpressFavicon.ico/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/XpressFavicon.ico/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/XpressFavicon.ico/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/XpressFavicon.ico/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="./assets/images/XpressFavicon.ico/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/XpressFavicon.ico/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="./assets/images/XpressFavicon.ico/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
     </head>
-    <header>
-        <div>
-            <h1>BD Rhapsody&trade; Pipeline</h1>
-            <h2>Quick Start Guide</h2>
-        </div>
-    </header>
 
     <body>
-        <div class="mainContent">
-        <h1>Welcome to BD Rhapsody&trade; Pipeline Analysis Setup</h1>
+        <div class="container">
+            <header>
+                <h1>BDRhapsody&trade; Pipeline Quick Start Guide</h1>
+            </header>
 
-        <a href="01-PipelineSetup.html" class="mainPageButton" >Pipeline Setup</a>
-        <a href="02-filesUpload.html" class="mainPageButton" >File upload to Cloud Platform</a>
-        <p style="font-size: 16px; text-align: center;font-weight: bold;color:#004593">Customers who are working on Local Installation, you may skip the "File upload to Cloud Platform" step.<br></p>
-        <a href="./03-Reference_Files.html" class="mainPageButton" >Reference Files Based on Your Assays</a>
-        <a href="./04-runThePipeline.html" class="mainPageButton" >Pipeline Run and Output Files</a>
+            <div class="content-area">
+            <!-- Left sidebar: main Steps -->
+             <nav class="sidebar-left"> 
+                <h4>Sections:</h4>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step1')">Pipeline Setup</a></button>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step2')">Files Upload</a></button>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step3')">Reference Files</a></button>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step4')">Run the Pipeline</a></button>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step5')">Pipeline Output Files</a></button>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step6')">HTML Review</a></button>
+                    <button class="mainPageButton"><a href="#" onclick="loadStep('step7')">Troubleshooting</a></button>
+
+                <h4>Contact Us Regionally: </h4>
+             <ul>
+                <li>EMEA: <a href="mailto:biox_support_EMEA@bd.com">biox_support_EMEA@bd.com</a>.</li>
+                <li>USA: </li>
+                <li>China: </li>
+                <li>Japan: </li>
+                <li>Others: </li>
+             </ul>
+
+
+             <h4>Our Team Members: </h4>
+             </nav>
+
+             
+
+            <!-- Main content -->
+             <main id="content">
+                <h2> Welcome to the Quick Start Guide</h2>
+                <p>This guide is designed to help you get started with the BD Rhapsody&trade; Pipeline.</p>
+                <h3>What is the BD Rhapsody&trade; Pipeline?</h3>
+                <p>The BD Rhapsody&trade; Pipeline is a analysis workflow that processes raw sequencing data from the BD Rhapsody&trade; system to generate experimental overview as well as output files that generated to proceed with secondary analysis. It is designed to be user-friendly and accessible to all BD Rhapsody&trade; customers.</p>
+                <h3>What can the BD Rhapsody&trade; Pipeline do?</h3>
+                <p>The BD Rhapsody&trade; Pipeline can perform several key analyses, including:</p>
+                <ul>
+                    <li>Alignment of sequencing reads to a reference genome</li>
+                    <li>Quantification of gene expression levels</li>
+                    <li>Quality control of sequencing data</li>
+                    <li>Generation of visualizations and reports</li>
+                </ul>
+                <h3>Who is this Guide for?</h3>
+                <p><p>This guide is intended for researchers who are new to the BD Rhapsody&trade; and need help setting up and running their first analysis, or for experienced users who need a refresher guide. No bioinformatics experience is needed to run your data on our cloud platform Vesera. This guide includes instructions for local installation users and pipeline bundles.</p></p>
+                <h3>What do I need to get started?</h3>
+                <p>To use the BD Rhapsody&trade; Pipeline, you will need:</p>
+                <ul>
+                    <li>Raw Paired End sequencing data from the BD Rhapsody&trade; experiments</li>
+                    <li>A computer with internet access for Velsera User</li>
+                    <li>A web browser (Google Chrome or Mozilla Firefox recommended)</li>
+                    <li>A computer with Docker installed for Local Installation User</li>
+                    <li>A computer with Linux/Ubuntu environment for Pipeline Bundle User</li>
+                    
+                </ul>
+                <h3>What will I learn in this Guide?</h3>
+                <p>This guide will walk you through the process of setting up and running your first analysis on the BD Rhapsody&trade; Pipeline. You will learn how to:</p>
+                <ul>
+                    <li>Set up your pipeline</li>
+                    <li>Upload your sequencing data</li>
+                    <li>Select reference files</li>
+                    <li>Run the pipeline</li>
+                    <li>Review the output files</li>
+                    <li>Troubleshoot common issues</li>
+                </ul>
+                <h3>What are the benefits of using the BD Rhapsody&trade; Pipeline?</h3>
+                <p>The BD Rhapsody&trade; Pipeline offers several key benefits:</p>
+                <ul>
+                    <li>Automated analysis of sequencing data</li>
+                    <li>Standardized analysis workflows</li>
+                    <li>Interactive visualizations and reports</li>
+                    <li>Easy sharing of results with collaborators</li>
+                    <li>Access to advanced bioinformatics tools</li>
+                </ul>
+                <h3>Ready to get started?</h3>
+                <p>Click on the steps in the menu on the left to begin setting up and running your first analysis on the BD Rhapsody&trade; Pipeline. In each steps, please use the manu on the right to navigate between different sections.</p>
+                <h3>Need help?</h3>
+                <p>If you have any questions or encounter any issues while using the BD Rhapsody&trade; Pipeline, please contact our support team. We are here to help you get the most out of your BD Rhapsody&trade; experiments.</p>
+                
+                <h3>Feedback</h3>
+                <p>We welcome your feedback on this guide. If you have any suggestions for improvement or would like to report an error, please contact us at <a href="mailto:syabira.yusoff@bd.com">Feedback Email</a>.</p>
+                <h3>Disclaimer</h3>
+                <p>This guide is provided for informational purposes only. The information contained in this guide is subject to change without notice. BD Biosciences reserves the right to make changes to the BD Rhapsody&trade; Pipeline and its associated documentation at any time.</p><br>
+                <h3>Thank you for choosing the BD Rhapsody&trade; Pipeline!</h3>
+                
+             </main>
+
+            <!-- Right sidebar: Additional Information -->
+             <nav class="sidebar-right custom-cursor" id="sections-nav">
+             </nav>
         </div>
+    </div>
+    <script src="assets/js/scripts.js"></script>
     </body>
+
+
+
 </html>

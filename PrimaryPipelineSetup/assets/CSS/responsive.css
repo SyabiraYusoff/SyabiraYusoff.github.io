@@ -1,0 +1,39 @@
+/* Styles for screens below than 769px */
+
+@media (max-width: 768px) {
+    .mainContent {
+        margin: 10px 20px; 
+        padding: 20px;
+    }
+    .mainPageButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        width: 80%;
+    }
+}
+
+/* Styles for screens between 769px and 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .mainContent {
+        margin: 15px 30px;
+        padding: 25px;
+    }
+    .mainPageButton {
+        padding: 12px 24px;
+        font-size: 18px;
+        width: 70%;
+    }
+}
+
+/* Styles for screens 1025px and above */
+@media (min-width: 1025px) {
+    .mainContent {
+        margin: 20px 40px;
+        padding: 30px;
+    }
+    .mainPageButton {
+        padding: 15px 30px;
+        font-size: 20px;
+        width: 60%;
+    }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<head>
+    <title>Pipeline Setup</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="./pictures/favicon_rhapsody.ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./pictures/favicon_rhapsody.ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./pictures/favicon_rhapsody.ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./pictures/favicon_rhapsody.ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./pictures/favicon_rhapsody.ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./pictures/favicon_rhapsody.ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./pictures/favicon_rhapsody.ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./pictures/favicon_rhapsody.ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./pictures/favicon_rhapsody.ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./pictures/favicon_rhapsody.ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./pictures/favicon_rhapsody.ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./pictures/favicon_rhapsody.ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./pictures/favicon_rhapsody.ico/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./pictures/favicon_rhapsody.ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff"></head>
+<body>
+    <div class="header">
+        <h1>BD Rhapsody&trade; Pipeline Setup</h1>
+      </div>
+
+      <div class="topnav">
+        <a href="#" data-target="introduction" onclick="showSection('introduction', this)">Introduction</a>
+        <a href="#" data-target="velsera" onclick="showSection('velsera', this)">Cloud (Velsera)</a>
+        <a href="#" data-target="dockerMac" onclick="showSection('dockerMac', this)">Docker Based (MacOS)</a>
+                <a href="#" data-target="dockerLinux" onclick="showSection('dockerLinux', this)">Docker Based (LINUX)</a>
+                <a href="#" data-target="bundle" onclick="showSection('bundle', this)">Pipeline Bundle (LINUX only)</a>
+                <a href="#" data-target="extraUtil" onClick="showSection('extraUtil', this)">Extra Utilities</a>
+                <a href="index.html" style="float:right"><i class="fa fa-home"></i>HOME</a>
+    </div>
+
+    <div class="row">
+        <div class="leftcolumn">
+            <div id="introduction" class="section active">
+                
+
+</center>
+            </div>
+            <div id="dockerMac" class="section">
+                
+            <div id="dockerLinux" class="section">
+                
+            </div>
+            <div id="bundle" class="section">
+                
+            <div id="extraUtil" class="section">
+               
+        </div>
+
+        <div class="rightcolumn">
+            <div id="introduction" class="section active">
+                <p>This is the right part of the page for introduciton</p>
+            </div>
+            <div id="velsera" class="section">
+                <p>This is the right part of the page for velsera</p>
+            </div>
+            <div id="dockerMac" class="section">
+                <p>This is the right part of the page for dockerMac</p>
+            </div>
+            <div id="dockerLinux" class="section">
+                <p>This is the right part of the page for dockerLinux</p>
+            </div>
+            <div id="bundle" class="section">
+                <p>This is the right part of the page for bundle</p>
+            </div>
+            <div id="extraUtil" class="section">
+                <p>This is the right part of the page for extraUtil</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+        function showSection(sectionId, element) {
+    // Hide all sections
+    var leftSections = document.querySelectorAll('.leftcolumn .section');
+    leftSections.forEach(function(section) {
+        section.classList.remove('active');
+    });
+    var rightSections = document.querySelectorAll('.rightcolumn .section');
+    rightSections.forEach(function(section) {
+        section.classList.remove('active');
+    });
+
+
+    // Show the selected section
+    var activeLeftSection = document.querySelector('.leftcolumn #' +  sectionId);
+    if (activeLeftSection){
+        activeLeftSection.classList.add('active');
+    }
+    var activeRightSection = document.querySelector('.rightcolumn #' +  sectionId);
+    if (activeRightSection){
+        activeRightSection.classList.add('active');
+    }
+
+    // Update tab styles
+    var tabs = document.querySelectorAll('.topnav a');
+    tabs.forEach(function(tab) {
+        tab.classList.remove('active-tab');
+    });
+
+    element.classList.add('active-tab');
+}
+
+// Display the first section on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Show the first section by default
+    showSection('introduction', document.querySelector('.topnav a'));
+});
+
+    </script>
+
+
+</body>
+</html>
