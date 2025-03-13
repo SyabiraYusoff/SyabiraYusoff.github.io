@@ -20,7 +20,7 @@ function loadSections(step) {
         step1: ["step1_Velsera Platform", "step1_Docker Based(MacOS)", "step1_Docker Based(LINUX)", 
             "step1_Pipeline Bundle","step1_Extra Utilities"],
         step2: ["step2_Cloud Based Upload", "step2_CLI (MacOS)", "step2_CLI (Windows)"],
-        step3: ["step3_Reference Selector Tool", "step3_Custom Reference Guide", "step3_AbSeq Reference Guide"],
+        step3: ["step3_Reference Selector Tool", "step3_Custom Reference Guide", "step3_AbSeq Custom Reference"],
         step4: ["step4_Run on Velsera", "step4_Run Locally", "step4_Other Pipeline Settings"],
         step5: ["step5_section1", "step5_section2", "step5_section3"],
         step6: ["step6_section1", "step6_section2", "step6_section3"],
