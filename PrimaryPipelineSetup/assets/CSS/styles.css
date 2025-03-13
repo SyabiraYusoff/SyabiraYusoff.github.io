@@ -49,7 +49,7 @@ mark{
 .mainPageButton{
     padding: 10px;
     font-size: 15px;
-    color: #9199D8;
+    color: #F8F4F1;
     text-decoration: none;
     background-color: #044ED7;
     border:2px solid #EBEDF0;
@@ -108,7 +108,7 @@ mark{
     color: white;
     font-weight: bold;
     transition: 0.2s;
-    transform: translate3d(0, -8px, 0);
+    transform: translate3d(0, -3px, 0);
 }
 
 main {
