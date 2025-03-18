@@ -15,6 +15,7 @@ function loadStep(step) {
         });
 }
 
+
 function loadSections(step) {
     let sections = {
         step1: ["step1_Velsera Platform", "step1_Docker Based(MacOS)", "step1_Docker Based(LINUX)", 
