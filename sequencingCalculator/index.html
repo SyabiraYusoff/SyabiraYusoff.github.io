@@ -4,8 +4,6 @@
     <title>BDSeqCalc</title>
     <link rel="icon" type="x-icon" href="htExpress_cartoon.ico">
     <link rel="stylesheet" href="style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
   </head>
   <body>
     
@@ -30,7 +28,7 @@
             <ol>
               <li>
                 <strong>Enter your Project Name and UserName</strong> <br />
-                This allows you to keep track of the saved PDF for future reference.
+                This allows you to keep track of the results for future reference.
               </li>
               <li>
                 <strong>Enter Number of Plexity</strong> <br />
@@ -55,9 +53,7 @@
               </li>
               <li>Click <strong>Calculate</strong> to submit the table for calculation </li>
               <li><strong>The table result section will appear below.</strong>
-              <li><strong>The table can be saved in PDF format:</strong><br>
-                Please enter the filename
-                and click <strong>Save as PDF.</strong>
+              <li><strong>Click the copy button and paste the result in Excel file.</strong>
               </li>
             </ol>
             </p>
@@ -230,11 +226,11 @@
             <div class="form-group">
             <label for="project_name">Project Name:</label>
             <input type="text" id="project_name" class="input-field" placeholder="Your memorable project name here"/>
-            <span class="input-details"><b>Required</b>: This project name will be printed on your PDF output file.</span>
+            <span class="input-details"><b>Required</b>: This project name will be printed on your result output.</span>
 
             <label for="userName">UserName:</label>
             <input type="text" id="userName" class="input-field" placeholder="Your name here">
-            <span style="font-size:15px;color:darkred;" class="input-details"> <b>Required</b>: Name of the person will be printed on PDF output file.</span>
+            <span style="font-size:15px;color:darkred;" class="input-details"> <b>Required</b>: Name of the person will be printed on your reesult output.</span>
 
             <label for="plexity">Library plexity:</label>
             <input type="number" id="plexity" class="input-field" placeholder="Numbers of libraries for pooling">
@@ -305,15 +301,33 @@
           </div>
 
           <div id="resultsContainer" class="user-main-input" style="display: none;">
+            <table id="user-input-table">
+              <caption>User Input and Calculations</caption>
+              <thead id="userInputHeader">
+                <tr>
+                  <th>Library Name</th>
+                  <th>Assay Type</th>
+                  <th>Index i7</th>
+                  <th>Bioanalyzer Size (bp)</th>
+                  <th>Qubit Conc (ng/&microL)</th>
+                  <th>Calculated Qubit Conc (nM)</th>
+                  <th>Final Library Conc (nM)</th>
+                  <th>Cell Number</th>
+                  <th>Reads per cell</th>
+                </tr>
+                </thead>
+                  <tbody id="userInputRows"></tbody>
+            </table>
+       
+
         <table id="libraryDilutionTable">
           <caption>Library Dilution and Pooling Volume</caption>
           <thead id="libraryDilutionHeader">
           <tr>
           <th rowspan="2">Library Name</th>
-          <th rowspan="2">Library Type</th>
-          <th rowspan="2">Index i7</th>
-          <th rowspan="2" >Calculated Qubit Conc (nM)</th>
-          <th rowspan="2" >Final Library Conc (nM)</th>
+          <th rowspan="2">Assay Type</th>
+          <th rowspan="2">Pooling Ratio</th>
+          <th rowspan="2" >Read pairs for Sequencing (Million)</th>
           <th colspan="2" class=".col1">STEP1: Library Dilution (&microL)</th>
           <th rowspan="2" class=".col2" style="width:15%">STEP2: Library Pooling Volume (&microL)</th>
           </tr>
@@ -339,10 +353,12 @@
             </thead>
             <tbody id="recommendationRows"/>
           </table>
+          <p>NovaSeq 100 cycle kit (v1.0 or v1.5) can be used. The 100-cycle kit contains enough reagents for up to 130 cycles.</p>
+
+
+
+          <button class="primary-button" onclick="copySectionsAsHTML(['resultsContainer','recommendationContainer'])">Copy Results and Paste to Excel File</button>
         </div>
-
-        <div id="savePDFsection" style="display: none;"></div>
-
 
         <script src="script.js" ></script>
       </main>
@@ -355,7 +371,7 @@
         <a href="mailto:syabira.yusoff@bd.com">syabira.yusoff@bd.com</a><br />
         General Support: Maryam Rezaei | SCM Application Support Associate<br>
         <a href="mailto:maryam.rezaei@bd.com">maryam.rezaei@bd.com</a><br>
-        Project(version) : Sequencing Calculator (Version1.0) | November 2024
+        Project(version) : Sequencing Calculator (Version2.0) | April 2025
       </p>
     </footer>
   </body>
