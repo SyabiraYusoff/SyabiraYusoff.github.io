@@ -39,38 +39,33 @@
             padding:0 0 20px 20px;
         }
 
+        
+
         @media (max-width: 500px) {
             .flex-container {
                 flex-direction: column;
             }
         }
 
-        input[type=checkbox] {
+        .flex-container input[type=checkbox] {
             /* hide default checkbox style */
             display: none;
             }
 
-        input {
+            .flex-container input {
             margin-top: 10px;
             padding: 5px;
             border: 1px solid #004593;
             border-radius: 5px;
             }
 
-        label {
+            .flex-container label {
             margin-top: 10px;
             font-size: 15px;
             color: #004593;
         }
 
-        .form-group{
-            display: grid;
-            grid-template-columns: 180px 250px;
-            align-items: left;
-        }
-        
-        
-        input[type=checkbox] + label {
+        .flex-container input[type=checkbox] + label {
             position: relative;
             padding-left: 25px;
             cursor: pointer;
@@ -81,7 +76,7 @@
         }
         
 
-        input[type=checkbox] + label:before {
+        .flex-container input[type=checkbox] + label:before {
             content: '';
             position: absolute;
             left: -10%; /* Move the checkbox to the left */
@@ -93,7 +88,7 @@
             background-color: white;
         }
 
-        input[type=checkbox]:checked + label:before {
+        .flex-container input[type=checkbox]:checked + label:before {
             content: '\2713'; /* Checkmark character */
             display: flex;
             align-items: center;
@@ -101,6 +96,48 @@
             color: white;
             background-color: #004593;
         }
+
+
+        .input-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .input-container label{
+            margin-top: 0px;
+            font-size: 16px;
+            color: #004593;
+        }
+
+        .input-container input{
+            margin-top: 0px;
+            padding: 6px ;
+            border: 1px solid #004593;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 15px;
+        }
+        .input-container span{
+            margin-top: 10px;
+            font-size: 15px;
+            color: red;
+        }
+        .input-container div{
+            margin: 10px;
+        }
+        .input-container div:nth-child(1){
+            flex-basis: 150px;
+        }
+        .input-container div:nth-child(2){
+            flex-basis: 200px;
+        }
+        .input-container div:nth-child(3){
+            flex-basis: 300px;
+        }
+
+        
+        
+        
 
         button{
             background-color:#004593;
@@ -189,22 +226,36 @@
             <label for="tcr">TCR</label>
             <input type="checkbox" id="bcr" name="bcr">
             <label for="bcr">BCR</label>
-
-
         </div>
-        <div class="form-group">
-            <label for = "plexity">Number of AbSeq</label>
-            <input type="number" id="abseqplexity" name="abseqplexity" placeholder="AbSeq plexity">
-        
-            <label for = "cellNumber">Total cell number</label>
-            <input type="number" id="cellNumber" name="cellNumber" placeholder="Total cell number">
 
-            <label for = "TCRcellNumber">TCR cell number</label>
-            <input type="number" id="TCRcellNumber" name="TCRcellNumber" placeholder="Required: TCR cell number">
-
-            <label for = "BCRcellNumber">BCR cell number</label>
-            <input type="number" id="BCRcellNumber" name="BCRcellNumber" placeholder="Required: BCR cell number"><br>
+        <div class="input-container">
+            <div ><label for = "cellNumber">Total cell number</label></div>
+            <div ><input type="number" id="cellNumber" name="cellNumber" placeholder="Total cell number"></div>
+            <div ><span>Please input total cell number</span><br></div>
         </div>
+
+        <div class="input-container">
+            <div ><label for = "plexity">Number of AbSeq</label></div>
+            <div ><input type="number" id="abseqplexity" name="abseqplexity" placeholder="AbSeq plexity"></div>
+            <div ><span>Please input number of AbSeqs you will use</span><br></div>            
+        </div>
+
+        <div class="input-container">
+            <div ><label for = "TCRcellNumber">TCR cell number</label></div>
+            <div ><input type="number" id="TCRcellNumber" name="TCRcellNumber" placeholder="Required: TCR cell number"></div>
+            <div ><span>Please input TCR cell number</span><br></div>
+        </div>
+        <div class="input-container">
+            <div ><label for = "BCRcellNumber">BCR cell number</label></div>
+            <div ><input type="number" id="BCRcellNumber" name="BCRcellNumber" placeholder="Required: BCR cell number"></div>
+            <div ><span>Please input BCR cell number</span><br></div>
+        </div>
+        <div class="input-container">
+            <div ><label for = "phix">PhiX Percentage</label></div>
+            <div ><input type="number" id="phixPercentage" name="phixPercentage" placeholder="Optional: PhiX percentage"></div>
+            <div ><span>Optional to include PhiX reads by percentage</span><br></div>
+        </div>
+
         <button onclick="calculate()" style="float: right;">Calculate</button><br><br>
         </div>
 
@@ -271,6 +322,7 @@
 
         <div id="resultTable" class="section-container" style="display: none;">
             <h2>Output Table</h2>
+            <p>The values in the table will include the PhiX percentage of the total reads when the PhiX value is provided.</p>
             <table  style="width:100%">
                 <thead>
                     <tr>
@@ -311,6 +363,7 @@
                 </ul></p>
               </div>
         </div>
+
     </main>
     <script>
         let table = []; // store the data
@@ -330,7 +383,8 @@
                 cellNumber: parseFloat(document.getElementById("cellNumber").value),
                 tcrCellNumber: parseFloat(document.getElementById("TCRcellNumber").value),
                 bcrCellNumber: parseFloat(document.getElementById("BCRcellNumber").value),
-                abseqplexity: parseFloat(document.getElementById("abseqplexity").value)
+                abseqplexity: parseFloat(document.getElementById("abseqplexity").value),
+                phixPercentage: parseFloat(document.getElementById("phixPercentage").value),
             }
             table.push(data);
             console.log(table);
@@ -342,6 +396,7 @@
             let atacList = [];
             let abseqList = [];
             let smkList = [];
+            let phixList = [];
 
             if (data.wta) {
                 wtaList.push({
@@ -406,6 +461,7 @@
             }
             console.log("AbSeq List:", abseqList);
 
+
             // Calculate totals
             let totalShallowRPC = 0;
             let totalModerateRPC = 0;
@@ -453,9 +509,24 @@
                 totalDeepRPC += item.deepRPC;
             });
 
+
+
+            phixRatio = data.phixPercentage/100;
+            console.log("Phix Ratio:", phixRatio);
+
             console.log("Total Shallow RPC:", totalShallowRPC);
             console.log("Total Moderate RPC:", totalModerateRPC);
             console.log("Total Deep RPC:", totalDeepRPC);
+
+            // Apply PhiX ratio if provided
+            if (phixRatio > 0) {
+                totalShallowRPC += totalShallowRPC * phixRatio;
+                totalModerateRPC += totalModerateRPC * phixRatio;
+                totalDeepRPC += totalDeepRPC * phixRatio;
+            }
+            console.log("Total Shallow RPC with PhiX:", totalShallowRPC);
+            console.log("Total Moderate RPC with PhiX:", totalModerateRPC);
+            console.log("Total Deep RPC with PhiX:", totalDeepRPC);
 
             const resultTable = document.getElementById("resultTable");
             resultTable.style.display = "block";
@@ -465,28 +536,29 @@
             resultTableBody.innerHTML += `
             <tr>
                 <td>Shallow/Pilot Study</td>
-                <td>${(totalShallowRPC/1000000)}</td>
-                <td>${((totalShallowRPC/1000000) * 0.1 * 2).toFixed(1)}</td>
-                <td>${((totalShallowRPC/1000000) * 0.15 * 2).toFixed(1)}</td>
-                <td>${((totalShallowRPC/1000000) * 0.3 * 2).toFixed(1)}</td>
+                <td>${(totalShallowRPC/1000000).toFixed(2)}</td>
+                <td>${((totalShallowRPC/1000000) * 0.1 * 2).toFixed(2)}</td>
+                <td>${((totalShallowRPC/1000000) * 0.15 * 2).toFixed(2)}</td>
+                <td>${((totalShallowRPC/1000000) * 0.3 * 2).toFixed(2)}</td>
             </tr>
             <tr>
-                <td>Moderate/OMICS-one (AbSeq)</td>
-                <td>${(totalModerateRPC/1000000)}</td>
-                <td>${((totalModerateRPC/1000000) * 0.1 * 2).toFixed(1)}</td>
-                <td>${((totalModerateRPC/1000000) * 0.15 * 2).toFixed(1)}</td>
-                <td>${((totalModerateRPC/1000000) * 0.3 *2 ).toFixed(1)}</td>
+                <td>Moderate</td>
+                <td>${(totalModerateRPC/1000000).toFixed(2)}</td>
+                <td>${((totalModerateRPC/1000000) * 0.1 * 2).toFixed(2)}</td>
+                <td>${((totalModerateRPC/1000000) * 0.15 * 2).toFixed(2)}</td>
+                <td>${((totalModerateRPC/1000000) * 0.3 *2 ).toFixed(2)}</td>
             </tr>
             <tr>
-                <td>Deep/Immune Response Panel (AbSeq)</td>
-                <td>${(totalDeepRPC/1000000)}</td>
-                <td>${((totalDeepRPC/1000000) * 0.1 * 2).toFixed(1)}</td>
-                <td>${((totalDeepRPC/1000000) * 0.15 * 2).toFixed(1)}</td>
-                <td>${((totalDeepRPC/1000000) * 0.3 * 2).toFixed(1)}</td>
+                <td>Deep</td>
+                <td>${(totalDeepRPC/1000000).toFixed(2)}</td>
+                <td>${((totalDeepRPC/1000000) * 0.1 * 2).toFixed(2)}</td>
+                <td>${((totalDeepRPC/1000000) * 0.15 * 2).toFixed(2)}</td>
+                <td>${((totalDeepRPC/1000000) * 0.3 * 2).toFixed(2)}</td>
             </tr>
             `;
+            console.log("Result Table Body:", resultTableBody);
+            console.log("Result Table:", resultTable);
 
-            console.log(`deep rpc line-409`, totalDeepRPC);
 
             const value = totalDeepRPC/1000000;
             console.log(`Highest rpc to filer`, value);
