@@ -11,4 +11,4 @@ The tool provides a user-friendly interface to input project details, select ass
 - **Calculation**: Computes the total reads needed for sequencing based on the selected assays and user inputs.
 - **Output Table**: Displays the volume needed for library normalization and pooling.
 - **Sequencing Platform Recommendations**: Provides recommendations for Illumina sequencing platforms based on the calculated read pairs.
-- **Save as PDF**: Users can save the results as a PDF file for future reference.
+- **Copy and Save in Excel**: Users can save the results in Excel file for future reference.

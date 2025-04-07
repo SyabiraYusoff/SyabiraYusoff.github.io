@@ -1,3 +1,11 @@
+## **First Update April 2025** 
+[Updates]: 
+* Update the section and add copy button to paste in excel. 
+[Fixes]: 
+* Remove Save to PDF to avoid large file with incrememnt of plexity.
+* Row indexing strategy to match remove rows button. 
+
+
 ## **Pre Release (FEB 2025)**
 [UI]: 
 * Responsive header design for different screen sizes. 
