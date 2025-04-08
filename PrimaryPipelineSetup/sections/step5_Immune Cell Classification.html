@@ -1,0 +1,26 @@
+<h4>Immune Cell Classification</h4>
+        <p class="code">File: [sample_name]_(assay)_cell_type_experimental.csv</p>
+        <p>These files contain the immune cell classification results. The classification is based on the expression of specific genes and is used to identify different immune cell types.
+            We collected a large dataset of PMBCs that had targeted immune response panel (397 genes) and AbSeq expression. 
+            Performed dimensionality reduction. We used following cell types for classification:
+            <ul>
+                <li>Classical monocyte</li>
+                <li>Nonclassical monocyte</li>
+                <li>Dendritic cell</li>
+                <li>B cell</li>
+                <li>Naive CD4 T cell</li>
+                <li>Memory CD4 T cell</li>
+                <li>Naive CD8 T cell</li>
+                <li>Memory CD8 T cell</li>
+                <li>Natural killer cell</li>
+                <li>Gamma-delta T cell</li>
+            </ul></p>
+            <p>If customer using other than PBMCs, it is recommended to apply your own cell type classification 
+                in the downstream analysis. </p>
+        <p> When the Immune Cell Classification is done:
+            <ul>
+                <li><b>Using WTA/AbSeq cell calling data:</b> [sample_name]_cell_type_experimental.csv</li>
+                <li><b>using ATAC cell calling data:</b> [sample_name]_<span style="color:#004593">ATAC</span>_cell_type_experimental.csv</li>
+                <li><b>using WTA/AbSeq and ATAC cell calling data:</b> [sample_name]_<span style="color:#004593">Joint</span>_cell_type_experimental.csv</li>
+            </ul>
+        </p>

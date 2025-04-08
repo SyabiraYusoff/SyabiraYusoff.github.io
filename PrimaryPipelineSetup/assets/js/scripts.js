@@ -23,7 +23,10 @@ function loadSections(step) {
         step2: ["step2_Cloud Based Upload", "step2_CLI (MacOS)", "step2_CLI (Windows)"],
         step3: ["step3_Reference Selector Tool", "step3_Custom Reference Guide", "step3_AbSeq Custom Reference"],
         step4: ["step4_Run on Velsera", "step4_Run Locally", "step4_Other Pipeline Settings"],
-        step5: ["step5_Output Files", "step5_section2", "step5_section3"],
+        step5: ["step5_Output Files", "step5_Metrics Summary", "step5_Bioproduct Statistics"
+            , "step5_Dimensionality Reduction", "step5_Immune Cell Classification", "step5_Data Tables"
+            , "step5_BAM BAI", "step5_Pipeline Report HTML", "step5_Seurat Cellismo H5MU"
+            , "step5_Sample Multiplexing(SMK)", "step5_VDJ", "step5_ATAC" ],
         step6: ["step6_section1", "step6_section2", "step6_section3"],
         step7: ["step7_section1", "step7_section2", "step7_section3"]
     };
