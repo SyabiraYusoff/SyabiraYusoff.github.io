@@ -371,6 +371,7 @@
 
             const descTable = document.getElementById("description");
             descTable.style.display="block";
+            descTable.scrollIntoView({ behavior: "smooth" });
 
             let data = {
                 wta: document.getElementById("wta").checked,
@@ -530,6 +531,8 @@
 
             const resultTable = document.getElementById("resultTable");
             resultTable.style.display = "block";
+
+            
 
             const resultTableBody = document.getElementById("resultTableBody");
             resultTableBody.innerHTML = "";
