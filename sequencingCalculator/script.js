@@ -124,7 +124,7 @@ const assayInfo = {
     },
     "assay-atac": {
         "infoe": "from-Qubit: >1ng/µL",
-        "infof": "Bioanalyzer/TapeStation: Library size  ~300-2000bp",
+        "infof": "Bioanalyzer/TapeStation: Library size  ~200-1000bp",
         "infoh": "Recommended(50,000rpc)"
     },
     // Add more assay info as needed

@@ -4,6 +4,7 @@
 [Fixes]: 
 * Remove Save to PDF to avoid large file with incrememnt of plexity.
 * Row indexing strategy to match remove rows button. 
+* ATAC bioanalyser range correction
 
 
 ## **Pre Release (FEB 2025)**
