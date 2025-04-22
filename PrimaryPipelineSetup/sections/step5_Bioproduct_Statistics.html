@@ -1,0 +1,89 @@
+
+<h1>Bioproduct Statistics</h1>
+
+<h4>Bioproduct Statistics:</h4>
+        <p>The molecular identifier adjustment algorithms RSEC and DBEC are applied to each bioproduct. 
+            The molecular identifier metrics file lists the metrics from RSEC and DBEC on a per-bioproduct basis. 
+            For more information on RSEC and DBEC molecular identifier adjustment algorithms, see <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_error_correction.html" target="_blank">Molecules and error correction</a>.</p>
+        <p class="code">File: [sample_name]_Bioproduct_Stats.csv</p>
+            <figure>
+                <img src="./assets/images/bioproduct_statistics.png" alt="Bioproduct Statistics" width="auto" height="400">
+                <figcaption>Figure 1: Bioproduct Statistics. Pipeline analysis information (red box); AbSeq Bioproducts statistics by rows (blue box); mRNA Bioproducts statistics in rows (orange box). 
+                    <br>Note: The screenshot above is a sample of the Bioproduct Statistics file. The actual file will contain more rows for each detected bioproduct.
+                </figcaption>
+            </figure>
+                    <h5>Bioproduct Statistics Information: </h5>  
+            <table style="width: 100%;">
+                <tr>
+                    <th>Metrics</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td>Pipeline Analysis Information</td>
+                    <td>Bioproduct status across all reads and molecules:
+                        <ul>
+                            <li>Pipeline Version</li>
+                            <li>Analysis Date</li>
+                            <li>Type of Bioproduct libarries detected</li>
+                            <li>Reference Input</li>
+                            <li>Parameters settings</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="test">Bioproduct</td>
+                    <td>Bioproduct names listed in alphabetical order</td>
+                </tr>
+                <tr>
+                    <td>Raw_Reads</td>
+                    <td>Number of reads before molecular identifier adjustment algorithms</td>
+                </tr>
+                <tr>
+                    <td>Raw_Molecules</td>
+                    <td>Number of UMIs before molecular identifier adjustment algorithms</td>
+                </tr>
+                <tr>
+                    <td>Raw_Seq_Depth</td>
+                    <td>Number of raw reads ÷ the number of raw molecules</td>
+                </tr>
+                <tr>
+                    <td>RSEC_Adjusted_Molecules</td>
+                    <td>Number of molecules detected after RSEC molecular identifier adjustment algorithm</td>
+                </tr>
+                <tr>
+                    <td>RSEC_Adjusted_Seq_Depth</td>
+                    <td>Number of raw reads ÷ the number of RSEC-adjusted molecules</td>
+                </tr>
+                <tr>
+                    <td>RSEC_Adjusted_Molecules_nonsingleton</td>
+                    <td>Number of RSEC-adjusted molecules represented by more than one read</td>
+                </tr>
+                <tr>
+                    <td>DBEC_Minimum_Depth</td>
+                    <td>Threshold of RSEC depth for a molecule to be considered a putative molecule by DBEC</td>
+                </tr>
+                <tr>
+                    <td>DBEC_Adjusted_Reads</td>
+                    <td>Number of reads retained after DBEC molecular identifier adjustment algorithm</td>
+                </tr>
+                <tr>
+                    <td>DBEC_Adjusted_Molecules</td>
+                    <td>Number of molecules retained after RSEC and DBEC</td>
+                </tr>
+                <tr>
+                    <td>DBEC_Adjusted_Seq_Depth</td>
+                    <td>Number of DBEC-adjusted reads ÷ the number of molecules detected after RSEC and DBEC</td>
+                </tr>
+                <tr style="border-bottom: 2px solid #004593;">
+                    <td >DBEC_Depth_Status</td>
+                    <td>Bioproduct status across all reads and molecules:
+                        <ul>
+                            <li>Not detected: Bioproduct was not detected, because it has zero reads</li>
+                            <li>Low depth: Minimum sequencing depth not achieved. DBEC not applied.</li>
+                            <li>Pass: Minimum sequencing depth has been achieved</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <button onclick="loadSteps('step5')">Back to Previous Page</button>

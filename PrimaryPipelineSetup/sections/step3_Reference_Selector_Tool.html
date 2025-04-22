@@ -1,0 +1,171 @@
+<div id="refCheckbox" class="section active">
+    <div class="checkbox-section">
+        <h2>Reference File Information</h2>
+                    <h4>Please check the box applicable to your experimental assay type(s).</h4>
+                    <label class="ref-container">WTA
+                        <input type="checkbox" id="assay1" name="assay1" value="wta" onclick="showCheckboxInfo('assay1', 'wtatext')">
+                        <span class="checkmark"></span></label><br>
+
+                    <label class="ref-container">AbSeq
+                        <input type="checkbox" id="assay2" name="assay2" value="abseq" onclick="showCheckboxInfo('assay2', 'abseqtext')">
+                        <span class="checkmark"></span></label><br>
+
+                    <label class="ref-container">Targeted
+                        <input type="checkbox" id="assay3" name="assay3" value="abseq" onclick="showCheckboxInfo('assay3', 'targetedtext')">
+                        <span class="checkmark"></span></label><br>
+
+                    <label class="ref-container">Custom Design Panel
+                        <input type="checkbox" id="assay4" name="assay4" value="supp" onclick="showCheckboxInfo('assay4', 'supptext')">
+                        <span class="checkmark"></span></label><br>
+
+                    <label class="ref-container">ATAC & ATAC-Multiome
+                        <input type="checkbox" id="assay5" name="assay5" value="atac" onclick="showCheckboxInfo('assay5', 'atactext')">
+                        <span class="checkmark"></span></label><br>
+
+                    <label class="ref-container">VDJ
+                        <input type="checkbox" id="assay7" name="assay7" value="vdj" onclick="showCheckboxInfo('assay7', 'vdjtext')">
+                        <span class="checkmark"></span></label><br>
+
+                    <label class="ref-container">SMK
+                        <input type="checkbox" id="assay8" name="assay8" value="smk" onclick="showCheckboxInfo('assay8', 'smktext')">
+                        <span class="checkmark"></span></label><br>
+                </div>
+                    <div class="card" id="wtatext" style="display:none; background-color: #f1f1f1;">
+                        <h3>Reference files required for WTA </h3>
+                        <p>There are pre-build BD Rhapsody&trade; reference for WTA.</p>
+                        <div class="notice">
+                            <ul>
+                                <li><b>Human (GRCh38|M42):</b>
+                                <a href="https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/RhapRef_Human_WTA_2023-02.tar.gz"> RhapRef_Human_WTA_2023-02.tar.gz</a></li><br>
+                                <li><b>Mouse (GRCm39|M31):</b>
+                                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/RhapRef_Mouse_WTA_2023-02.tar.gz">RhapRef_Mouse_WTA_2023-02.tar.gz</a></li><br>
+                                <li><b>Human (GRCh38|M42) + Mouse (GRCm39|M31):</b>
+                                <a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA/Pipeline-version2.x_WTA_references/RhapRef_Human42Mouse31_WTA_2023-02.tar.gz">RhapRef_Human42Mouse31_WTA_2023-02.tar.gz</a></li>
+                            </ul>
+                        </div>
+                <b>Note:</b>
+                <ul>
+                <li>The assembly annotation by Ensembl (GRCh38, GRCm39), by GENCODE (M42,M31)</li>
+                <li>These links may not be accessible using Internet Explorer browser.</li>
+                <li>The GTF file has been pre-processed to contain information for various gene types.</li>
+                </ul>
+                    </div>
+
+                    <div class="card" id="abseqtext" style="display:none;background-color: #f1f1f1;">
+                        <h3>Reference file required for AbSeq</h3>
+                        <ul>
+                            <li><b>If you are using pre-designed BD AbSeq Immune Discovery Panel:<br></b>Download <a href="https://bd-rhapsody-public.s3.amazonaws.com/AbSeq-references/BDAbSeq_ImmuneDiscoveryPanel.fasta">BDAbSeq_ImmuneDiscoveryPanel.fasta</a>.</li>
+                            <br><li><b>If you are using custom AbSeq Panel or BD OMICS-One Panel, please use the download link below:</b>
+                                <ul>
+                                    <li><a href="https://bd-rhapsody-public.s3.us-east-1.amazonaws.com/AbSeq-references/BD_OO_Immune_Profiler_Protein_Panel.fasta">Immune Profiler Protein Panel</a></li>
+                                    <li><a href="https://bd-rhapsody-public.s3.us-east-1.amazonaws.com/AbSeq-references/BD_OO_B-Cell_Protein_Panel.fasta">B-Cell Protein Panel</a></li>
+                                    <li><a href="https://bd-rhapsody-public.s3.us-east-1.amazonaws.com/AbSeq-references/BD_OO_T-Cell_Protein_Panel.fasta">T-Cell Protein Panel</a></li>
+                                    <li><a href="https://bd-rhapsody-public.s3.us-east-1.amazonaws.com/AbSeq-references/BD_OO_T-Cell_B-Cell_Protein_Panel.fasta">Adaptive Protein Panel</a></li>
+                                </ul>
+                            <br><li><b>If you need custom AbSeq Panel, please select the "AbSeq Custom Reference" option on the right menu.</b></li>
+                            <ul>
+                                <li>You will be navigated to <a href="https://abseq-ref-gen.genomics.bd.com/">BD AbSeq Panel Reference Generator</a> to generate your own reference.</li>
+                                <li>Follow the website instructions on how to generate your own fasta reference file.</li>
+                                <li>This tool will help create the FASTA file required for the 'AbSeq Reference' input in the BD Rhapsod&trade; Pipeline.</li>
+                            </ul>
+                            <br><li><b>Example of fasta file for AbSeq:</b>
+                            <ol type="I">
+                                <li>Fastq header Image <br>
+                                <img src="./assets/images/abseqRef_fasta.png"></li>
+                                <li>Detail on the FASTA header: <p class="notice">AntibodyName:clone|GeneSymbol|SeqID|pAbO</p></li>
+                                <ol type="i">
+                                    <li><b>AntibodyName:clone</b>: The antibody and clone name in BD's catalog.</li>
+                                    <li><b>GeneSymbol</b>: Official human or mouse gene symbol for the target specificity (if applicable).</li>
+                                    <li><b>SeqID</b>: BD's barcode ID for the sequence. </li>
+                                    <li><b>pAbO</b>: Protein antibody oligo. The FASTA header must end in this abbreviation, so that the sequence is recognized as an AbSeq sequence by the analysis pipeline.</li>
+                                </ol>
+                            </ol>
+                        </li>
+                        </li>
+                        </ul>
+                    </div>
+
+                    <div class="card" id="targetedtext" style="display:none;background-color: #f1f1f1;">
+                        <h3>Reference file required for Targeted</h3>
+                        <ul>
+                            <li>If you are using pre-designed panel, please click the link below to download the fasta file.</li>
+                            <li>Alternatively, you can right click and copy the link address to add the file on your Velsera platform. Tutorial can be found here. </li>
+                            <ol type="a">
+                                <br><li><b>Human pre-designed panel:</b>
+                                <ul>
+                                    <li><a href = "https://scomix.bd.com/hc/article_attachments/360059289752/BD_Rhapsody_Immune_Response_Panel_Hs_FASTA.fasta">BD Rhapsody™ Immune Response Panel Hs</a></li>
+                                    <li><a href = "https://scomix.bd.com/hc/article_attachments/360059289712/BD_Rhapsody_Hs_T_Cell_Expression_FASTA.fasta">BD Rhapsody™ T Cell Expression Panel Hs</a></li>
+                                    <li><a href = "https://scomix.bd.com/hc/article_attachments/360059289812/BD_Rhapsody_OncoBC_FASTA.fasta">BD Rhapsody™ Onco-BC Panel Hs</a></li>
+                                </ul></li>
+                                <br><li><b>Mouse pre-designed panel:</b>
+                                <ul>
+                                    <li><a href = https://scomix.bd.com/hc/article_attachments/360059289792/BD_Rhapsody_Immune_Response_Panel_Mm_FASTA.fasta">BD Rhapsody™ Immune Response Panel Mm
+                                    </a></li>
+                                </ul>
+                            </ol><br>
+                            <h3>Gene List for each pre-designed panel:</h3>
+                            <ol type="a">
+                                <br><li><b>Human pre-designed panel (Gene list PDF):</b>
+                                <ul>
+                                    <li><a href = "https://scomix.bd.com/hc/en-us/article_attachments/13766899446029">BD Rhapsody™ Immune Response Panel Gene List</a></li>
+                                    <li><a href = "https://scomix.bd.com/hc/en-us/article_attachments/13766885388685">BD Rhapsody™ T Cell Expression Panel Gene List</a></li>
+                                    <li><a href = "https://scomix.bd.com/hc/en-us/article_attachments/13766899704717">BD Rhapsody™ Onco-BC Panel Gene List</a></li>
+                                </ul></li>
+                                <br><li><b>Mouse pre-designed panel (Gene list PDF):</b>
+                                <ul>
+                                    <li><a href = "https://scomix.bd.com/hc/en-us/article_attachments/13766885162509">BD Rhapsody™ Immune Response Panel Mouse Gene List
+                                    </a></li>
+                                </ul>
+                            </ol>
+                        </ul>
+                    </div>
+
+                    <div class="card" id="supptext" style="display:none;background-color: #f1f1f1;">
+                        <h3>Reference file required for Targeted</h3>
+                        <p>Generally, when supplemental genes are used in a Rhapsody&trade; assay, a custom panel design will be generated.<br>
+                            <b>Please email us as instructed below:</b><br>
+                            <ul>
+                                <li>The reference file will be provided when a custom panel is designed by BD.</li>
+                                <li>Please email the <a href="mailto:biox_support_EMEA@bd.com">BioInformatics Support Team</a> with your <b>Panel ID</b> to obtain your FASTA reference file.</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div class="card" id="atactext" style="display:none; background-color: #f1f1f1;">
+                        <h3>Reference file required for ATAC</h3>
+                        <p>Pre-build specific ATAC reference.</p>
+                        <ul>
+                            <li>If you are using a pre-designed panel, please click the link below to download the FASTA file.</li>
+                            <li>Alternatively, if you are a Velsera platform user, right-click and copy the link address to add the file through HTTPS on your Velsera platform. A tutorial can be found here.</li>
+                            <br><li>Please find the link below to download the applicable reference file.<br>
+                                <ul>
+                                    <li><b>Human (GRCh38|M43):</b><a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Human_WTA-ATAC_2023-08.tar.gz">RhapRef_Human_WTA-ATAC_2023-08.tar.gz</a></li>
+                                    <li><b>Mouse (GRCm39|M31):</b><a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Mouse_WTA-ATAC_2023-09.tar.gz">RhapRef_Mouse_WTA-ATAC_2023-09.tar.gz</a></li>
+                                    <li><b>Human (GRCh38|M43) + Mouse (GRCm39|M31):</b><a href = "https://bd-rhapsody-public.s3.amazonaws.com/Rhapsody-WTA-ATAC/Pipeline-version2.x_WTA_ATAC_references/RhapRef_Human-Mouse_WTA-ATAC_2023-11.tar.gz">RhapRef_Human-Mouse_WTA-ATAC_2023-11.tar.gz</a></li>
+                                </ul>
+                            </li>
+                            <br><li><b>Note:</b>
+                                <ul>
+                                    <li>The assembly annotation by Ensembl (GRCh38, GRCm39), by GENCODE (M42,M31)</li>
+                                    <li>These links may not be accessible using Internet Explorer browser.</li>
+                                    <li>The GTF file has been pre-processed to contain information for various gene types.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card" id="vdjtext" style="display:none; background-color: #f1f1f1;">
+                        <h3>You don't need reference file for VDJ</h3>
+                Please make sure to activate VDJ option in the pipeline settings.
+                    </div>
+
+                    <div class="card" id="smktext" style="display:none; background-color: #f1f1f1;">
+                        <h3>You don't need reference file for SMK</h3>
+                        <p>Please make sure to activate SMK option in the pipeline settings<br>
+                            <ul>
+                                <li>The human and mouse sample kits provide up to 12 species-specific sample tags.</li>
+                                <li>The Flex sample kit provides up to 24 species and cell type agnostic sample tags.</li>
+                                <li>The pipeline automatically adds the Sample Tag sequences to the FASTA reference file.</li>
+                            </ul>
+                        </p>
+                    </div>

@@ -1,0 +1,164 @@
+<h4>VDJ Metrics</h4>
+
+<div class="code">
+    File: [sample_name]_VDJ_metrics.csv
+    <br>
+    File: [sample_name]_VDJ_DBEC_images.tar.gz
+</div>
+
+<p>Metrics specific to TCR and BCR data, also broken down by chain and by cell type (experimental). <br>
+    This file is only output when the experiment included an appropriate TCR/BCR assay, and the VDJ_Version option is selected.
+</p>
+
+<h5>Overall VDJ Metrics</h5>
+<table>
+    <tr><th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Reads_Cellular_Aligned_to_VDJ</td>
+        <td>Number of reads with a valid cell label and UMI that aligned to a VDJ gene segment per chain category.</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Reads_Contig_Assembled</td>
+        <td>Number of cellular VDJ aligned reads that were assembled into a contig.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Reads_VDJ _Annotated</td>
+        <td>Number of reads in contigs passing e-value quality filter.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Reads_Putative</td>
+        <td>Number of Reads_VDJ_Annotated that came from a putative cell.</td>
+        <td>Cartridge workflow performance</td>
+    </tr>
+    <tr>
+        <td>Reads_Corrected</td>
+        <td>Number of putative VDJ reads that are from dominant contigs and remain after distribution-based error correction.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Reads_Corrected</td>
+        <td>Percent reads of the above metric relative to Reads_ Contig_Assembled.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Mean_Reads_Corrected_per_Putative_Cell</td>
+        <td>Average corrected reads per putative cell.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Molecules_VDJ_Annotated</td>
+        <td>Number of molecules represented by reads in Reads_VDJ_Annotated metric.</td>
+        <td>Cell viability<br>Library quality</td>  
+    </tr>
+    <tr>
+        <td>Molecules_Corrected</td>
+        <td>Number of molecules represented by reads in Reads_Corrected metric.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Mean_Molecules_Corrected_per_Putative_Cell</td>
+        <td>Average number of molecules per putative cell (Molecules_Corrected_Putative / num putative cells).</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Dominant_Contigs_Mean_Nucleotide_Length</td>
+        <td>Average protein-coding nucleotide length for all dominant contigs.</td>
+        <td>Library quality</td>
+    </tr>
+    <tr>
+        <td>Dominant_Contigs_Pct_Full_Length</td>
+        <td>Percent of dominant contigs from putative cells that are VDJ full length contigs.</td>
+        <td>Library quality</td>
+    </tr>
+    <tr>
+        <td>Dominant_Contigs_Pct_With_CDR3</td>
+        <td>Percent of dominant contigs from putative cells with CDR3.</td>
+        <td>Library quality</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>Chain_Category</td>
+        <td>Category for chains such as BCR and TCR.</td>
+        <td>VDJ recombination</td>
+    </tr>
+</table>
+
+<h5>Chain type metrics</h5>
+Chain type metrics are identical to overall metrics except that they are split by VDJ chain type, such as TCR Alpha and BCR Kappa. <br>
+
+<h5>Cell type metrics</h5>
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Cell_Type_Experimental</td>
+        <td>Inferred cell type. Cell type is inferred, either from the mRNA targeted panel expression data or from relative counts of BCR vs TCR</td>
+        <td>Sample type<br>mRNA panel</td>
+    </tr>
+    <tr>
+        <td>Number_cells</td>
+        <td>Number of cells classified as this cell type.</td>
+        <td>Sample type</td>
+    </tr>
+    <tr>
+        <td>BCR_Paired_Chains_Pct_Any</td>
+        <td>Percent of cells of each type that had both a BCR heavy chain and BCR light chain (Kappa or Lambda).</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>TCR_Paired_Chains_Pct_Any</td>
+        <td>Percent of cells of each type that had either TCR Alpha and TCR Beta, or TCR Gamma and TCR Delta.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>BCR_Paired_Chains_Pct_Full</td>
+        <td>Percent of cells of each type that had full-length contigs for both BCR heavy chain and BCR light chain (Kappa or Lambda).</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>TCR_Paired_Chains_Pct_Full</td>
+        <td>Percent of cells of each type that had full-length contigs for either TCR Alpha and TCR Beta, or TCR Gamma and TCR Delta.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_Pct_Cells_Positive</td>
+        <td>Percent of cells of each cell type that had at least one valid corrected contig of the listed chain type.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_Pct_Cells_Full_Length</td>
+        <td>Percentage of cells from each cell type which had a full length contig with the listed chain type.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>[chain_type]_Mean_Molecules_per_Cell</td>
+        <td>Mean number of corrected molecules of the listed chain type in each cell type.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+</table>
+
+<h5>High Quality Filtered Cell Matrics</h5>
+High quality filtered cell metrics are identical to cell type metrics, but only for the subset of cells that were designated high-quality B or T cells, as described in the TCR/BCR analysis steps.
+<br>
+<h5>VDJ DBEC Graphs</h5>
+File: [sample_name]_VDJ_DBEC_images.tar.gz
+<p>
+    <ul>
+    <li>A tar.gz file archive containing a PNG image file for each chain type that underwent VDJ DBEC correction.</li>
+    <li>The PNG file depicts a histogram of the "Chain Read Counts per Cell Label" on a Log10 scale.</li>
+    <li>A vertical dotted red line indicates the location of the DBEC threshold that was applied.</li>
+    <li>If a chain type did not have sufficient read depth to undergo DBEC correction, an image will not be generated for that type.</li>
+</ul>
+</p>
+
+<br>
+<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
+<br><br>

@@ -1,0 +1,135 @@
+<h4>VDJ Per Cell</h4>
+<div class="code">File:<br>[sample_name]_VDJ_perCell.csv</div>
+
+<p>
+    <ul>
+        <li>This file is only output when the experiment included an appropriate TCR/BCR assay, and the VDJ_Version option is selected.</li>
+        <li>This file contains the VDJ data for putative cells in the sample.</li>
+        <li>The data is organized by cell index, the same as gene expression data table (RSEC/DBEC_MolsPerCell_MEX.zip).</li>
+        <li>Only dominant contigs is included, with all correction applied.</li>
+    </ul>
+
+    The data columns below: 
+    <ul>
+        <li>Read and molecule counts</li>
+        <li>VDJ gene segments</li>
+        <li>CDR3 sequence</li>
+        <li>Pairing</li>
+        <li>Cell type</li>
+    </ul>
+</p>
+
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Cell_Index</td>
+        <td>Unique cell ID for the cell represented by this row. Cell index will match between VDJ data and gene/AbSeq expression data tables.</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Total_VDJ_Read_Count</td>
+        <td>Total number of error-corrected VDJ reads for all chains in the cell.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Total_VDJ_Molecule_Count</td>
+        <td>Total number of error-corrected VDJ molecules for all chains in the cell.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_V_gene_Dominant</td>
+        <td>Dominant V gene segment identified for this chain type in the cell.</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_D_gene_Dominant</td>
+        <td>Dominant D gene segment identified for this chain type in the cell.</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_J_gene_Dominant</td>
+        <td>Dominant J gene segment identified for this chain type in the cell.</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_C_gene_Dominant</td>
+        <td>Dominant C gene segment identified for this chain type in the cell.</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_CDR3_Nucleotide_Dominant</td>
+        <td>Nucleotide sequence of the dominant clone for this chain type in the cell.</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_CDR3_Translation_Dominant</td>
+        <td>Amino acid sequence of the dominant clone for this chain type in the cell.</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_Read_Count</td>
+        <td>Number of error-corrected reads for this chain type in the cell.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>[chain_type]_Molecule_Count</td>
+        <td>Number of unique error-corrected molecules (UMI)for this chain type in the cell.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>BCR_Paired_Chains</td>
+        <td>True/False — this cell contains at least one error-corrected molecule of each BCR heavy and light (Kappa or Lambda).</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>TCR_Paired_Chains</td>
+        <td>True/False — this cell contains at least one error-corrected molecule of each TCR Alpha and TCR Beta, or TCR Gamma and TCR Delta.</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Cell_Type_Experimental</td>
+        <td>Inferred cell type of this cell index. Cell type is inferred, either from the mRNA targeted panel expression data or from relative counts of BCR vs TCR.</td>
+        <td>Sample type<br>mRNA panel</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>High_Quality_Cell_TCR_BCR</td>
+        <td>True/False - this cell was designated as high quality, having a B or T type, a productive contig, and sufficient VDJ molecules</td>
+        <td>Sample quality<br>Library quality</td>
+    </tr>
+</table>
+
+
+<h4>VDJ Per Cell Uncorrected</h4>
+<div class="code">File:<br>[sample_name]_VDJ_perCell_uncorrected.csv</div>
+
+<p>
+    <ul>
+        <li>Includes all cell IDs – putative and non-putative.</li>
+        <li>Only dominant contigs, no error correction, no chain family consolidation.</li>
+        <li>Data columns below:
+            <ul>
+                <li>Read and molecule counts</li>
+                <li>VDJ gene segments</li>
+                <li>CDR3 sequence</li>
+                <li>Pairing</li>
+                <li>Cell type</li>
+            </ul>
+        </li>
+    </ul>
+</p>
+
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>Putative_ Cell</td>
+        <td>True/False — this cell index was selected as a putative cell based on the mRNA Panel.</td>
+        <td>Cell viability<br>mRNA Panel</td>   
+</table>

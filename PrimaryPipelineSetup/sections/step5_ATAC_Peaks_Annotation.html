@@ -1,0 +1,60 @@
+<h4 id="atacPeaksAnnotation">ATAC Peaks Annotation</h4>
+<div class="code"><ul>
+    <li>[sample_name]_ATAC_Peaks_Annotation.bed.gz</li>
+    <li>[sample_name]_ATAC_Peaks_Annotation.bed.gz.tbi</li>
+</ul>
+</div>
+<dl>
+    <dt>The Peaks Annotation file is a tab-separated gzipped file that connects each peak with genes found nearby, or classifies the peak as intergenic.</dt>
+    <dt>This information is also preloaded in the .cellismo output as unstructured information in muon object.</dt>
+    <dt>In addition to peak coordinates and gene symbols connected to the peak, those connections are classified as promoter or distal and the distance to the nearest transcription start site for that gene is listed.</dt> 
+    <dd>promoter region is -1000 to +100 base pairs from the nearest transcription start site (TSS). </dd>
+    <dd>distal region is outside of the promotor region, but within 20,000 base pairs upstream or downstream of the TSS.</dd>
+    <dd>This peak annotation is an estimate of peak-to-gene connections and does not suggest that each connection is experimentally verified.</dd>
+    <dd>The columns are:</dd>
+</dl>
+
+<table>
+    <tr>
+        <th>Column</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>peak</td>
+        <td>Peak name in form of chrom:start-end</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>gene</td>
+        <td>List of gene connected to the peak, separated by ;</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>distance</td>
+        <td>List of distances of each gene's closest TSS to the peak, separated by ;</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>peak_type</td>
+        <td>List of classification of peak relative to the gene, separated by ;</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Chromosome</td>
+        <td>Chromosome where peak is located</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Start</td>
+        <td>Start coordinate of the peak</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>7</td>
+        <td>End</td>
+        <td>End coordinate of the peak</td> 
+</table>
+<br>
+<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
+<br><br>
