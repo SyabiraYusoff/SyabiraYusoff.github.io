@@ -1,0 +1,404 @@
+<h4>VDJ Dominant Contigs AIRR</h4>
+<div class="code">
+<p>File: [sample_name]_VDJ_Dominant_Contigs_AIRR.tsv</p>
+</div>
+
+<p>
+    <ul>
+        <li>This file is only output when the experiment included an appropriate TCR/BCR assay, and the VDJ_Version option is selected.</li>
+        <li>Includes putative cells and dominant contig for each CellID–chain combination. </li>
+        <li>DBEC adjustment is applied. </li>
+        <li>The file is compliant with the AIRR rearrangement schema and contains additional informational columns in addition to all the mandatory ones.</li>
+        <li>Data columns below:
+            <ul>
+                <li>Cell Identifiers</li>
+                <li>Read and Molecule counts</li>
+                <li>Full trimmed contig nucleotide and amino acid sequence</li>
+                <li>Framework and CDR region nucleotide and amino acid sequence</li>
+                <li>V, D, J, and C gene segments</li>
+                <li>Full length and productive status</li>
+                <li>Refer to <a href="https://docs.airr-community.org/en/stable/datarep/rearrangements.html">docs.airr-community.org/en/stable/datarep/rearrangements.html</a></li>
+            </ul>
+        </li>
+    </ul>
+</p>
+
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>cell_id</td>
+        <td>Unique cell ID for the cell represented by this row. Cell index will match between VDJ data and gene/AbSeq expression data tables</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>cell_type_experimental</td>
+        <td>Inferred cell type. Cell type is inferred, either from mRNA targeted panel expression data or from relative counts of BCR vs TCR</td>
+        <td>Sample type mRNA Panel</td>
+    </tr>
+    <tr>
+        <td>high_quality_cell_tcr_bcr</td>
+        <td>True/False - This cell was designated as high quality, having a B or T type, a productive contig, and sufficient VDJ molecules</td>
+        <td>Sample quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>locus</td>
+        <td>Type of VDJ sequence: one of TRA, TRB, TRG, TRD, IGH, IGK, and IGL</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>sequence_id</td>
+        <td>Unique ID for contig formatted as [cell_id]_[locus]_[number]</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>consensus_count</td>
+        <td>Number of reads for this contig</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>umi_count</td>
+        <td>Number of unique molecules (UMI) for this contig. Previously called "duplicate_count" in an earlier AIRR standard</td>
+        <td>Cell viability<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>sequence</td>
+        <td>Assembled nucleotide sequence of contig after trimming</td>
+        <td>Library quality<br>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_length</td>
+        <td>Length of full contig nucleotide sequence after trimming</td>
+        <td>Library quality<br>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_aa</td>
+        <td>Amino acid sequence of contig after trimming</td>
+        <td>Library quality<br>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_aa_length</td>
+        <td>Length of full contig amino acid sequence after trimming</td>
+        <td>Library quality<br>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_alignment</td>
+        <td>Nucleotide sequence corresponding to VDJ coding region after trimming</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_alignment_length</td>
+        <td>Length of nucleotide sequence corresponding to VDJ coding region after trimming</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_alignment_aa</td>
+        <td>Amino acid sequence corresponding to VDJ coding region after trimming</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>sequence_alignment_aa_length</td>
+        <td>Length of amino acid sequence corresponding to VDJ coding region after trimming</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>junction</td>
+        <td>Junction region nucleotide sequence, where the junction is defined as the CDR3 plus the two flanking conserved codons</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>junction_aa</td>
+        <td>Amino acid translation of the junction</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>productive</td>
+        <td>True/False — there are no stop codons in the protein-coding portion of the sequence</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>rev_comp</td>
+        <td>True/False — the alignment is on the opposite strand (reverse complemented) with respect to the contig sequence. This field is always False for contig sequences from the BD Rhapsody VDJ library</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>complete_VDJ</td>
+        <td>True/False — this cell chain combination contains some amino acid sequence for each framework (FR1-FR4) region and each CDR (1-3) region</td>
+        <td>Library quality<br>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_call</td>
+        <td>V gene segment identified for this contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_support</td>
+        <td>Quality of V gene alignment - lower is better</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>v_cigar</td>
+        <td>CIGAR string for the V gene alignment</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_sequence_start</td>
+        <td>Start position of the V gene in the contig sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_sequence_end</td>
+        <td>End position of the V gene in the contig sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_call</td>
+        <td>First or only D gene segment identified for this contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_support</td>
+        <td>Quality of D gene alignment, lower is better</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>d_cigar</td>
+        <td>CIGAR string for the D gene alignment</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_sequence_start</td>
+        <td>Start position of the D gene in the contig sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_sequence_end</td>
+        <td>End position of the D gene in the contig sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_call</td>
+        <td>J gene segment identified for this contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_support</td>
+        <td>Quality of J gene alignment - lower is better</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>j_cigar</td>
+        <td>CIGAR string for the J gene alignment</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_sequence_start</td>
+        <td>Start position of the J gene in the contig sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_sequence_end</td>
+        <td>End position of the J gene in the contig sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>c_call</td>
+        <td>C gene segment identified for this contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr1</td>
+        <td>Nucleotide sequence of the FR1 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr1_aa</td>
+        <td>Amino acid sequence of the FR1 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr2</td>
+        <td>Nucleotide sequence of the FR2 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr2_aa</td>
+        <td>Amino acid sequence of the FR2 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr3</td>
+        <td>Nucleotide sequence of the FR3 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr3_aa</td>
+        <td>Amino acid sequence of the FR3 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr4</td>
+        <td>Nucleotide sequence of the FR4 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>fwr4_aa</td>
+        <td>Amino acid sequence of the FR4 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>cdr1</td>
+        <td>Nucleotide sequence of the CDR1 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>cdr1_aa</td>
+        <td>Amino acid sequence of the CDR1 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>cdr2</td>
+        <td>Nucleotide sequence of the CDR2 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>cdr2_aa</td>
+        <td>Amino acid sequence of the CDR2 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>cdr3</td>
+        <td>Nucleotide sequence of the CDR3 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>cdr3_aa</td>
+        <td>Amino acid sequence of the CDR3 for the contig</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>germline_alignment</td>
+        <td>Assembled, aligned, full-length inferred germline sequence spanning the same region as the sequence_alignment field</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>germline_alignment_aa</td>
+        <td>Amino acid translation of the assembled germline sequence</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_germline_alignment</td>
+        <td>Aligned V gene germline sequence spanning the same region as the v_sequence_alignment field and including the same set of corrections and spacers (if any)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_germline_alignment_aa</td>
+        <td>Amino acid translation of the v_germline_alignment field</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_germline_alignment</td>
+        <td>Aligned D gene germline sequence spanning the same region as the d_sequence_alignment field and including the same set of corrections and spacers (if any)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_germline_alignment_aa</td>
+        <td>Amino acid translation of the d_germline_alignment field</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_germline_alignment</td>
+        <td>Aligned J gene germline sequence spanning the same region as the j_sequence_alignment field and including the same set of corrections and spacers (if any)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_germline_alignment_aa</td>
+        <td>Amino acid translation of the j_germline_alignment field</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_germline_start</td>
+        <td>Alignment start position in the V gene reference sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>v_germline_end</td>
+        <td>Alignment end position in the V gene reference sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_germline_start</td>
+        <td>Alignment start position in the D gene reference sequence for the first or only D gene (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>d_germline_end</td>
+        <td>Alignment end position in the D gene reference sequence for the first or only D gene (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_germline_start</td>
+        <td>Alignment start position in the J gene reference sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>j_germline_end</td>
+        <td>Alignment end position in the J gene reference sequence (1-based closed interval)</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr>
+        <td>np1_length</td>
+        <td>Nucleotide sequence length of the combined N/P region between the V gene and first D gene alignment or between the V gene and J gene alignments</td>
+        <td>VDJ recombination</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>np2_length</td>
+        <td>Nucleotide sequence length of the combined N/P region between either the first D gene and J gene alignments or the first D gene and second D gene alignments</td>
+        <td>VDJ recombination</td>
+    </tr>
+</table>
+
+
+<h4>VDJ Unfiltered Contigs AIRR</h4>
+<div class="code">
+<p>File: [sample_name]_VDJ_Unfiltered_Contigs_AIRR.tsv</p>
+</div>
+<p>
+    <ul>
+        <li>All cell IDs, all assembled contigs that were successfully annotated.</li>
+        <li>Shared column definitions are identical to the VDJ_Dominant_Contigs_AIRR.tsv file. Here are listed the columns unique to this file.</li>
+        <li>The file is compliant with the AIRR rearrangement schema and contains additional informational columns in addition to all the mandatory ones.</li>
+        <li>Data columns below:
+            <ul>
+                <li>Cell Identifiers</li>
+                <li>Read and Molecule counts</li>
+                <li>Full trimmed contig nucleotide and amino acid sequence</li>
+                <li>Framework and CDR region nucleotide and amino acid sequence</li>
+                <li>V, D, J, and C gene segments</li>
+                <li>Full length and productive status</li>
+                <li>Refer to <a href="https://docs.airr-community.org/en/stable/datarep/rearrangements.html">docs.airr-community.org/en/stable/datarep/rearrangements.html</a></li>
+            </ul>
+        </li>
+    </ul>
+</p>
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Dominant</td>
+        <td>True/False — this contig was selected as the dominant contig for this cell-chain combination.</td>
+        <td>Library quality<br>VDJ recombination</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>Putative_ Cell</td>
+        <td>True/False — this cell index was selected as a putative cell based on the mRNA panel.</td>
+        <td>Cell viability<br>mRNA panel</td>
+    </tr>
+</table>
+

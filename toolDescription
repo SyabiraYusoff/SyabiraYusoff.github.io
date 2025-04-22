@@ -12,3 +12,19 @@ The tool provides a user-friendly interface to input project details, select ass
 - **Output Table**: Displays the volume needed for library normalization and pooling.
 - **Sequencing Platform Recommendations**: Provides recommendations for Illumina sequencing platforms based on the calculated read pairs.
 - **Save as PDF**: Users can save the results as a PDF file for future reference.
+
+
+
+
+
+
+
+
+
+Click <a href="https://bd-rhapsody-public.s3.amazonaws.com/CellLabel/rhapsody_cell_label.py.txt">here </a>to download Cell label structure, cell label sequences, bead sequences, and python utility functions.<br>
+                To download the whitelist in fasta format:
+            <ul>
+                <li>Original V1 beads:<a href="https://bd-rhapsody-public.s3.amazonaws.com/CellLabel/Rhapsody_cellBarcodeV1_IndexToSequence.fasta.zip">Rhapsody_cellBarcodeV1_IndexToSequence.fasta.zip</a></li>
+                <li>Enhanced beads:<a href="https://bd-rhapsody-public.s3.amazonaws.com/CellLabel/Rhapsody_cellBarcodeEnh_IndexToSequence.fasta.zip">Rhapsody_cellBarcodeEnh_IndexToSequence.fasta.zip</a></li>
+                <li>Enhanced V2/V3 beads:<a href="https://bd-rhapsody-public.s3.amazonaws.com/CellLabel/Rhapsody_cellBarcodeEnhV2_IndexToSequence.fasta.zip">Rhapsody_cellBarcodeEnhV2_IndexToSequence.fasta.zip</a></li>
+            </ul>

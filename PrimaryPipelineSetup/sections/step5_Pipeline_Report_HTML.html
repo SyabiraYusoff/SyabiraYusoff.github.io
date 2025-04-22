@@ -1,0 +1,487 @@
+<h2>Pipeline Report HTML:</h2>
+<br>
+<p class="code">File:[sample_name]_Pipeline_Report.html</p>
+
+<p><b>Overview</b>: The pipeline report is a stand-alone HTML file that doesn't need an internet connection, making it easy to share.</p>
+<p><b>Features:</b>
+    <ul>
+        <li><b>Interactive Metrics</b>: Hover over metrics to reveal specific information.</li>
+        <li><b>Graphs Section</b>: Visualize results with several graphs.</li>
+        <li><b>Sequencing Summary Metrics</b>: Includes the number of reads, cells, and other key metrics.</li>
+        <li><b>Cell Calling Summary</b>: Shows the number of putative cells and molecules detected.</li>
+        <li><b>Immune Cell Type Classification</b>: Lists the number of cells classified by type.</li>
+        <li><b>Pipeline Inputs Section</b>: Details the inputs used for the analysis, allowing reproduction of the same results.</li>
+    </ul>
+</p>
+
+<h3>Summary Section</h3>
+<img class="biggerImg" src="./assets/images/VDJ_WTA_summaryHTML.png" alt="">
+<ol>
+<li>Putative cells
+<b>Cell Labels</b>: The number of unique cell labels detected should match the number of cells captured and amplified. However, noise can introduce extra cell labels due to:
+    <ul>
+      <li><b>PolyA Oligonucleotides</b>: Hybridization to non-cell beads if cell lysis is too long.</li>
+      <li><b>Under-loading Beads</b>: Cells without beads cause RNA to diffuse to adjacent wells.</li>
+      <li><b>Oligo Contamination</b>: Low-level contamination during bead synthesis.</li>
+      <li><b>PCR Errors</b>: Errors during PCR amplification steps.</li>
+    </ul>
+Further reading for <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#determine-putative-cells">Putative Cell Algorithm</a>.</li><br>
+
+<li>Total Reads in FASTQ
+  <ul><b>Reads Count</b>: Should reflect the amount needed for sequencing from your calculator. Indicates if your provider sequenced enough reads.</ul>
+</li><br>
+
+<li>Pct Reads Passing Quality Filter
+<ul>
+  <li><b>Quality Filter</b>: Higher percentage passing is better. Detailed sections in the HTML file show granularity for each filter<br>
+Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_quality_filter.html#quality-filter">Quality Filter</a>.</li>
+</ul>
+</li><br>
+
+<li>Aligned Reads By Type
+<ul>
+  <li><b>Reads Count</b>: Should match around the total needed per assay (in millions). If lower, check:
+    <ul>
+      <li>Total Reads in FASTQ</li>
+      <li>Pct Reads Passing Quality Filter</li>
+    </ul>
+  </li>
+</ul></li><br>
+
+<li>Mean Reads Per Cell
+<ul>
+  <li><b>Reads Per Cell: Should be close to the assigned reads per cell on the calculator. If lower, check:</b>: Should be close to the assigned reads per cell on the calculator. If lower, check: <ul>
+    <li>Total Reads in FASTQ</li>
+    <li>Pct Reads Passing Quality Filter</li>
+  </ul>
+</li>
+</ol>
+<hr>
+
+<h3>Graph Section</h3>
+
+<p>The graph section has several interactive graphs highlighting some of the most important results from the analysis.
+  For pipeline runs that identify more than 100,000 putative cells, tSNE, UMAP and histogram graphs will show a random sub-sample of 100,000 cells.</p>
+
+  <div style="text-align:center">
+    <h2>Exampe of Graphs</h2>
+    <p>Click on the images below:</p>
+  </div>
+  
+  <!-- The four columns -->
+  <div class="row">
+    <div class="column">
+      <img src="./assets/images/graph_CD4pabo_HTML.png" alt="Example: CD4 AbSeq Bioproduct Expression" style="width:100%" onclick="displayTabbedGraph(this, 'image1');">
+    </div>
+    <div class="column">
+      <img src="./assets/images/graph_abseq_HTML.png" alt="AbSeq (Total Molecules per cell)" style="width:100%" onclick="displayTabbedGraph(this, 'image2');">
+    </div>
+    <div class="column">
+      <img src="./assets/images/graph_mrna_HTML.png" alt="mRNA (Total Molecules per cell)" style="width:100%" onclick="displayTabbedGraph(this, 'image3');">
+    </div>
+    <div class="column">
+      <img src="./assets/images/graph_immuneCellType_HTML.png" alt="Immune Cell Type Classification" style="width:100%" onclick="displayTabbedGraph(this, 'image4');">
+    </div>
+    <div class="column">
+      <img src="./assets/images/graph_smk_HTML.png" alt="Sample Multiplexing (SMK)" style="width:100%" onclick="displayTabbedGraph(this, 'image5');">
+    </div>
+    <div class="column">
+      <img src="./assets/images/graph_BCR_HTML.png" alt="BCR" style="width:100%" onclick="displayTabbedGraph(this, 'image6');">
+    </div>
+    <div class="column">
+      <img src="./assets/images/graph_TCR_HTML.png" alt="TCR" style="width:100%" onclick="displayTabbedGraph(this, 'image7');">
+    </div>
+    <div class="column">
+      <img  src="./assets/images/graph_ATAC_HTML.png" alt="ATAC" style="width:100%" onclick="displayTabbedGraph(this, 'image8');">
+    </div>
+  </div>
+
+  <div class="tabbed-container">
+    <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+    <img id="expandedImg" style="width:100%">
+    <div id="imgtext"></div>
+  </div>
+
+  <div id="image1" style="display:none;">
+    <p>Example: Bioproduct Expression (CD4 AbSeq)</p>
+    <ol>
+      <li>Graph Overview:
+        <ul>
+          <li><b>tSNE/UMAP</b>: On the left, each dot represents a putative cell, colored by the log10 expression of the selected AbSeq target or mRNA gene.</li>
+          <li><b>Histogram</b>: On the right, shows the distribution of expression for all cells for the selected target or gene.</li>
+        </ul>
+      </li>
+      <li>Data Selection:
+        <ul>
+          <li><b>Default</b>: The bioproduct with the highest expression is selected by default.</li>
+          <li><b>Dropdown List</b>: AbSeq targets and mRNA genes are sorted by total expression, with AbSeq targets shown first.</li>
+        </ul>
+      </li>
+      <li>Display:
+        <ul>
+          <li><b>Dropdown List</b>: For experiments with many bioproducts, only the most highly, widely, and variably expressed genes plus all AbSeq targets are shown.</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+  <div id="image2" style="display:none;">
+    <p>AbSeq (Total Molecules per cell)</p>
+    <ol>
+      <li>Graph Overview:
+        <ul>
+          <li><b>tSNE/UMAP</b>: On the left, each dot represents a putative cell, colored by the log10 total expression of AbSeq targets.</li>
+          <li><b>Histogram</b>: On the right, shows the distribution of expression for all cells for AbSeq targets.</li>
+        </ul>
+      </li>
+      </ol>
+  </div>
+  <div id="image3" style="display:none;">
+    <p>mRNA (Total Molecules per cell)</p>
+    <ol>
+      <li>Graph Overview:
+        <ul>
+          <li><b>tSNE/UMAP</b>: On the left, each dot represents a putative cell, colored by the log10 total expression of mRNA targets.</li>
+          <li><b>Histogram</b>: On the right, shows the distribution of expression for all cells for mRNA targets.</li>
+        </ul>
+      </li>
+      </ol>
+  </div>
+  <div id="image4" style="display:none;">
+    <p>Immune Cell Type Experimental</p>
+    <p>The Immune Cell Type Experimental graph displays the tSNE/UMAP plot, with each cell labeled based on the results from the Cell Type prediction algorithm.</p>
+
+  </div>
+  <div id="image5" style="display:none;">
+    <p>Sample Multiplexing (SMK)</p>
+    <p>The Sample Multiplexing tSNE/UMAP plot shows the cells labeled by sample tag and includes the multiplet and undetermined cell labels.</p>
+  </div>
+  <div id="image6" style="display:none;">
+    <p>VDJ BCR Paired Chains</p>
+    <p>The VDJ BCR Paired Chains tSNE/UMAP plots show the clusters of cells with BCR paired chains.</p>
+  </div>
+  <div id="image7" style="display:none;">
+    <p>VDJ TCR Paired Chains</p>
+    <p>The VDJ TCR Paired Chains tSNE/UMAP plots show the clusters of cells with TCR paired chains.</p>
+  </div>
+  <div id="image8" style="display:none;">
+    <p>Total Transposase Sites in Peaks per cell (ATAC-Seq)</p>
+    <ol>
+      <li>Graph Overview:
+        <ul>
+          <li><b>tSNE/UMAP</b>: On the left, each dot represents a putative cell, colored by the log10 total transposase sites in peaks.</li>
+          <li><b>Histogram</b>: On the right, shows the distribution of total transposase sites in peaks for all cells.</li>
+        </ul>
+      </li>
+      </ol>
+  </div>
+  <hr>
+
+  <h3>Metrics Section</h3>
+  <p> There are several sections in the pipeline report providing details about specific metrics. 
+    <ul>
+      <li>The main bioproduct sections cover: 
+      <ul>
+        <li>
+          <details>
+          <summary>Sequencing Quality</summary>
+          <img src="./assets/images/VDJ_WTA_seqQualityHTML.png" alt="Sequencing Quality">
+          <ol>
+            <li>Pct Read Pair Overlap:
+              <ul>
+                <li><b>Purpose</b>: Tests if Read1 and Read2 overlap to remove R1 content from R2.</li>
+                <li><b>Importance</b>: Prevents misalignment and misassembly of cell label sequences in Read2.</li>
+                <li><b>Note</b>: This step does not remove any read pairs from subsequent steps.</li>
+                <li><b>Use</b>: Helps troubleshoot PCR cleanup and library preparation.</li>
+              </ul>
+            </li>
+            <li>Pct Reads Too Short
+              <ul>
+                <li><b>Purpose</b>: Shows the percentage of read pairs filtered out due to short length.</li>
+                <li><b>Criteria</b>:
+                  <ul>
+                    <li>R1 read < bead-specific minimum length.</li>
+                    <li>R2 read < 40 bp.</li>
+                  </ul>
+                </li>
+                <li>R1/R2 Minimum Lengths:
+                  <ul>
+                    <li>Original V1: R1 = 60, R2 = 40</li>
+                    <li>Enhanced dT 3': R1 = 43, R2 = 40</li>
+                    <li>Enhanced TCR/BCR: R1 = 63, R2 = 40</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Pct Reads Low Base Quality
+              <ul>
+                <li><b>Purpose</b>: Shows the percentage of read pairs filtered out due to low base quality.</li>
+                <li><b>Criteria</b>:
+                  <ul>
+                    <li>R1 read quality < 20.</li>
+                    <li>R2 read quality < 20.</li>
+                  </ul>
+                </li>
+                <li>Use: Helps troubleshoot PCR cleanup and library preparation.</li>
+              </ul>
+            </li>
+            <li>Pct Reads High SNF
+              <ul>
+                <li><b>Purpose</b>: Shows the highest Single Nucleotide Frequency (SNF) across the read bases. This criteria removes reads with low complexity such as strings of identical bases and tandem repeats.</li>
+                <li><b>Criteria</b>:
+                  <ul>
+                    <li>SNF ≥ 0.55 for R1.</li>
+                    <li>SNF ≥ 0.80 for R2.</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>Pct Reads Filtered Out
+              <ul>
+                <li><b>Purpose</b>: Shows the percentage of reads removed due to length, quality, and SNF combined.</li>
+              </ul>
+            </li>
+          </ol>
+          <p>
+            Further reading for <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_quality.html#read-quality-filter">Sequencing Quality</a>.
+          </p></details></li>
+
+          <li><details>
+          <summary>Library Quality</summary>
+          <img src="./assets/images/VDJ_WTA_libQualityHTML.png" alt="Library Quality">
+          <p>This section giving more details on: 
+            <ul>
+            <li>Total Filtered Reads: This is the remaining reads after Filtering.</li>
+            <li>Pct Q30 Bases in Filtered R2</li>
+            <li>Pct CellLabel UMI</li>
+            <li>Pct CellLabel UMI Aligned Uniquely</li>
+            <li>Pct Reads Useful</li></ul>
+          </p>
+          <p>Further reading for <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_cell_label.html">Cell Label UMI annotation</a> </p>
+        </details></li>
+        <li><details>
+          <summary>Alignment Categories</summary>
+          <img src="../assets/images/HTML_bioproduct_alignment.png">
+          <p>
+            <ol>
+              <li>Overview: Shows the percentage of reads aligned to specific regions or assays.</li>
+              <li>If the same FASTQ file contain multiple assay, the percentage of each assay will be provided on the same row.</li>
+            </ol>
+            Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_align.html">Alignment to Reference</a>.
+            <br>
+            
+          </p>
+        </details></li>
+        <li><details>
+          <summary>Reads and Molecules</summary>
+          <p>Our reads will go through Recursive Substitution Error Correction (RSEC). Further reading on <a href="Molecules and Error Correction">Molecules and Error Correction</a>. </p>
+        </details></li>
+        </li></ul>
+        <li>The ATAC assay sections covering: 
+        <ul>
+          <li>Sequencing Quality</li>
+          <li>Library Quality</li>
+          <li>Alignment Categories</li>
+          <li><details><Summary>Fragments</Summary>
+              ATAC Fragments <br>
+                <img src="./assets/images/HTML_atacFgraments.png">
+                <ul>
+                  <li>ATAC Fragment Lenght Distribution Plot
+                    <ul>
+                      <li><b>Chromatin Organization</b>: Healthy cell chromatin is organized into nucleosomes by wrapping DNA around histone proteins.</li>
+                      <li><b>Fragment Lengths</b>: DNA within nucleosomes is not accessible to Tn5 transposase, leading to a multi-peaked length distribution in ATAC-Seq experiments.
+                        <ul>
+                          <li><b>Nucleosome-Free Region (NFR)</b>: Fragments <147 bp.</li>
+                          <li><b>Mononucleosomal Length</b>: Fragments between 147-294 bp.</li>
+                        </ul>
+                      </li>
+                      <li><b>Quality Indicator</b>: Lack of NFR, mononucleosomal, and dinucleosomal peaks suggests low-quality experiments, often due to dead/dying cells or poor sample handling.</li>
+                    </ul>
+                  </li>
+                  </ul></details></li>
+
+          <li><details><summary>Peaks</summary>
+            ATAC Peak<br>
+            <img src="./assets/images/HTML_atacPeaks.png">
+            <ul>
+            <li><b>TSS Enrichment</b>: Measures Tn5 activity around Transcription Start Sites (TSS).
+              <ul>
+                <li><b>Regions Analyzed</b>: 2000 bp upstream and downstream of TSS.</li>
+                <li><b>Normalization</b>: Tn5 site counts are normalized by the background rate of Tn5 activity.</li>
+              </ul>
+            </li>
+            <li><b>Enrichment Score</b>: Defined as the peak value of the TSS Enrichment Plot.</li>
+          </li>
+          </ul></details></li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+
+  <hr>
+
+  <H3>Cells</H3>
+
+  <p>The Cells section provides interactive graphs from the basic and refined cell calling algorithms that were described in <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html">Determine Putative Cells section</a> . 
+    It also includes cell related metrics for all bioproducts and ATAC-Seq data that was included.</p>
+  
+    <div style="text-align:center">
+      <h2>Cell Calling Graphs</h2>
+      <p>Click on the images below:</p>
+    </div>   
+    
+    <!-- The four columns -->
+    <div class="row">
+      <div class="column">
+        <img src="./assets/images/graph_CD4pabo_HTML.png" alt="Bioproduct Cell Calling (mRNA/AbSeq)" style="width:100%" onclick="displayTabbedCC(this, 'image9');">
+      </div>
+      <div class="column">
+        <img src="./assets/images/graph_abseq_HTML.png" alt="ATAC Cell Calling" style="width:100%" onclick="displayTabbedCC(this, 'image10');">
+      </div>
+      <div class="column">
+        <img src="./assets/images/graph_mrna_HTML.png" alt="Joint mRNA and ATAC Cell Calling" style="width:100%" onclick="displayTabbedCC(this, 'image11');">
+      </div>
+    </div>
+  
+    <div class="tabbed-container">
+      <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+      <img id="expandedImg2" style="width:100%">
+      <div id="imgtext2"></div>
+    </div>
+  
+    <div id="image9" style="display:none;">
+      <h5>Bioproduct Cell Calling</h5>
+      <p>
+        <ol>
+          <li>Default algorithm:
+            <ul><li>The Basic Cell Calling Algorithm is used for bioproducts by default.</li></ul>
+          </li>
+          <li><a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#basic-algorithm-for-putative-cell-identification-using-second-derivative-analysis">Basic Cell Calling Algorithm</a>:
+            <ul><li>The second derivative plot is displayed on top of the cumulative read plot.</li>
+            <li>The basic cell line is shown in red.</li>
+            <li>Hovering over the graph will display a vertical line indicating the number of putative cells on the cumulative read plot.</li>
+            <li>All general graph functionalities are available (see General Graph Functionality for details).</li>
+          </ul>
+          </li>
+          <li><a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#refined-algorithm-for-adjusting-putative-cell-counts-for-mrna-and-abseq">Refined Algorithm</a>:
+            <ul><li>For pipeline runs using the Refined Algorithm for mRNA and AbSeq::
+              <ul>
+                <li>The number of false positive, false negative, and low molecule count cells are shown.</li>
+                <li>These numbers together show how the final refined cell call number was derived.</li>
+              </ul>
+            </li></ul>
+          </li>
+        </ol></p>
+    </div>
+    <div id="image10" style="display:none;">
+      <h5>ATAC Cell Calling</h5>
+      <p>
+        <ol>
+          <li>Default algorithm:
+            <ul><li>The Basic Cell Calling Algorithm is used for ATAC-Seq by default.</li></ul>
+          </li>
+          <li><a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#basic-algorithm-for-putative-cell-identification-using-second-derivative-analysis">Basic Cell Calling Algorithm</a>:
+            <ul><li>The second derivative plot is displayed on top of the cumulative transposase sites in peaks plot.</li>
+            <li>The basic cell line is shown in red.</li>
+            <li>Hovering over the graph will display a vertical line indicating the number of putative cells on the cumulative read plot.</li>
+            <li>All general graph functionalities are available (see General Graph Functionality for details).</li>
+          </ul>
+          </li>
+          <li><a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#refined-algorithm-for-adjusting-putative-cell-counts-for-mrna-and-abseq">Refined Algorithm</a>:
+            <ul><li>For pipeline runs using the Refined Algorithm for ATAC-Seq:
+              <ul>
+                <li>Putative cell and non-cell clusters from the Gaussian Mixture Model (GMM) refined algorithm are shown on a scatter plot.</li>
+                <li>The x-axis represents the number of transposase sites in peaks.</li>
+                <li>The y-axis represents the fraction of transposase sites in peaks.</li>
+              </ul>
+            </li></ul>
+          </li>
+          <li>Details and Reporting:
+            <ul>
+              <li>The initial number of putative cells is determined by the first and second GMMs using both the number and fraction of transposase sites in peaks.</li>
+              <li>False positive and false negative cell labels are identified in the final refitting step.</li>
+            </ul>
+          </li>
+        </ol></p>
+    </div>
+    <div id="image11" style="display:none;">
+      <h5>Joint mRNA and ATAC Cell Calling</h5>
+      <p>
+        <ol>
+          <li>Default algorithm:
+            <ul><li>The Basic Cell Calling Algorithm is used for ATAC-Seq by default.</li></ul>
+          </li>
+          <li><a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#basic-algorithm-for-putative-cell-identification-using-second-derivative-analysis">Basic Cell Calling Algorithm</a>:
+            <ul><li>The second derivative plot is displayed on top of the cumulative transposase sites in peaks plot.</li>
+            <li>The basic cell line is shown in red.</li>
+            <li>Hovering over the graph will display a vertical line indicating the number of putative cells on the cumulative read plot.</li>
+            <li>All general graph functionalities are available (see General Graph Functionality for details).</li>
+          </ul>
+          </li>
+          <li><a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_putative_cells.html#refined-algorithm-for-adjusting-putative-cell-counts-for-atac-seq">Refined Algorithm</a>:
+            <ul><li>For pipeline runs using the Refined Algorithm for ATAC-Seq:
+              <ul>
+                <li>Putative cell and non-cell clusters from the Gaussian Mixture Model (GMM) refined algorithm are shown on a scatter plot.</li>
+                <li>The x-axis represents the number of transposase sites in peaks.</li>
+                <li>The y-axis represents the fraction of transposase sites in peaks.</li>
+              </ul>
+            </li></ul>
+          </li>
+          <li>Details and Reporting:
+            <ul>
+              <li>The initial number of putative cells is determined by the first and second GMMs using both the number and fraction of transposase sites in peaks.</li>
+              <li>False positive and false negative cell labels are identified in the final refitting step.</li>
+            </ul>
+          </li>
+        </ol></p>
+    </div>
+    <hr>
+
+
+    <h3>Sample Multiplexing</h3>
+    <ol>
+      <li>Summary Information:
+        <ul>
+          <li>Number of filtered reads aligned to sample tags.</li>
+          <li>Percentage of sample tag reads assigned to putative cells.</li>
+        </ul>
+      </li>
+      <li>Detailed Section:
+        <ul>
+          <li>Number and percentage of reads assigned to each sample tag.</li>
+          <li>Number and percentage of cells for each sample tag.</li>
+          <li>Number of reads per cell and mean reads per cell for each sample tag.</li>
+          <li>Number of multiplets and undetermined cells.</li>
+        </ul>
+      </li>
+    </ol>
+<hr>
+    <h3>VDJ</h3>
+    <p>
+    <ol>
+      <li>Reads Table:
+        <ul>
+          <li>Shows summary information for Chain Category (BCR/TCR).</li>
+        </ul>
+      </li>
+      <li>Molecules and Dominant Contigs Table:
+        <ul>
+          <li>Shows summary information for Chain Category (BCR/TCR).</li>
+        </ul>
+      </li>
+      <li>Cell Type Specific Metrics:
+        <ul><li>Four tables available from the dropdown menu:
+          <ul>
+            <li>Paired Chains Percentage.</li>
+            <li>Percentage of Cells Positive.</li>
+            <li>Percentage of Cells Full Length.</li>
+            <li>Mean Molecules per Cell.</li>
+          </ul>
+        </li></ul>
+      </li>
+    </ol>
+    Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_tcr_bcr.html">VDJ Anlysis Algorithm</a>.
+  </p>
+
+
+
+

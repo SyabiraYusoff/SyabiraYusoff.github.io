@@ -1,0 +1,307 @@
+<h4 id="atacMetrics">ATAC Metrics</h4>
+
+<div class="code"><ul>
+    <li>[sample_name]_ATAC_Metrics.json</li>
+    <li>[sample_name]_ATAC_Metrics.csv</li>
+</ul>
+</div>
+
+<h5>Sequencing Quality</h5>
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Total_Reads_in_FASTQ</td>
+        <td>Number of (R1, R2, I2) reads in the ATAC input FASTQ files</td>
+        <td>Sequencing amount</td>
+    </tr>
+    <tr>
+        <td>Reads_Too_Short</td>
+        <td>Number of reads filtered out due to length of either I2 (minimum to derive cell label) or R1/R2 (<30 bp)</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Reads_Too_Short</td>
+        <td>Percentage of reads filtered out due to length of either I2 (minimum to derive cell label) or R1/R2 (<30 bp)</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Reads_Low_Base_Quality</td>
+        <td>Number of reads filtered out due to average base quality score <20</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Reads_Low_Base_Quality</td>
+        <td>Percentage of reads filtered out due to average base quality score <20</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Reads_High_SNF</td>
+        <td>Number of reads filtered out due to single nucleotide frequency >=55% for I2 or >=80% for R1 or R2 - low complexity reads will not result in a useful cell label or alignment</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Reads_High_SNF</td>
+        <td>Percentage of reads filtered out due to single nucleotide frequency >=55% for I2 or >=80% for R1 or R2 - low complexity reads will not result in a useful cell label or alignment</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Reads_Filtered_Out</td>
+        <td>Percentage of reads removed by the combination of length, quality, and SNF filters</td>
+        <td>Sequencing quality</td>
+    </tr>
+</table>
+
+<h5 id="atacLibraryQuality">Library Quality</h5>
+<table>
+    <th>Metric</th>
+    <th>Definition</th>
+    <th>Major contributing factors</th>
+    <tr>
+        <td>Total_Filtered_Reads</td>
+        <td>Number of reads after length, quality, and SNF filtering</td>
+        <td>Sequencing amount<br>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Q30_Bases_in_Filtered_R1</td>
+        <td>Percentage of R1 bases with quality score >30, averaged across all reads retained after quality filtering</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Q30_Bases_in_Filtered_R2</td>
+        <td>Percentage of R2 bases with quality score >30, averaged across all reads retained after quality filtering</td>
+        <td>Sequencing quality</td>
+    </tr>
+    <tr>
+        <td>Pct_CellLabel</td>
+        <td>Percentage of filtered reads with a valid cell label (I2)</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Reads_CellLabel_Aligned_Confidently</td>
+        <td>Number of filtered reads containing a valid cell label (I2) that aligned with Mapping Quality of R1 and R2 >= 30</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_CellLabel_Aligned_Confidently</td>
+        <td>Percentage of filtered reads containing a valid cell label (I2) that aligned with Mapping Quality of R1 and R2 >= 30</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Useful_ATAC_Reads</td>
+        <td>Percentage of filtered reads containing a valid cell label (I2) that aligned confidently (Mapping Quality of R1 and R2 >= 30) to a non-mitochondrial chromosome with an appropriate fragment size (>= 10 and <= 5000)</td>
+        <td>Sequencing quality<br>Library quality<br>Sample preparation</td>
+    </tr>
+</table>
+
+<h5 id="atacAlignmentCategories">Alignment Categories</h5>
+<table>
+    <tr>
+        <th>Metrics</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th> 
+    </tr>
+    <tr>
+        <td>Total_CellLabel_Reads</td>
+        <td>Number of filtered reads with a valid cell label (I2)</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Total_Nuclear_Fragment_Reads</td>
+        <td>Number of cell label reads that aligned confidently (MQ of R1 and R2 >= 30) to a non-mitochondrial chromosome with an appropriate fragment size (>= 10 and <= 5000)</td>
+        <td>Sequencing quality<br>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Pct_Nuclear_Fragments</td>
+        <td>Percentage of cell label reads that aligned confidently (Mapping Quality of R1 and R2 >= 30) to a non-mitochondrial chromosome with an appropriate fragment size (>= 10 and <= 5000)</td>
+        <td>Sequencing quality<br>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Reads_Invalid_Fragments</td>
+        <td>Number of cell label reads that aligned confidently (Mapping Quality of R1 and R2 >= 30) but R1 and R2 aligned to different chromosomes or had an inappropriate fragment size (<= 10 or >= 5000)</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Invalid_Fragments</td>
+        <td>Percentage of cell label reads that aligned confidently (Mapping Quality of R1 and R2 >= 30) but R1 and R2 aligned to different chromosomes or had an inappropriate fragment size (<= 10 or >= 5000)</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Reads_Mitochondrial</td>
+        <td>Number of cell label reads that aligned confidently (Mapping Quality of R1 and R2 >= 30) to the mitochondrial chromosome</td>
+        <td>Sequencing quality<br>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Pct_Mitochondrial</td>
+        <td>Percentage of cell label reads that aligned confidently (Mapping Quality of R1 and R2 >= 30) to the mitochondrial chromosome</td>
+        <td>Sequencing quality<br>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Reads_Aligned_Not_Confidently</td>
+        <td>Number of cell label reads that did not align confidently (Mapping Quality of R1 or R2 < 30) to reference</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Aligned_Not_Confidently</td>
+        <td>Percentage of cell label reads that did not align confidently (Mapping Quality of R1 or R2 < 30) to reference</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Reads_Unaligned</td>
+        <td>Number of cell label reads with either R1 or R2 unaligned to reference</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Unaligned</td>
+        <td>Percentage of cell label reads with either R1 or R2 unaligned to reference</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>  
+</table>
+
+<h5 id="atacFragments">Fragments</h5>
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Total_Nuclear_Fragment_Reads</td>
+        <td>Number of cell label reads that aligned confidently (MQ of R1 and R2 >= 30) to a non-mitochondrial chromosome with an appropriate fragment size (>= 10 and <= 5000)</td>
+        <td>Sequencing quality<br>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Total_Nonduplicate_Fragments</td>
+        <td>Number of fragments remaining after removing duplicate fragments and cell labels that have zero fragments in peak regions</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Duplicate_Fragments</td>
+        <td>Percentage of total nuclear fragment reads that were found to be duplicates</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Nonduplicate_Fragments_from_Cell_Labels</td>
+        <td>Number of non-duplicate fragments associated with cell labels that have at least one fragment that overlaps a peak region</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Nonduplicate_Fragments_from_Cell_Labels</td>
+        <td>Percentage of non-duplicate fragments associated with cell labels that have at least one fragment that overlaps a peak region</td>
+        <td>Sequencing quality<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Nonduplicate_Fragments_with_NFR_Lengths</td>
+        <td>Percentage of non-duplicate fragments with nucleosome-free-region (NFR) lengths < 147 bp</td>
+        <td>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Pct_Nonduplicate_Fragments_with_Mononucleosomal_Lengths</td>
+        <td>Percentage of non-duplicate fragments with mononucleosome lengths (>= 147 bp and <= 294 bp)</td>
+        <td>Library quality<br>Sample preparation</td>
+    </tr>
+</table>
+
+<h5 id="atacPeaks">Peaks</h5>
+<table>
+    <tr>
+        <th>Metric</th>
+        <th>Definition</th>
+        <th>Major contributing factors</th>
+    </tr>
+    <tr>
+        <td>Total_Transposase_Sites</td>
+        <td>Number of transposase sites</td>
+        <td>Total_Nonduplicate_Fragments</td>
+    </tr>
+    <tr>
+        <td>Total_Peaks</td>
+        <td>Number of peaks (genomic regions of Tn5-accessible chromatin) identified</td>
+        <td>Library quality<br>Sample preparation<br>Sequencing depth</td>
+    </tr>
+    <tr>
+        <td>Total_Peak_Basepairs</td>
+        <td>Total basepair width of all the called peaks combined</td>
+        <td>Genome size<br>Cell Type<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Pct_Genome_Within_Peaks</td>
+        <td>Percentage of total reference genome width that falls within chromatin accessibility peak regions</td>
+        <td>Cell Type<br>Library quality</td>
+    </tr>
+    <tr>
+        <td>Fraction_of_Fragments_Overlapping_Peaks</td>
+        <td>Percentage of non-duplicate fragments overlapping peak regions</td>
+        <td>Library quality<br>Sample preparation<br>Pct_Genome_Within_Peaks</td>
+    </tr>
+    <tr>
+        <td>Fraction_of_Transposase_Sites_in_Peaks</td>
+        <td>Percentage of transposase sites that fall within peak regions</td>
+        <td>Library quality<br>Sample preparation<br>Pct_Genome_Within_Peaks</td>
+    </tr>
+    <tr>
+        <td>TSS_Enrichment_Score</td>
+        <td>Transcription Start Site (TSS) enrichment score: calculated from aggregate distribution of transposase sites in the region extending 2000bp in either direction of all annotated TSSs, normalized against the (background) average number of transposase sites in the first and last 100bp of the 4001bp region</td>
+        <td>Library quality<br>Sample preparation<br>Cell type</td>
+</table>
+
+<h5 id="atacPutativeCells">Putative Cells</h5>
+<table>
+    <th>Metric</th>
+    <th>Definition</th>
+    <th>Major contributing factors</th>
+    <tr>
+        <td>Total_Putative_Cells</td>
+        <td>Total number of cell indexes that were identified as likely corresponding to individual cell nuclei in the sample</td>
+        <td>Library quality<br>Sample preparation</td>
+    </tr>
+    <tr>
+        <td>Pct_Reads_from_Putative_Cells</td>
+        <td>Percentage of ATAC reads assigned to putative cells</td>
+        <td>Library quality</td>
+    </tr>
+    <tr>
+        <td>Mean_Reads_per_Cell</td>
+        <td>Average number of ATAC reads per putative cell</td>
+        <td>Library quality<br>Sequencing depth</td>
+    </tr>
+    <tr>
+        <td>Median_Reads_per_Cell</td>
+        <td>Median number of ATAC reads per putative cell</td>
+        <td>Library quality<br>Sequencing depth</td>
+    </tr>
+    <tr>
+        <td>Median_Pct_Nonredundant_Read_Pairs_per_Cell</td>
+        <td>Median value of the percentage of ATAC reads from each putative cell that non-redundantly identify an ATAC fragment</td>
+        <td>Library quality<br>Sequencing depth</td>    
+    </tr>
+    <tr>
+        <td>Median_Nonduplicate_Fragments_per_Cell</td>
+        <td>Median number of non-duplicate fragments per cell</td>
+        <td>Library quality<br>Sequencing depth</td>    
+    </tr>
+    <tr>
+        <td>Total_Nonduplicate_Fragments_from_Putative_Cells</td>
+        <td>Number of non-duplicate fragments associated with putative cells</td>
+        <td>Library quality<br>Sequencing depth</td>
+    </tr>
+    <tr>
+        <td>Pct_Nonduplicate_Fragments_from_Putative_Cells</td>
+        <td>Percentage of non-duplicate fragements assigned to putative cells</td>
+        <td>Library quality<br>Sequencing depth</td>
+    </tr>
+    <tr>
+        <td>Pct_Cellular_Fragments_from_Putative_Cells</td>
+        <td>Percentage of non-duplicate fragments associated with putative cells that are cellular fragments</td>
+        <td>Library quality<br>Sequencing depth</td>
+    </tr>
+    <tr style="border-bottom: 2px solid #004593;">
+        <td>Pct_Nonredundant_Read_Pairs_from_Putative_Cells</td>
+        <td>Percentage of ATAC reads from putative cells that non-redundantly identify an ATAC fragment</td>
+        <td>Library quality<br>Sequencing depth</td>
+</table><br>
+<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
+<br><br>

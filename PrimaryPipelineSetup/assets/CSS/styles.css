@@ -10,17 +10,75 @@ body {
     width: 100%;
 }
 
-header {
-    padding: 15px;
-    background-image: url('../images/headerBackground.jpg');
-    background-size: cover;
-    color:#F8F4F1;
-    text-shadow: 5px 5px 10px #060A3D;
-    height: 200px;
-    text-align: center;
-    font-size: 1.5em;
+.banner-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background-color: white;
+    border-bottom: 1px solid #004593;
+  }
+  
+  .logo-section{
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-section {
+    flex-grow: 1;
+    gap: 20px;
+  }
+  
+  .header-text {
+    flex-direction:row;
+    flex-grow: 3;
+    padding-left: 5%;
+    width: 100%;
+  }
+  
+  .hexagon-decor {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+  
+  .logo-img {
+    max-height: 300px;
+    width: auto;
+  }
+  
+  .subheading {
+    background-color: #0033A0;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-right:30px;
+
+  }
+  
+  h1 {
+    color: #0050C8;
+    margin-top: 20px;
+    font-size: 4em;
+  }
+  
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #070d8b9d;
+    margin: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%; 
+    align-self: center;
 }
-h1 {
+
+
+
+title h1 {
     color: whitesmoke;
     font-size: 2.5em;
     margin: 10px 0 15px 0;
@@ -48,7 +106,7 @@ h4{
 h5 {
     color: #FF6E00;
     font-size: 1.2em;
-    margin: 3px 0 3px 0;
+    margin: 25px 0 5px 0;
 }
 
 mark{ 
@@ -154,12 +212,13 @@ main {
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px;
     padding: 13px;
+    margin: 10px 0 10px 0;
 }
 
 .card{
     background-color:white;
     padding: 20px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 0;
 }
 
 .notice {
@@ -170,22 +229,25 @@ main {
     margin-bottom: 10px;
 }
 
-img{
+.paraimg{
     border: 1px solid lightgrey;
-    max-width: 650px;
-    margin: 10px 0 10px 0;
+    max-width: 800px;
+    margin: 15px 0 0 0;
 }
+
+.biggerImg {
+    border: 1px solid lightgrey;
+    max-width: 1200px;
+    margin-bottom: 15px;
+}
+/* create new class for html img add margin*/
 
 button{
     background-color:#004593 ;
     color: white;
     font-size: 15px;
-    padding: 5px 15px 5px 15px;
-}
-
-.video-container {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 15px 10px 15px;
+    text-decoration: none; /* Remove underline from button text */
 }
 
 .checkbox-section{
@@ -297,7 +359,6 @@ button{
 .ref-img {
     max-width: 100%;
     max-height: auto;
-    display: none;
     justify-content: center;
 }
 
@@ -327,7 +388,7 @@ figure img {
   max-height: auto;
 }
 
-table, th, td {
+table, th, td{
     border: 1px solid #004593;
     border-collapse: collapse;
     padding: 10px;
@@ -338,6 +399,7 @@ th {
     background-color: #004593;
     color: white;
 }
+
 td {
     background-color:none;
 }
@@ -350,13 +412,144 @@ td:hover {
 
 table {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
 }
+
 
 table ul,table li{
     padding: 0.5em;
     margin: 0;
     list-style: none;
+  
 }
+
+ul {
+    line-height:1.5em;
+}
+/* Tree structure */
+.tree {
+    list-style-type: none; 
+    font-family: monospace; 
+    padding-left: 20px; 
+}
+
+.folder{
+    font-size:1.2em;
+    color: #060A3D;
+    margin-bottom: 3px;
+}
+
+.folder::before {
+    content: "📁 ";
+    font-size: 1.3em; /* Increased the size of the content */
+}
+
+.subfolder::before {
+    content: "├── "; 
+}
+
+.subfolder.last::before {
+    content: "└── "; 
+    
+}
+
+.subfolder.last {
+    margin-bottom: 5px;
+}
+
+.tree ul {
+    padding-left: 20px;
+}
+
+.tree dt{
+    margin: 0;
+    padding-left: 5%;
+    line-height: 25px;
+    font-size: 1.1em;
+}
+
+.tree span{
+    padding-left: 3%;
+    color: #b14e01d8;
+    font-size: 1em;
+}
+
+.folder:hover {
+    font-weight: bold;
+    transition: 0.2s;
+    transform: translate3d(0, -3px, 0);
+    }
+
+.tree button {
+    all: unset; /* Remove all button styles */
+    cursor: pointer; /* Change cursor to pointer */
+    text-decoration: underline;
+    color:#044ED7;
+    font-size: 1.1em;
+}
+
+div.scroll-container {
+    width: 90%;
+    max-width: 1200px;
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 0px 15px 15px 15px;
+    margin: 0 auto;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* The grid: Four equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 11%;
+    padding: 10px;
+  }
+  
+  /* Style the images inside the grid */
+  .column img {
+    opacity: 0.8; 
+    cursor: pointer; 
+  }
+  
+  .column img:hover {
+    opacity: 1;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* The expanding image container */
+  .tabbed-container {
+    position: relative;
+    width: 100%;
+    display: none;
+  }
+  
+  /* Expanding image text */
+  #imgtext {
+    position: absolute;
+    top: 5%;
+    right: 50%;
+    color: #004593;
+    font-size: 1em;
+  }
+  
+  /* Closable button inside the expanded image */
+  .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #979797;
+    font-size: 35px;
+    cursor: pointer;
+  }

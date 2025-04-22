@@ -1,0 +1,37 @@
+<h4 id="atacCellByPeak">ATAC Cell-by-Peak Data Tables</h4>
+<div class="code"><ul>
+    <li><b>Files containing putative cells only:</b><br>[sample_name]_ATAC_Cell_by_Peak_MEX.zip</li>
+    <li><b>Unfiltered file containing all cell indexes with >=1 transposase sites in peaks:</b><br>[sample_name]_ATAC_Cell_by_Peak_Unfiltered_MEX.zip</li>
+</ul>
+</div>
+
+<p>The number of transposase sites from each cell that fall within each peak region is represented in the matrix market exchange (MEX) format.
+    <ul>
+        <li>The MEX format is an efficient way to store sparse data, and is a common input format for many single-cell analysis tools. </li>
+        <li>The MEX.zip output files contain three separate gzip compressed files that together represent the number of transposase sites of each peak in each cell. </li>
+        <li>By convention, these files are named:</li><br>
+
+        <table>
+            <tr>
+                <th style="width: 15%;text-align: right;">atac-barcodes.tsv</th>
+                <td>Containing a list of cell indexes (integer between 1 and 3843), one per row.<br>
+                    Cell indexes in the atac-barcodes.tsv file are sorted numerically.</td>
+            </tr>
+            <tr>
+                <th style="width: 15%;text-align: right;">atac-features.tsv</th>
+                <td>Containing a list of peaks detected, one per row. For improved compatibility, this file contains three columns, the first two of which are a duplicated peak coordinate that follows a format of [chromosome]:[start]-[end], and a third which indicates the features are peaks.</td>
+            </tr>
+            <trstyle="border-bottom: 2px solid #004593;">
+                <th style="width: 15%;text-align: right;">atac-matrix.mtx</th>
+                <td>Containing a three column per row representation of the number of transposase sites in peaks. <br>
+                    First column is the 1-based row number from atac-features.tsv (peak). <br>
+                    Second column is the 1-based row number from atac-barcodes.tsv (cell). <br>
+                    Third column is the number of transposase sites detected for that peak in that cell.</td>
+            </tr>
+        </table>
+    </ul>
+</p>
+<br>
+<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
+<br><br>
+
