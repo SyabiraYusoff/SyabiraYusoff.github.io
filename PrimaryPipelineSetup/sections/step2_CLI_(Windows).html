@@ -1,4 +1,4 @@
-<h1>Command Line Interface Upload (Windows)</h1>
+<h2>Command Line Interface Upload (Windows)</h2>
             <div class="notice">
                 There are TWO main steps to setup your file upload through Command Line Interface (CLI). 
                 <ul>
@@ -8,20 +8,20 @@
             </div>
             
             <div class="card" style="background-color: #f1f1f1;">
-                <h2>Generate API endpoint and Authentication Token on Velsera</h2>
+                <h3>Generate API endpoint and Authentication Token on Velsera</h3>
                 Below are the steps to generate API Endpoint and Authentication Token: <br>
                 <ol>
                     <li>Log in to your Seven Bridges account. Click <mark>Developer</mark> -> <mark>Authentication token</mark> -> <mark>Generate token</mark>.</li><br>
-                    <img src="./assets/images/autehnticationstep1.png"><br><br>
+                    <img class="steps-img" src="./assets/images/autehnticationstep1.png"><br><br>
                     <li>You will find the TOken and API on the next page.Ensure to keep your Authentication Token secure and do not share it publicly.</li>
                     <li>You may now use these credentials while setting up your upload process to authenticate and interact with Seven Bridges through the API.</li>
                     <li>Picture below showing the API and Authentication Token:</li>
-                    <br><img src="./assets/images/authenticationTokenStep2.png"><br>
+                    <br><img class="steps-img" src="./assets/images/authenticationTokenStep2.png"><br>
                 </ol>
             </div>
 
             <div class="card">
-                <h2>Download and Configure CLI to your device</h2>
+                <h3>Download and Configure CLI to your device</h3>
                 <ol>
                     <li>To download the SB command line interface, click the link below based on your system:
                         <ul>
@@ -33,7 +33,7 @@
                     <li>Navigate to your working folder in the command prompt.If unsure, please click the link <a href="https://www.howtogeek.com/674537/how-to-find-and-open-files-using-command-prompt/">here</a> on how to find files using command prompt.</li>
                     <li>Enter command below to confirm the ".exe" and your files are in the correct folder. You should find the ".exe" file and the rest of the files you intend to upload listed on your console.<br>
                     <p class="code">DIR</p>
-                <img src="./assets/images/DIR_files.png"></li>
+                <img class="steps-img" src="./assets/images/DIR_files.png"></li>
                 <p><b>Configure CLI</b></p>
                 <li>Use command below to configure CLI:
                     <p class="code">sb configure</p>
@@ -43,7 +43,7 @@
             </div>
 
             <div class="card" style="background-color: #f1f1f1;">
-                <h2>File Integrity Checks</h2>
+                <h3>File Integrity Checks</h3>
                 <p>It is recommended to check your file integrity before upload to Velsera platform. Files that are corrupted, as an example FASTQ files would caused the pipeline failure.</p>
                     <ol>
                         <li>Navigate to the folder contain your project files using command line or terminal.</li>
@@ -61,7 +61,7 @@
             </div>
 
            <div class="card" >
-                <h2>Upload Files</h2>
+                <h3>Upload Files</h3>
                 <p>It is recommended to check your file integrity before upload to Velsera platform. Files that are corrupted, as an example FASTQ files would caused the pipeline failure. Navigate to the folder using command line or teminal.</p>
                 <ol>
                     <li>To upload the files, enter command below:
@@ -75,7 +75,7 @@
             </div>
 
             <div class="card">
-                <h2>CLI Configuration and File Upload</h2>
+                <h3>CLI Configuration and File Upload</h3>
                 <div class="video-container" >
                     <video style="width: 500px;" controls poster = "./assets/videos/sbConfigure_FileUpload.png">
                     <source src="./assets/videos/sbConfigure_FileUpload.mov" type="video/mp4"></video></div>

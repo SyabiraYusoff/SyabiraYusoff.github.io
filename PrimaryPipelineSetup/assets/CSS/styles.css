@@ -2,6 +2,7 @@ body {
     font-family: fs Alberto Pro, Helvetica, Arial, Verdana, sans-serif;
     margin : 0; 
     display: flex;
+    line-height: 1.6;
 }
 
 .container { 
@@ -55,10 +56,9 @@ body {
     font-weight: bold;
     font-size: 2rem;
     margin-right:30px;
-
-  }
+}
   
-  h1 {
+h1 {
     color: #0050C8;
     margin-top: 20px;
     font-size: 4em;
@@ -155,7 +155,14 @@ mark{
     border:5px double #004593;
     border-radius: 0px 10px 0px 10px;
     transition: 0.3s;
-    transform: perspective(1px) scale(1.1);
+    cursor: pointer;
+}
+
+.mainPageButton:focus {
+    background-color: #F8F4F1;
+    color: #060A3D;
+    border:5px double #004593;
+    transition: 0.3s;
 }
 
 .mainPageButton a{
@@ -176,10 +183,26 @@ mark{
     padding: 10px;
     font-size: 15px;
     background-color:#F8F4F1;
-    color: #FF6E00;
+    color: #060A3D;
     text-decoration: none;
-    border: 1px solid #EBEDF0;
+    border: 1px solid #060A3D;
     margin-bottom: 3px;
+}
+
+.sidebar-right button:hover {
+    background-color: #FF6E00;
+    color: #060A3D;
+    border:5px double #004593;
+    border-radius: 10px 10px 10px 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.sidebar-right button:focus {
+    background-color: #F8F4F1;
+    color: #060A3D;
+    border:5px double #004593;
+    border-radius: 10px 10px 10px 10px;
+    transition: 0.3s;
 }
 
 .custom-cursor{
@@ -191,20 +214,10 @@ mark{
     text-decoration: none;
 }
 
-.sidebar-right button:hover {
-    background-color: #979797;
-    color: white;
-    font-weight: bold;
-    transition: 0.2s;
-    transform: translate3d(0, -3px, 0);
-}
-
 main {
     flex : 1;
     padding : 20px;
 }
-
-
 
 .code {
     border: 1px solid grey;
@@ -229,7 +242,7 @@ main {
     margin-bottom: 10px;
 }
 
-.paraimg{
+.steps-img{
     border: 1px solid lightgrey;
     max-width: 800px;
     margin: 15px 0 0 0;
@@ -425,9 +438,7 @@ table ul,table li{
   
 }
 
-ul {
-    line-height:1.5em;
-}
+
 /* Tree structure */
 .tree {
     list-style-type: none; 
@@ -482,7 +493,7 @@ ul {
     transform: translate3d(0, -3px, 0);
     }
 
-.tree button {
+.tree button, .breadcrumb button {
     all: unset; /* Remove all button styles */
     cursor: pointer; /* Change cursor to pointer */
     text-decoration: underline;

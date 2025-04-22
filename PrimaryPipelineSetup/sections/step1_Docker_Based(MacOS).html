@@ -1,14 +1,20 @@
-<h1>Local Installation on MacOS</h1>
+<h2>Local Installation on MacOS</h2>
 
-<p class="notice">The docker image features require root-level access to install. <br> For users operating on an institutional server,  please collaborate with your system administrator to determine the directories, system resources allocation for Docker image. <br> For those who do not have root access, you can skip the docker installation process and use "Docker-free" bundle. Please find the instruction on the available tab above.</p> 
+<div class="notice tree">
+    <ul>
+        <li>The docker image features require root-level access to install.</li>
+        <li>For users operating on an institutional server,  please collaborate with your system administrator to determine the directories, system resources allocation for Docker image.</li>
+        <li>For those who do not have root access, you can skip the docker installation process and use <button onclick="loadSection('step1_Pipeline_Bundle')">Docker-free" bundle</button>. </li>
+    </ul>
+</div> 
 <div class="card">
     <h2>Software requirements for local installation</h2>
     <ol>
-        <li>Docker container: </li>
+        <li><b>Docker container</b>: </li>
         <ul>
             <li>A Docker container is a self-contained environment for pipeline analysis and is obtained by "pulling" or downloading a Docker image to your local computer.</li>
             <li>It encompasses all the necessary libraries and settings required by the pipeline to execute the analysis.</li></ul><br>
-                        <li>CWL-runner:</li>
+                        <li><b>CWL-runner</b>:</li>
                         <ul>
                             <li>The CWL-runner is the tool responsible for managing Docker containers to complete the pipeline run.</li>
                             <li>It utilizes two inputs:</li>
