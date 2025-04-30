@@ -404,6 +404,7 @@ main {
     overflow-x: hidden;
     overflow-y: auto;
     flex-basis: 80%;
+    margin-left: 10px;
 }
 .ref-img {
     max-width: 100%;
@@ -417,15 +418,17 @@ main {
     flex-basis: 5%;
 }
 .btn-group .button {
-    background-color: #FF6E00; 
-    border: 3px double #060A3D;
+    all: unset;
+    background-color: white; 
+    border-bottom: 1px solid #DAD7D6;
+    box-shadow: 2px 2px 5px #004593;
     color: #060A3D;
-    padding: 15px 18px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
     font-size: 12px;
     cursor: pointer;
-    width: 200px;
+    width: 150px;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -436,7 +439,14 @@ main {
     background-color: #DAD7D6;
     color: #060A3D;
     font-weight: bold;
-    border: 2px double #060A3D;
+    border: 1px solid #060A3D;
+}
+
+.btn-group .button:focus{
+    background-color: #DAD7D6;
+    color: #060A3D;
+    font-weight: bold;
+    border: 1px solid #060A3D;
 }
 
 
