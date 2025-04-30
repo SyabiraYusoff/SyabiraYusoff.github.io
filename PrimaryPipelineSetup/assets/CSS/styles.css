@@ -626,3 +626,33 @@ div.scroll-container {
     border-left: 2px solid #0033A0;
     height: auto;
 }
+
+#{
+    margin: 0;
+    padding: 0;
+}
+.fab-container{
+    position:fixed;
+    top:5px;
+    right:8px;
+    cursor:pointer;
+    z-index: 1001;
+}
+
+.iconbutton {
+    width:200px; 
+    height: 40px;
+    border-radius: 10px;
+    background-color: #FF6E00;
+    box-shadow: 5px 5px 3px #DAD7D6;
+    cursor:pointer;
+}
+
+.iconbutton span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1em;
+    height:100%
+}
