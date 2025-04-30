@@ -1,14 +1,20 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step1')" style="color:darkgrey"> Pipeline Setup</button>
+</nav>
+
 <h2>Setting Up Your Pipeline</h2>
 
-<p>This is an overview to set up your Pipeline Analysis platform. Please follow the manu on the right to navigate on how to set up your BD Rhapsody&trade; Pipeline Analysis.</p>
-<center><img src="./assets/images/pipeline_flow.gif" style="width:100%;"></center>
+<p>This is an overview to set up your Pipeline Analysis platform. Please follow the menu on the right to navigate on how to set up your BD Rhapsody&trade; Pipeline Analysis.</p>
+<img src="./assets/images/pipeline_flow.gif" style="width:60%;">
 <div class="card">
     <h2>Pipeline Setup, Requirements and Extra Utilities</h2>
 <p>Setting up Rhapsody&trade; Pipeline using several methods:</p>
 <ul>
     <li><b>Cloud Computing: </b><br>Known as Velsera (Previously known as Seven Bridges Genomics Platform). <br> Free as complimentary to all BD Rhapsody&trade; Customers.</li><br>
     <li><b>Local Installation(Docker):</b><br> Compatible with MacOS and LINUX only. Windows is not supported. <br>Need Docker Image which need system administrator permission.</li><br>
-    <li><b>Pipeline bundle (Docker- free):</b><br> For HPC user on LINUX/Ubuntu environment only. Windows and MacOS is not supported. <br> As easy as Download, Untar and run.  </li><br>
+    <li><b>Pipeline bundle (Docker- free):</b><br> For HPC user on LINUX/Ubuntu environment only. Windows and MacOS is not supported. <br> As easAs easy as downloading, extracting (untar), and running the pipeline.  </li><br>
 </ul></div>
 
 <div class="card" style="background-color: #f1f1f1;">
@@ -32,10 +38,10 @@
 
 <div class="card">
 <h2> Pipeline Extra Utilities</h2>
-<p>Our pipeline is equipped with multiple extra utlitilies that commonly requested by our valuable customers.</p>
+<p>Our pipeline is equipped with multiple extra utilities that commonly requested by our valuable customers.</p>
 <ul>
-<li><b>Make BD Rhapsody&trade; Reference: </b><br>Create a new WTA or WTA_ATAC Reference Archive for use as an input to the BD Rhapsody&trade; Sequence Analysis Pipeline.</li><br>
-<li><b>PhiX Contamination Detection: </b><br>Check a FASTQ file for PhiX contamination, by aligning the reads to the PhiX genome. (uses Bowtie2)</li><br>
-<li><b>Annotate Cell Label and UMI only: </b><br>Given pairs of R1/R2 FASTQ files from BD Rhapsody&trade; libraries, only annotate the cell label and UMI of R1 and put it in the header of R2.</li>
+<li><b><a onclick="loadSection('step1_Extra_Utilities')">Make BD Rhapsody&trade; Reference:</a></b><br>Create a new WTA or WTA_ATAC Reference Archive for use as an input to the BD Rhapsody&trade; Sequence Analysis Pipeline.</li><br>
+<li><b><a onclick="loadSection('step1_Extra_Utilities')">PhiX Contamination Detection: </a></b><br>Check a FASTQ file for PhiX contamination, by aligning the reads to the PhiX genome. (uses Bowtie2)</li><br>
+<li><b><a onclick="loadSection('step1_Extra_Utilities')">Annotate Cell Label and UMI only: </a></b><br>Given pairs of R1/R2 FASTQ files from BD Rhapsody&trade; libraries, only annotate the cell label and UMI of R1 and put it in the header of R2.</li>
 </ul></div>
 </div>

@@ -1,3 +1,12 @@
+<nav class="breadcrumb">
+  <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+  <span>&rsaquo;</span>
+  <button onclick="loadStep('step5')"> Pipeline Output Files</button>
+  <span>&rsaquo;</span>
+  <button onclick="loadSection('step5_Pipeline_Report_HTML')" style="color:darkgrey">HTML Report</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>Pipeline Report HTML:</h2>
 <br>
 <p class="code">File:[sample_name]_Pipeline_Report.html</p>
@@ -71,7 +80,7 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
   <!-- The four columns -->
   <div class="row">
     <div class="column">
-      <img src="./assets/images/graph_CD4pabo_HTML.png" alt="Example: CD4 AbSeq Bioproduct Expression" style="width:100%" onclick="displayTabbedGraph(this, 'image1');">
+      <img src="./assets/images/graph_CD4pabo_HTML.png" alt="Example: CD4 AbSeq Bioproduct Expression" style="width:60%" onclick="displayTabbedGraph(this, 'image1');">
     </div>
     <div class="column">
       <img src="./assets/images/graph_abseq_HTML.png" alt="AbSeq (Total Molecules per cell)" style="width:100%" onclick="displayTabbedGraph(this, 'image2');">
@@ -184,7 +193,7 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
         <li>
           <details>
           <summary>Sequencing Quality</summary>
-          <img src="./assets/images/VDJ_WTA_seqQualityHTML.png" alt="Sequencing Quality">
+          <img class="biggerImg" src="./assets/images/VDJ_WTA_seqQualityHTML.png" alt="Sequencing Quality">
           <ol>
             <li>Pct Read Pair Overlap:
               <ul>
@@ -247,7 +256,8 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
 
           <li><details>
           <summary>Library Quality</summary>
-          <img src="./assets/images/VDJ_WTA_libQualityHTML.png" alt="Library Quality">
+          <img class="biggerImg" 
+           src="./assets/images/VDJ_WTA_libQualityHTML.png" alt="Library Quality">
           <p>This section giving more details on: 
             <ul>
             <li>Total Filtered Reads: This is the remaining reads after Filtering.</li>
@@ -260,7 +270,7 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
         </details></li>
         <li><details>
           <summary>Alignment Categories</summary>
-          <img src="../assets/images/HTML_bioproduct_alignment.png">
+          <img class="biggerImg"  src="./assets/images/HTML_bioproduct_alignment.png">
           <p>
             <ol>
               <li>Overview: Shows the percentage of reads aligned to specific regions or assays.</li>
@@ -283,7 +293,7 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
           <li>Alignment Categories</li>
           <li><details><Summary>Fragments</Summary>
               ATAC Fragments <br>
-                <img src="./assets/images/HTML_atacFgraments.png">
+                <img class="biggerImg"  src="./assets/images/HTML_atacFgraments.png">
                 <ul>
                   <li>ATAC Fragment Lenght Distribution Plot
                     <ul>
@@ -301,7 +311,7 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
 
           <li><details><summary>Peaks</summary>
             ATAC Peak<br>
-            <img src="./assets/images/HTML_atacPeaks.png">
+            <img class="biggerImg" src="./assets/images/HTML_atacPeaks.png">
             <ul>
             <li><b>TSS Enrichment</b>: Measures Tn5 activity around Transcription Start Sites (TSS).
               <ul>
@@ -483,6 +493,9 @@ Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/ste
     Further reading on <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_tcr_bcr.html">VDJ Analysis Algorithm</a>.
   </p>
 
+  <div class="scroll-top">
+    <button><a href="#topPage">Scroll to top page</a></button>
+</div>
 
 
 

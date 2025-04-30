@@ -1,3 +1,13 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step5')"> Pipeline Output Files</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step5_BAM_BAI')" style="color:darkgrey">BAM Files</button>
+</nav>
+<div id="topPage"></div>
+
+
 <h2>BAM and BAM Index</h2>
         <div class="code">File:
             <ul>
@@ -92,4 +102,6 @@
                 </tr>
             </table>
 
-        <button onclick="loadSteps('step5')">Back to Previous Page</button>
+            <div class="scroll-top">
+                <button><a href="#topPage">Scroll to top page</a></button>
+            </div>

@@ -1,3 +1,12 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step5')"> Pipeline Output Files</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step5_SMK_ReadsPerCell')" style="color:darkgrey">SMK Reads Per Cell</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>Sample Tag Reads Per Cell</h2>
 
 <div class="code">
@@ -34,5 +43,6 @@
     </li>
 </ul></p>
 </table><br>
-<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
-<br><br>
+<div class="scroll-top">
+    <button><a href="#topPage">Scroll to top page</a></button>
+</div>

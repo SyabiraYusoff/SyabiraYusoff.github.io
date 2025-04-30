@@ -1,3 +1,12 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step5')"> Pipeline Output Files</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step5_VDJ_PerCell')" style="color:darkgrey">VDJ Per Cell</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>VDJ Per Cell</h2>
 <div class="code">File:<br>[sample_name]_VDJ_perCell.csv</div>
 
@@ -133,3 +142,7 @@
         <td>True/False — this cell index was selected as a putative cell based on the mRNA Panel.</td>
         <td>Cell viability<br>mRNA Panel</td>   
 </table>
+
+<div class="scroll-top">
+    <button><a href="#topPage">Scroll to top page</a></button>
+</div>

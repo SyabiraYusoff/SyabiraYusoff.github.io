@@ -1,70 +1,113 @@
+
+@media screen and (max-width: 600px) {
+    .banner-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px;
+    }
+
+    div.subheading {
+        font-size: 0.6em;
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header-text {
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .header-text h1 {
+        font-size: 1.5em; 
+    }
+    .logo-section {
+        justify-content: center;
+        gap: 10px;
+    }
+    .logo-section img {
+        max-height: 100px; 
+    }
+} 
+
+@media screen and (max-width: 900px) {
+    .banner-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px;
+    }
+    div.subheading {
+        font-size: 0.9em;
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .header-text {
+        padding-left: 0;
+        width: 100%;
+    }
+    .header-text h1 {
+        font-size: 2em; 
+    }
+    .logo-section {
+        justify-content: center;
+        gap: 10px;
+    }
+    .logo-section img {
+        max-height: 150px;
+    }
+}
+
 body {
     font-family: fs Alberto Pro, Helvetica, Arial, Verdana, sans-serif;
     margin : 0; 
     display: flex;
     line-height: 1.6;
 }
-
-.container { 
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
 .banner-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
-    background-color: white;
+    background-image: linear-gradient(to bottom, #044ed78f, white);
     border-bottom: 1px solid #004593;
-  }
-  
-  .logo-section{
+    border-radius: 10px 10px 0px 0px;
+    padding: 20px;
+}
+.logo-section{
     display: flex;
     align-items: center;
-  }
-  
-  .logo-section {
     flex-grow: 1;
     gap: 20px;
-  }
-  
-  .header-text {
+}
+.header-text {
     flex-direction:row;
     flex-grow: 3;
     padding-left: 5%;
     width: 100%;
-  }
-  
-  .hexagon-decor {
+}
+.hexagon-decor {
     flex-grow: 1;
     justify-content: flex-end;
-  }
-  
-  .logo-img {
-    max-height: 300px;
+}
+.logo-img {
+    max-height: 200px;
     width: auto;
-  }
-  
-  .subheading {
+}
+.subheading {
     background-color: #0033A0;
     color: white;
     display: inline-block;
     padding: 5px 15px;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-right:30px;
 }
-  
 h1 {
     color: #0050C8;
     margin-top: 20px;
-    font-size: 4em;
-  }
-  
-
+    font-size: 3em;
+}
 hr {
     border: 0;
     height: 1px;
@@ -75,64 +118,115 @@ hr {
     width: 95%; 
     align-self: center;
 }
-
-
-
-title h1 {
-    color: whitesmoke;
-    font-size: 2.5em;
-    margin: 10px 0 15px 0;
-    padding: 0;
+.container { 
+    display: flex;
+    flex-direction: column;
+    margin:3px;
+    width: 100%;
+    border-radius: 10px;
+    
 }
-
 h2{
     color: #060A3D;
     font-size: 1.6em;
     margin: 10px 0 10px 0;
 }
-
 h3{
     color: #004593;
     font-size: 1.3em;
     margin: 8px 0 8px 0;
 }
-
 h4{
     color: #1D74FF;
     font-size: 1.2em;
     margin: 5px 0 5px 0;
 }
-
 h5 {
     color: #FF6E00;
     font-size: 1.2em;
     margin: 25px 0 5px 0;
 }
-
+a {
+    color: #004593;
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
+}
 mark{ 
     background-color: #f7fafceb;
     color: #004593;
     font: bold;
     padding: 0px 10px 0px 10px;
-  }
-
+}
 .content-area {
     display: flex;
     flex: 1;
     width: 100%;
 }
-
 .sidebar-left, sidebar-right {
     width : 15%;
     padding : 20px;
     height : auto;
     overflow-y: auto;
 }
-
 .sidebar-left {
     border-right: 1px solid #ccc;
     line-height: 20px;
-    background-color: #F8F4F1;
+    background-color: white;
+}
+.nav-button {
+    all: unset;
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid #F8F4F1;
+    width: 80%;
+}
+.nav-button:hover{
+    border-left: 1px solid #044ED7;
+    background-color: #0e67f713;
+    cursor: pointer;
+}
+.nav-button:focus{
+    color: #060A3D;
+    background-color: #0e67f713;
+    cursor: pointer;
+}
+.sub-step button{
+    all: unset;
+    color: #060A3D;
+    font-size: 15px;
+    padding: 5px 20px;
+    text-decoration: none; /* Remove underline from button text */
+}
+.sub-step button:hover{
+    background-color: #0e67f713;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.sub-step button:focus{
+    background-color: #0e67f713;
+    border-bottom: 1px solid #DAD7D6;
+    color: #044ED7;
+    border-left:1px solid #DAD7D6;
+    transition: 0.3s;
+}
+.scroll-top button{
+    all: unset;
+    padding: 5px 20px;
+    float: right;
+    border-radius: 2px;
+    box-shadow: 2px 0 5px #DAD7D6;
+}
+.scroll-top a{
+    text-decoration: none;
+    color: #044ED7;
+    font-size: 15px;
+}
+.scroll-top button:hover{
+    background-color: #0e67f713;
+    transition: 0.3s;
+    cursor: pointer;
 }
 .mainPageButton{
     padding: 10px;
@@ -147,7 +241,6 @@ mark{
     line-height: 20px;
     text-align: center;
 }
-
 .mainPageButton:hover {
     background-color: #FF6E00;
     color: #060A3D;
@@ -157,19 +250,16 @@ mark{
     transition: 0.3s;
     cursor: pointer;
 }
-
 .mainPageButton:focus {
     background-color: #F8F4F1;
     color: #060A3D;
     border:5px double #004593;
     transition: 0.3s;
 }
-
 .mainPageButton a{
     color: white;
     text-decoration: none;
 }
-
 .sidebar-right {
     border-left: 1px solid #ccc;
     width: 15%;
@@ -177,7 +267,6 @@ mark{
     display: none;
     line-height: 15px;
 }
-
 .sidebar-right button{
     width: 100%;
     padding: 10px;
@@ -188,7 +277,6 @@ mark{
     border: 1px solid #060A3D;
     margin-bottom: 3px;
 }
-
 .sidebar-right button:hover {
     background-color: #FF6E00;
     color: #060A3D;
@@ -204,21 +292,17 @@ mark{
     border-radius: 10px 10px 10px 10px;
     transition: 0.3s;
 }
-
 .custom-cursor{
     cursor:url('assets/images/rhapsody_icon.png'), auto;
 }
-
 .sidebar-right a{
     color: #004593;
     text-decoration: none;
 }
-
 main {
     flex : 1;
     padding : 20px;
 }
-
 .code {
     border: 1px solid grey;
     background-color: #f1f1f1;
@@ -227,13 +311,11 @@ main {
     padding: 13px;
     margin: 10px 0 10px 0;
 }
-
 .card{
     background-color:white;
     padding: 20px;
     margin: 10px 0 10px 0;
 }
-
 .notice {
     border: 1px solid #adacac;
     border-radius: 10px;
@@ -241,28 +323,16 @@ main {
     padding: 15px;
     margin-bottom: 10px;
 }
-
 .steps-img{
     border: 1px solid lightgrey;
     max-width: 800px;
     margin: 15px 0 0 0;
 }
-
 .biggerImg {
     border: 1px solid lightgrey;
-    max-width: 1200px;
+    max-width: 100%;
     margin-bottom: 15px;
 }
-/* create new class for html img add margin*/
-
-button{
-    background-color:#004593 ;
-    color: white;
-    font-size: 15px;
-    padding: 10px 15px 10px 15px;
-    text-decoration: none; /* Remove underline from button text */
-}
-
 .checkbox-section{
     align-items: left;
     border: 3px double #004593;
@@ -270,7 +340,6 @@ button{
     padding: 50px 150px;
     margin: 20px;
 }
-
 .ref-container {
     line-height: 50px;
     position: relative;
@@ -279,62 +348,74 @@ button{
     font-size: 22px;
     user-select: none;
 }
-
 .ref-container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-   }
-
+}
 .checkmark {
-   position: absolute;
-   top: 0;
-   left: 0;
-   height: 25px;
-   width: 25px;
-   border:2px solid #004593;
-   border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border:2px solid #004593;
+    border-radius: 3px;
 }
 
-        /* On mouse-over, add a grey background color */
-        .ref-container:hover input ~ .checkmark {
-            background-color: rgb(199, 193, 254);
-        }
+.ref-container:hover input ~ .checkmark {
+    background-color: rgb(199, 193, 254);
+}
+.ref-container input:checked ~ .checkmark {
+    background-color:#004593;
+    color: white;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.ref-container input:checked ~ .checkmark:after {
+    display: block;
+}
+.ref-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
-        /* When the checkbox is checked, add a blue background */
-        .ref-container input:checked ~ .checkmark {
-            background-color:#004593;
-            color: white;
-        }
 
-        /* Create the checkmark/indicator (hidden when not checked) */
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        /* Show the checkmark when checked */
-        .ref-container input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        /* Style the checkmark/indicator */
-        .ref-container .checkmark:after {
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-        }
-
-/* container and image gallery */
+/* reference tool container */
+.image-container{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+}
+.scroll {
+    border: #d1cece;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-basis: 80%;
+}
+.ref-img {
+    max-width: 100%;
+    justify-content: center;
+}
+.ref-img:hover {
+    cursor:-webkit-zoom-in;
+    transition: 0.3s;
+}
+.btn-group {
+    flex-basis: 5%;
+}
 .btn-group .button {
     background-color: #FF6E00; 
     border: 3px double #060A3D;
@@ -348,11 +429,9 @@ button{
     flex-direction: column;
     justify-content: flex-start;
 }
-
 .btn-group .button:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
 }
-
 .btn-group .button:hover{
     background-color: #DAD7D6;
     color: #060A3D;
@@ -360,26 +439,7 @@ button{
     border: 2px double #060A3D;
 }
 
-.scroll {
-    padding: 15px 50px 15px 50px;
-    background-color:#eeebea;
-    border: #d1cece;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: auto;
-}
 
-.ref-img {
-    max-width: 100%;
-    max-height: auto;
-    justify-content: center;
-}
-
-.image-container{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    
-}
 
 figure {
     display: flex;
@@ -389,18 +449,15 @@ figure {
     margin-bottom: 10px;
     padding: 0;
 }
-  
-  figcaption {
+figcaption {
     color: #3D3F41;
     text-align:justify;
     font-size:0.7em ;
-  }
-
-figure img {
-  max-width: 100%;
-  max-height: auto;
 }
-
+figure img {
+    max-width: 100%;
+    max-height: auto;
+}
 table, th, td{
     border: 1px solid #004593;
     border-collapse: collapse;
@@ -422,85 +479,82 @@ td:hover {
     font-weight: bold;
     transition: 0.2s;
 }
-
 table {
     width: 100%;
     border-radius: 5px;
     overflow: hidden;
     margin: 20px 0 20px 0;
 }
-
-
 table ul,table li{
     padding: 0.5em;
     margin: 0;
     list-style: none;
-  
 }
-
-
-/* Tree structure */
 .tree {
     list-style-type: none; 
     font-family: monospace; 
     padding-left: 20px; 
 }
-
 .folder{
     font-size:1.2em;
     color: #060A3D;
     margin-bottom: 3px;
 }
-
 .folder::before {
     content: "📁 ";
     font-size: 1.3em; /* Increased the size of the content */
 }
-
 .subfolder::before {
     content: "├── "; 
 }
-
 .subfolder.last::before {
     content: "└── "; 
     
 }
-
 .subfolder.last {
     margin-bottom: 5px;
 }
-
 .tree ul {
     padding-left: 20px;
 }
-
 .tree dt{
     margin: 0;
     padding-left: 5%;
     line-height: 25px;
     font-size: 1.1em;
 }
-
 .tree span{
     padding-left: 3%;
     color: #b14e01d8;
     font-size: 1em;
 }
-
 .folder:hover {
     font-weight: bold;
     transition: 0.2s;
     transform: translate3d(0, -3px, 0);
     }
-
 .tree button, .breadcrumb button {
     all: unset; /* Remove all button styles */
     cursor: pointer; /* Change cursor to pointer */
     text-decoration: underline;
     color:#044ED7;
-    font-size: 1.1em;
+    font-size: 1em;
 }
-
+.breadcrumb {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+.sidenav {
+    border-right: 1px solid #ccc; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+    padding: 5px;
+}
 div.scroll-container {
     width: 90%;
     max-width: 1200px;
@@ -509,58 +563,56 @@ div.scroll-container {
     white-space: nowrap;
     padding: 0px 15px 15px 15px;
     margin: 0 auto;
-  }
-
+}
   * {
     box-sizing: border-box;
-  }
-  
-  /* The grid: Four equal columns that floats next to each other */
-  .column {
+}
+
+.column {
     float: left;
     width: 11%;
     padding: 10px;
-  }
-  
-  /* Style the images inside the grid */
-  .column img {
+}
+.column img {
     opacity: 0.8; 
     cursor: pointer; 
-  }
-  
-  .column img:hover {
+}
+
+.column img:hover {
     opacity: 1;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
+}
+
+.row:after {
     content: "";
     display: table;
     clear: both;
-  }
-  
-  /* The expanding image container */
-  .tabbed-container {
+}
+
+.tabbed-container {
     position: relative;
     width: 100%;
     display: none;
-  }
-  
-  /* Expanding image text */
-  #imgtext {
+}
+
+/* Expanding image text */
+#imgtext {
     position: absolute;
     top: 5%;
     right: 50%;
     color: #004593;
     font-size: 1em;
-  }
-  
-  /* Closable button inside the expanded image */
-  .closebtn {
+}
+
+.closebtn {
     position: absolute;
     top: 10px;
     right: 15px;
     color: #979797;
     font-size: 35px;
     cursor: pointer;
-  }
+}
+
+.vl {
+    border-left: 2px solid #0033A0;
+    height: auto;
+}

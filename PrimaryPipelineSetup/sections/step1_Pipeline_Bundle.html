@@ -1,3 +1,12 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step1')"> Pipeline Setup</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step1_Pipeline_Bundle')" style="color:darkgrey">Pipeline Bundle Installation</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>Pipeline Bundle (Docker free - LINUX only)</h2>
 
 <div class="notice"><p>Please note that this approach only tested working in Linux-based system listed below only:
@@ -19,4 +28,8 @@
                         <p class="code">./rhapsody pipeline --outdir test_results test_files/test_smallDemo.yml</p>
                         </ol>
                         </div>
+            </div>
+
+            <div class="scroll-top">
+                <button><a href="#topPage">Scroll to top page</a></button>
             </div>

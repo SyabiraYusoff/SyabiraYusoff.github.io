@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>  
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>BDRhapsody&trade; Pipeline Quick Start Guide</title>
         <link rel="stylesheet" href="assets/CSS/styles.css">    
         <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/XpressFavicon.ico/apple-icon-57x57.png">
@@ -30,36 +31,89 @@
                 <header class="banner-header">
                     <div class="logo-section">
                       <img src="./assets/images/plusOmics.png" alt="BD Rhapsody Logo" class="logo-img">
-                      <div class="header-text">
-                        <div class="subheading">YOUR QUICK START GUIDE</div>
+                      <div class="header-text" >
+                        <div class="subheading" id="subheading">YOUR QUICK START GUIDE</div>
                         <h1>BD RHAPSODY&trade; PIPELINE</h1>
                         </div>
                     </div>
+                    
+                  
             </header>
 
 
-            <div class="content-area">
-            <!-- Left sidebar: main Steps -->
-             <nav class="sidebar-left"> 
+            <div class="content-area ">
+                <!-- Left Navigation Sidebar -->
+                <nav class="sidebar-left"> 
                 <h4>Chapters:</h4>
-                <a href="#" onclick="loadStep('step1')"><button class="mainPageButton">Pipeline Setup</button></a>
-                <a href="#" onclick="loadStep('step2')"><button class="mainPageButton">Files Upload</button></a>
-                <a href="#" onclick="loadStep('step3')"><button class="mainPageButton">Reference Files</button></a>
-                <a href="#" onclick="loadStep('step4')"><button class="mainPageButton">Run the Pipeline</button></a>
-                <a href="#" onclick="loadStep('step5')"><button class="mainPageButton">Pipeline Output Files</button></a>
-             </nav>
+                <div class="sidenav vl">
+                    <button class="nav-button" onclick="toggleSubStep('step1')">Pipeline Setup</button><br>
+                    <div class="sub-step" id="step1" style="display: none;">
+                        <button href="#" onclick="loadSection('step1_Velsera_Platform')">Velsera Setup</button><br>
+                        <button href="#" onclick="loadSection('step1_Docker_Based(MacOS)')">MacOS Installation</button><br>
+                        <button href="#" onclick="loadSection('step1_Docker_Based(LINUX)')">LINUX Installation</button><br>
+                        <button href="#" onclick="loadSection('step1_Pipeline_Bundle')">Pipeline Bundle Installation</button><br>
+                        <button href="#" onclick="loadSection('step1_Extra_Utilities')">Pipeline Extra Utilities</button><br>
+                    </div>
 
-            <!-- Moddle Section: Main content -->
+                    <button class="nav-button" onclick="toggleSubStep('step2')">Files Upload</button><br>
+                    <div class="sub-step" id="step2" style="display: none;">
+                        <button href="#" onclick="loadSection('step2_Cloud_Based_Upload')">Velsera Interface</button><br>
+                        <button href="#" onclick="loadSection('step2_CLI_(MacOS)')">Command Line Interface (MacOS)</button><br>
+                        <button href="#" onclick="loadSection('step2_CLI_(Windows)')">Command Line Interface (Windows)</button><br>
+                    </div>
+
+                    <button class="nav-button" onclick="toggleSubStep('step3')">Reference Input Files</button><br>
+                    <div class="sub-step" id="step3" style="display: none;">
+                        <button href="#" onclick="loadSection('step3_Reference_Selector_Tool')">Reference Info Tool</button><br>
+                        <button href="#" onclick="loadSection('step3_Custom_Reference_Guide')">Custom Reference</button><br>
+                        <button href="#" onclick="loadSection('step3_AbSeq_Custom_Reference')">AbSeq Custom Reference</button><br>
+                    </div>
+
+                    <button class="nav-button" onclick="toggleSubStep('step4')">Pipeline Run Settings</button><br>
+                    <div class="sub-step" id="step4" style="display: none;">
+                        <button href="#" onclick="loadSection('step4_Run_on_Velsera')">Velsera Pipeline Run</button><br>
+                        <button href="#" onclick="loadSection('step4_Run_Locally')">Local Pipeline Run</button><br>
+                        <button href="#" onclick="loadSection('step4_Other_Pipeline_Settings')">Pipeline Settings</button><br>
+                    </div>
+  
+                    <button class="nav-button" onclick="toggleSubStep('step5')">Pipeline Output Files</button><br>
+                    <div class="sub-step" id="step5" style="display: none;">
+                        <button href="#" onclick="loadSection('step5_Metrics_Summary')">Metrics Summary</button><br>
+                        <button href="#" onclick="loadSection('step5_Bioproduct_Statistics')">Bioproduct Statistics</button><br>
+                        <button href="#" onclick="loadSection('step5_Dimensionality_Reduction')">Dimentionality Reduction</button><br>
+                        <button href="#" onclick="loadSection('step5_Immune_Cell_Classification')">Immune Cell Classification</button><br>
+                        <button href="#" onclick="loadSection('step5_Data_Tables')">Data Tables</button><br>
+
+                        <button href="#" onclick="loadSection('step5_BAM_BAI')">BAM Output Files</button><br>
+                        <button href="#" onclick="loadSection('step5_Pipeline_Report_HTML')">HTML Report</button><br>
+                        <button href="#" onclick="loadSection('step5_Seurat_Cellismo_H5MU')">Seurat/Cellismo/H5MU</button><br>
+                        <button href="#" onclick="loadSection('step5_Protein_Aggregates')">Protein Aggregates</button><br><br>
+                        <button href="#" onclick="loadSection('step5_ATAC_Metrics')">ATAC Metrics</button><br>
+
+                        <button href="#" onclick="loadSection('step5_ATAC_Fragments')">ATAC Fragments</button><br>
+                        <button href="#" onclick="loadSection('step5_ATAC_Transposase_Sites')">ATAC Transposase</button><br>
+                        <button href="#" onclick="loadSection('step5_ATAC_Peaks')">ATAC Peaks</button><br>
+                        <button href="#" onclick="loadSection('step5_ATAC_Peaks_Annotation')">ATAC Peaks Annotation</button><br>
+                        <button href="#" onclick="loadSection('step5_ATAC_DataTables')">ATAC Data Tables</button><br><br>
+
+                        <button href="#" onclick="loadSection('step5_SMK_Metrics')">SMK Metrics</button><br>
+                        <button href="#" onclick="loadSection('step5_SMK_Calls')">SMK Calls</button><br>
+                        <button href="#" onclick="loadSection('step5_SMK_ReadsPerCell')">SMK Reads</button><br>
+                        <button href="#" onclick="loadSection('step5_SMK_PerSample_Folder')">SMK Persample Folder</button><br><br>
+                        <button href="#" onclick="loadSection('step5_VDJ_Metrics')">VDJ Metrics</button><br>
+
+                        <button href="#" onclick="loadSection('step5_VDJ_PerCell')">VDJ Per Cell</button><br>
+                        <button href="#" onclick="loadSection('step5_VDJ_Contigs_AIRR')">AIRR</button><br>
+                    </div>
+                </div>
+        </nav>
+
+            <!-- Middle Section: Main content -->
              <main id="content">
                 <h2> Welcome to the Quick Start Guide</h2>
                 <p>This guide is designed to help you get started with the BD Rhapsody&trade; Pipeline.</p>
-                
-                <center>
-                    <figure>
-                    <img src="./assets/images/pipeline_flow.gif" style="width:80%;">
-                    <figcaption></figcaption>
-                </figure>
-                </center>
+                <img src="./assets/images/pipeline_flow.gif" style="width:60%;">
+                   
                 <p>The BD Rhapsody&trade; Pipeline is a analysis workflow that processes raw sequencing data from the BD Rhapsody&trade; system to generate experimental overview as well as output files that generated to proceed with secondary analysis. It is designed to be user-friendly and accessible to all BD Rhapsody&trade; customers.</p>
                 <h3>What can the BD Rhapsody&trade; Pipeline do?</h3>
                 <p>The BD Rhapsody&trade; Pipeline can perform several key analyses, including:</p>
@@ -103,7 +157,7 @@
                 <h3>Ready to get started?</h3>
                 <p>Click on the steps in the menu on the left to begin setting up and running your first analysis on the BD Rhapsody&trade; Pipeline. In each steps, please use the manu on the right to navigate between different sections.</p>
                 <h3>Need help?</h3>
-                <p>If you have any questions or encounter any issues while using the BD Rhapsody&trade; Pipeline, please contact our support team. We are here to help you get the most out of your BD Rhapsody&trade; experiments.</p>
+                <p>If you have any questions or encounter any issues while using the BD Rhapsody&trade; Pipeline, please contact our <a href="mailto:biox_support_EMEA@bd.com">support team</a>. We are here to help you get the most out of your BD Rhapsody&trade; experiments.</p>
                 
                 <h3>Feedback</h3>
                 <p>We welcome your feedback on this guide. If you have any suggestions for improvement or would like to report an error, please contact us at <a href="mailto:syabira.yusoff@bd.com">Feedback Email</a>.</p>
@@ -114,7 +168,7 @@
              </main>
 
             <!-- Right sidebar: Additional Information -->
-             <nav class="sidebar-right custom-cursor" id="sections-nav">
+             <nav class="sidebar-right custom-cursor" >
              </nav>
 
         </div>

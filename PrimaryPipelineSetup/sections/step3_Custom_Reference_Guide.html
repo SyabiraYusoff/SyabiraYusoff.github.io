@@ -1,16 +1,34 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step3')"> Reference Input Files</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step3_AbSeq_Custom_Reference')" style="color:darkgrey">Custom Reference: WTA/ATAC</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>Custom Reference</h2>
                 <p>Custom Reference is a feature that allows you to upload your own reference files to the BD Rhapsody&trade; Pipeline. This feature is useful when you have a species other than human or mouse that is not available in the pre-built references provided by BD. </p>
-                <p><b>Reference files from public database</b>
-                <ul>
-                    <li>NCBI</li>
-                    <li><a href="https://www.ensembl.org/index.html">Ensembl</a>
-                        <ol>
-                            <p>To generate custom reference files compatible with BD Rhapsody Pipeline, you can download the necessary files from Ensembl.<br>
-                            <img class="steps-img" src="./assets/images/ensemble.png">
-                        </p> 
-                            <p>Follow the steps below to retrieve files to generate custom genome:</p>
-                            <li>Navigate to <b>"Download FASTA"</b> and download Primary Assembly or an equivalent of Top-level assembly. </li>
-                            <li>Navigate to <b>"Download GTF"</b> to download the gtf file. </li>
-                        </ol>
-                    </li>
-                </ul></p>
+                <p>
+                    <ul>
+                        <li>For customers with local installation, please follow the instruction <a onclick="loadSection('step1_Extra_Utilities')">here</a> to create your own reference locally.</li>
+                        <li>Customers who need support to create your custom reference, please contact our <a href="mailto:biox_support_EMEA@bd.com"> Bioinformatics Team.</a> </li>
+                        <li>Reference files available from public databases:
+                            <ul>
+                                <li><a href="https://www.ncbi.nlm.nih.gov/datasets/genome/" target="_blank">NCBI</a><br>
+                                <img class="steps-img" src="./assets/images/ncbi.png"> </li>
+                                <li><a href="https://www.ensembl.org/index.html" target="_blank">Ensembl</a>
+                                    <ol>
+                                        <p>To generate custom reference files compatible with BD Rhapsody Pipeline, you can download the necessary files from Ensembl.<br>
+                                        <img class="steps-img" src="./assets/images/ensemble.png">
+                                        <p>Follow the steps below to retrieve files to generate custom genome:</p>
+                                        <li>Navigate to <b>"Download FASTA"</b> and download Primary Assembly or an equivalent of Top-level assembly. </li>
+                                        <li>Navigate to <b>"Download GTF"</b> to download the gtf file. </li>
+                                    </ol>
+                                </li>
+                    </ul>
+                </p>
+
+                <div class="scroll-top">
+                    <button><a href="#topPage">Scroll to top page</a></button>
+                </div>

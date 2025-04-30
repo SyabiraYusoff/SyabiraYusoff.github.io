@@ -1,3 +1,12 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step5')"> Pipeline Output Files</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step5_VDJ_Metrics')" style="color:darkgrey">VDJ Metrics</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>VDJ Metrics</h2>
 
 <div class="code">
@@ -160,5 +169,6 @@ File: [sample_name]_VDJ_DBEC_images.tar.gz
 </p>
 
 <br>
-<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
-<br><br>
+<div class="scroll-top">
+    <button><a href="#topPage">Scroll to top page</a></button>
+</div>

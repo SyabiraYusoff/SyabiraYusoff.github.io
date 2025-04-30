@@ -1,3 +1,12 @@
+<nav class="breadcrumb">
+    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadStep('step5')"> Pipeline Output Files</button>
+    <span>&rsaquo;</span>
+    <button onclick="loadSection('step5_SMK_PerSample_Folder')" style="color:darkgrey">SMK Per Sample Folder</button>
+</nav>
+<div id="topPage"></div>
+
 <h2>Sample Tag Folders</h2>
 <div class="code">
     File: <br>
@@ -17,5 +26,6 @@
 <p>Data for putative cells that could not be assigned to a specific sample are found in the Multiplet and Undetermined folder.</p>
 
 <br>
-<button onclick="loadSteps('step5')" style="float: right;">Back to Previous Page</button>
-<br><br>
+<div class="scroll-top">
+    <button><a href="#topPage">Scroll to top page</a></button>
+</div>
