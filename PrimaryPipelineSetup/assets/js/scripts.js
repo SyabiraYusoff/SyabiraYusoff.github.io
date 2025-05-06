@@ -7,12 +7,11 @@
 // step7: Troubleshooting
 
 function loadHome() {
-    window.location.href = '/index.html';
+    window.location.href = '/PrimaryPipelineSetup/index.html';
 }
 
-
 function loadStep(step) {
-    const filePath = `/steps/${step}.html`;
+    const filePath = `/PrimaryPipelineSetup/steps/${step}.html`;
     history.pushState(null, null, filePath);
 
     fetch(filePath)
@@ -33,7 +32,7 @@ function toggleSubStep(step){
 }  
 
 function loadSection(section) {
-    const filePath = `/sections/${section}.html`;
+    const filePath = `/PrimaryPipelineSetup/sections/${section}.html`;
     history.pushState(null, null, filePath);
     
     fetch(filePath)
