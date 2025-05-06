@@ -656,17 +656,3 @@ div.scroll-container {
     font-size: 1em;
     height:100%
 }
-
-.alert-reference {
-    display: none;
-    background-color: #d9edf7;
-    color: #31708f;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.alert-reference b{
-    font-weight: bold;
-    color: #31708f;
-}
