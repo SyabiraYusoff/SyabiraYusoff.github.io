@@ -5,6 +5,14 @@
 // step5: Pipeline output files
 // step6: HTML review
 // step7: Troubleshooting
+function reinitializeScripts() {
+    // Reinitialize any scripts that depend on the dynamically loaded content
+    document.querySelectorAll('.dynamic-button').forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Dynamic button clicked!');
+        });
+    });
+}
 
 function loadHome() {
     window.location.href = '/PrimaryPipelineSetup/index.html';
