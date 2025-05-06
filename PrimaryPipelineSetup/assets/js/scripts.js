@@ -6,8 +6,16 @@
 // step6: HTML review
 // step7: Troubleshooting
 
+function loadHome() {
+    window.location.href = '/index.html';
+}
+
+
 function loadStep(step) {
-    fetch(`steps/${step}.html`)
+    const filePath = `/steps/${step}.html`;
+    history.pushState(null, null, filePath);
+
+    fetch(filePath)
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
@@ -25,7 +33,10 @@ function toggleSubStep(step){
 }  
 
 function loadSection(section) {
-    fetch(`sections/${section}.html`)
+    const filePath = `/sections/${section}.html`;
+    history.pushState(null, null, filePath);
+    
+    fetch(filePath)
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
@@ -79,6 +90,14 @@ function showCheckboxInfo(checkboxID, textID) {
     } else {
         text.style.display = "none";
     }
+}
+
+function showAlert() {
+    const alertBox = document.getElementById("alert-reference");
+    alertBox.style.display = "block";
+    setTimeout(function() {
+        alertBox.style.display = "none";
+    }, 5000); // Hide after 3 seconds
 }
 
 //button print image 

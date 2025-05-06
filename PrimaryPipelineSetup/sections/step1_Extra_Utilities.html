@@ -1,5 +1,5 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step1')"> Pipeline Setup</button>
     <span>&rsaquo;</span>
@@ -37,7 +37,7 @@
             <p class="code">cwl-runner make_rhap_reference_2.2.cwl --Genome_fasta GRCh38.primary_assembly.genome.fa.gz --Gtf gencode.v42.primary_assembly.annotation.gtf.gz</p></li>
             <li>Pipeline Bundle (Docker-free):Define the yml file and run the command line below.<br>
                 <p class="code">./rhapsody makeRhapReference inputs.yml</p>The example of the pipeline bundle yml file for Make BD Rhapsody&trade; Reference:<br>
-                <img src = "./assets/images/extraUtils_generateRef_bundle.png" width = "500"></li>
+                <img src = "../assets/images/extraUtils_generateRef_bundle.png" width = "500"></li>
         </ul></li>
         <br><li ><b>Input Parameters:</b>
     <ol>
@@ -55,7 +55,7 @@
             <li>By default the input GTF files are filtered based on the gene_type/gene_biotype attribute.</li>
             <li>If you have already pre-filtered the input Annotation files (Using biotypes defined by Gencode/Ensembl) and/or wish to turn-off the filtering, please set this option to True. </li>
             <li>The GTF features having the following attribute values are are kept:<br>
-                <img src = "./assets/images/extraUtil_keptGTFfeatures.png" width = "650"></li>
+                <img src = "../assets/images/extraUtil_keptGTFfeatures.png" width = "650"></li>
         </ul></li>
         <br><li><b>(Optional) Archive_prefix:</b>String><br>A prefix base name for the result compressed archive file. The default value is constructed based on the input reference files.</li>
         <br><li><b>(Optional) Maximum_threads:</b>Integer<br>The maximum number of threads to use. By default, all available cores are used.</li>
@@ -82,7 +82,7 @@
             </li>
             <li>Pipeline Bundle (Docker-free): Define the yml file and run the command line below.
                 <p class="code">./rhapsody phiXContamination inputs.yml</p>
-                <p>The example of inputs.yml:</p><img src = "./assets/images/extraUtils_phix_bundleyml.png" width = "500">
+                <p>The example of inputs.yml:</p><img src = "../assets/images/extraUtils_phix_bundleyml.png" width = "500">
                 
             </li>
         </ul></li>
@@ -105,11 +105,11 @@
             <ul>
                 <li>Local Installation (Docker):
                     <p class="code">cwl-runner AnnotateCellLabelUMI_2.2.cwl inputs.yml</p>
-                    <p>The example of inputs.yml</p><img src = "./assets/images/extrautils_annotateCLSUMI_yml.png" width = "500">
+                    <p>The example of inputs.yml</p><img src = "../assets/images/extrautils_annotateCLSUMI_yml.png" width = "500">
                 </li>
                 <li>Pipeline Bundle (Docker-free): Define the yml file and run the command line below.
                     <p class="code">./rhapsody annotateCellLabelUmi inputs.yml</p>
-                    <p>The example of inputs.yml</p><img src = "./assets/images/extrautils_annotateCLSUMI_yml.png" width = "500">
+                    <p>The example of inputs.yml</p><img src = "../assets/images/extrautils_annotateCLSUMI_yml.png" width = "500">
                 </li></ul>
                 <br><li><b>Input Parameters:</b>
                 <ol>

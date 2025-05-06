@@ -1,5 +1,5 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step5')"> Pipeline Output Files</button>
     <span>&rsaquo;</span>
@@ -26,7 +26,7 @@
             For more information on RSEC and DBEC molecular identifier adjustment algorithms, see <a href="https://bd-rhapsody-bioinfo-docs.genomics.bd.com/steps/steps_error_correction.html" target="_blank">Molecules and error correction</a>.</p>
         <p class="code">File: [sample_name]_Bioproduct_Stats.csv</p>
             <figure>
-                <img src="./assets/images/bioproduct_statistics.png" alt="Bioproduct Statistics" width="auto" height="400">
+                <img src="../assets/images/bioproduct_statistics.png" alt="Bioproduct Statistics" width="auto" height="400">
                 <figcaption>Figure 1: Bioproduct Statistics. Pipeline analysis information (red box); AbSeq Bioproducts statistics by rows (blue box); mRNA Bioproducts statistics in rows (orange box). 
                     <br>Note: The screenshot above is a sample of the Bioproduct Statistics file. The actual file will contain more rows for each detected bioproduct.
                 </figcaption>
