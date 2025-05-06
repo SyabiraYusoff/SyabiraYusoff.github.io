@@ -96,7 +96,7 @@ function showAlert() {
     alertBox.style.display = "block";
     setTimeout(function() {
         alertBox.style.display = "none";
-    }, 5000); // Hide after 3 seconds
+    }, 2000); // Hide after 2 seconds
 }
 
 //button print image 

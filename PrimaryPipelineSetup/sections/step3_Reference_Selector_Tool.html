@@ -12,7 +12,7 @@
     <div class="checkbox-section">
                     <h4>Please check the box that applies to your experimental assay type(s).</h4>
                     <div class="alert alert-reference" display="none" id="alert-reference">
-                        <b>To review</b> Please scroll down to see the content.
+                        <b>Please scroll down</b> to view the reference information.
                       </div>
                       
                     <label class="ref-container">WTA
@@ -20,27 +20,27 @@
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">AbSeq
-                        <input type="checkbox" id="assay2" name="assay2" value="abseq" onclick="showCheckboxInfo('assay2', 'abseqtext')">
+                        <input type="checkbox" id="assay2" name="assay2" value="abseq" onclick="showCheckboxInfo('assay2', 'abseqtext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">Targeted - Predesign Panel
-                        <input type="checkbox" id="assay3" name="assay3" value="abseq" onclick="showCheckboxInfo('assay3', 'targetedtext')">
+                        <input type="checkbox" id="assay3" name="assay3" value="abseq" onclick="showCheckboxInfo('assay3', 'targetedtext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">Targeted - Custom Design Panel
-                        <input type="checkbox" id="assay4" name="assay4" value="supp" onclick="showCheckboxInfo('assay4', 'supptext')">
+                        <input type="checkbox" id="assay4" name="assay4" value="supp" onclick="showCheckboxInfo('assay4', 'supptext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">ATAC & ATAC-Multiome
-                        <input type="checkbox" id="assay5" name="assay5" value="atac" onclick="showCheckboxInfo('assay5', 'atactext')">
+                        <input type="checkbox" id="assay5" name="assay5" value="atac" onclick="showCheckboxInfo('assay5', 'atactext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">VDJ
-                        <input type="checkbox" id="assay7" name="assay7" value="vdj" onclick="showCheckboxInfo('assay7', 'vdjtext')">
+                        <input type="checkbox" id="assay7" name="assay7" value="vdj" onclick="showCheckboxInfo('assay7', 'vdjtext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">SMK
-                        <input type="checkbox" id="assay8" name="assay8" value="smk" onclick="showCheckboxInfo('assay8', 'smktext')">
+                        <input type="checkbox" id="assay8" name="assay8" value="smk" onclick="showCheckboxInfo('assay8', 'smktext'), showAlert()">
                         <span class="checkmark"></span></label><br>
                 </div>
 
