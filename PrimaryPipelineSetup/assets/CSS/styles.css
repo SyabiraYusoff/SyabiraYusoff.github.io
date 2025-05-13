@@ -123,9 +123,13 @@ hr {
     flex-direction: column;
     margin:3px;
     width: 100%;
-    border-radius: 10px;
-    
+    border-radius: 10px; 
 }
+
+.content-area{
+    padding-bottom: 150px;
+}
+
 h2{
     color: #060A3D;
     font-size: 1.6em;
@@ -647,6 +651,23 @@ div.scroll-container {
     height:100%
 }
 
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #004593;
+   color: white;
+   text-align: center;
+   font-size: 10px;
+   margin: 3px;
+   border-radius: 0px 0px 10px 10px;
+}
+
+.footer a{
+    color: white;
+
 .alert-reference{
     display: none;
     color: #3c763d;
@@ -658,4 +679,5 @@ div.scroll-container {
 
 .alert-reference b{
     font-weight: bold;
+
 }
