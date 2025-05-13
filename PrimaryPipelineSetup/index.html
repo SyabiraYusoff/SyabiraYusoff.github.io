@@ -24,7 +24,6 @@
         <meta name="theme-color" content="#ffffff">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
         
-        
     </head>
 
     <body>
@@ -32,6 +31,7 @@
                 <header class="banner-header">
                     <div class="logo-section">
                       <img src="assets/images/plusOmics.png" alt="BD Rhapsody Logo" class="logo-img">
+
                       <div class="header-text" >
                         <div class="subheading" id="subheading">YOUR QUICK START GUIDE</div>
                         <h1>BD RHAPSODY&trade; PIPELINE</h1>
@@ -49,11 +49,11 @@
                 <div class="sidenav vl">
                     <button class="nav-button" onclick="toggleSubStep('step1')">Pipeline Setup</button><br>
                     <div class="sub-step" id="step1" style="display: none;">
-                        <button href="#" onclick="loadSection('step1_Velsera_Platform')">Velsera Setup</button><br>
-                        <button href="#" onclick="loadSection('step1_Docker_Based(MacOS)')">MacOS Installation</button><br>
-                        <button href="#" onclick="loadSection('step1_Docker_Based(LINUX)')">LINUX Installation</button><br>
-                        <button href="#" onclick="loadSection('step1_Pipeline_Bundle')">Pipeline Bundle Installation</button><br>
-                        <button href="#" onclick="loadSection('step1_Extra_Utilities')">Pipeline Extra Utilities</button><br>
+                        <button href="#Velsera_setup" onclick="loadSection('step1_Velsera_Platform')">Velsera Setup</button><br>
+                        <button href="#MacOS_setup" onclick="loadSection('step1_Docker_Based(MacOS)')">MacOS Installation</button><br>
+                        <button href="#LINUX_setup" onclick="loadSection('step1_Docker_Based(LINUX)')">LINUX Installation</button><br>
+                        <button href="#Pipeline_bundle" onclick="loadSection('step1_Pipeline_Bundle')">Pipeline Bundle Installation</button><br>
+                        <button href="#Pipeline_extra_utilities" onclick="loadSection('step1_Extra_Utilities')">Pipeline Extra Utilities</button><br>
                     </div>
 
                     <button class="nav-button" onclick="toggleSubStep('step2')">Files Upload</button><br>
@@ -102,12 +102,13 @@
                         <button href="#" onclick="loadSection('step5_SMK_ReadsPerCell')">SMK Reads</button><br>
                         <button href="#" onclick="loadSection('step5_SMK_PerSample_Folder')">SMK Persample Folder</button><br><br>
                         <button href="#" onclick="loadSection('step5_VDJ_Metrics')">VDJ Metrics</button><br>
+
                         <button href="#" onclick="loadSection('step5_VDJ_PerCell')">VDJ Per Cell</button><br>
                         <button href="#" onclick="loadSection('step5_VDJ_Contigs_AIRR')">AIRR</button><br>
                     </div>
-                
-                <button class="nav-button" onclick="loadStep('feedback')">Leave us your thoughts</button>
-            </div>
+
+                    <button class="nav-button" onclick="toggleSubStep('feedback')">Feedback Form</button><br>
+                </div>
         </nav>
 
             <!-- Middle Section: Main content -->
@@ -175,7 +176,7 @@
 
         </div>
     </div>
-    <script src="assets/js/scripts.js"></script>
+   
     </body>
 
 </html>

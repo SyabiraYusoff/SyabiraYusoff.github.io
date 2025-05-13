@@ -1,12 +1,20 @@
-<nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+<!DOCTYPE html>
+<html lang="en">
+<nav class="breadcrumb" id="Pipeline_setup">
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step1')" style="color:darkgrey"> Pipeline Setup</button>
 </nav>
+<div class="fab-container">
+    <div class="button iconbutton" onclick="loadStep('feedback')">
+        <span>Share your feedback</span>
+    </div>
+</div>
 
-<h2>Setting Up Your Pipeline</h2>
+<h2>Setting Up Your Analysis Pipeline</h2>
 
 <p>This is an overview to set up your Pipeline Analysis platform. Please follow the menu on the right to navigate on how to set up your BD Rhapsody&trade; Pipeline Analysis.</p>
+
 <img src="assets/images/pipeline_flow.gif" style="width:60%;">
 <div class="card">
     <h2>Pipeline Setup, Requirements and Extra Utilities</h2>
@@ -46,8 +54,3 @@
 </ul></div>
 </div>
 
-<div class="fab-container">
-    <div class="button iconbutton" onclick="loadStep('feedback')">
-        <span>Share your feedback</span>
-    </div>
-</div>
