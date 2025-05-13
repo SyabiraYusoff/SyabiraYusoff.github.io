@@ -5,9 +5,24 @@
 // step5: Pipeline output files
 // step6: HTML review
 // step7: Troubleshooting
+function reinitializeScripts() {
+    // Reinitialize any scripts that depend on the dynamically loaded content
+    document.querySelectorAll('.dynamic-button').forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Dynamic button clicked!');
+        });
+    });
+}
+
+function loadHome() {
+    window.location.href = '/PrimaryPipelineSetup/index.html';
+}
 
 function loadStep(step) {
-    fetch(`steps/${step}.html`)
+    const filePath = `/PrimaryPipelineSetup/steps/${step}.html`;
+    history.pushState(null, null, filePath);
+
+    fetch(filePath)
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
@@ -25,7 +40,10 @@ function toggleSubStep(step){
 }  
 
 function loadSection(section) {
-    fetch(`sections/${section}.html`)
+    const filePath = `/PrimaryPipelineSetup/sections/${section}.html`;
+    history.pushState(null, null, filePath);
+    
+    fetch(filePath)
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
@@ -79,6 +97,14 @@ function showCheckboxInfo(checkboxID, textID) {
     } else {
         text.style.display = "none";
     }
+}
+
+function showAlert() {
+    const alertBox = document.getElementById("alert-reference");
+    alertBox.style.display = "block";
+    setTimeout(function() {
+        alertBox.style.display = "none";
+    }, 2000); // Hide after 2 seconds
 }
 
 //button print image 

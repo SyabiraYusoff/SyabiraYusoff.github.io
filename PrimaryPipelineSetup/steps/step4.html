@@ -1,11 +1,16 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step2')" style="color:darkgrey"> Pipeline Run Settings</button>
 </nav>
-
+<div class="fab-container">
+    <div class="button iconbutton" onclick="loadStep('feedback')">
+        <span>Share your feedback</span>
+    </div>
+</div>
 
 <h2>Run your BD Rhapsody&trade; Pipeline</h2>
+
 
 <img src="assets/images/pipeline_flow.gif" style="width:60%;">
 
@@ -28,9 +33,3 @@
         <li>If you want to create a memorable Run Name setting for your pipeline run (good practice).</li>
         <li>If you want to activate BAM settings and make it available as an output of the pipeline run.</li>
     </ul>
-    <div class="fab-container">
-        <div class="button iconbutton" onclick="loadStep('feedback')">
-            <span>Share your feedback</span>
-        </div>
-    </div>
-    

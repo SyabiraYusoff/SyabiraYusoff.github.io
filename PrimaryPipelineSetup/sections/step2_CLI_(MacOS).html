@@ -1,5 +1,5 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step2')"> Files Upload</button>
     <span>&rsaquo;</span>
@@ -11,7 +11,6 @@
         <span>Share your feedback</span>
     </div>
 </div>
-
 <h2>Command Line Interface Upload (MacOS/LINUX)</h2>
             <div class="notice">
                 There are TWO main steps to setup your file upload through Command Line Interface (CLI). 
@@ -26,11 +25,11 @@
                 Below are the steps to generate API Endpoint and Authentication Token: <br>
                 <ol>
                     <li>Log in to your Seven Bridges account. Click <mark>Developer</mark> -> <mark>Authentication token</mark> -> <mark>Generate token</mark>.</li><br>
-                    <img class="steps-img" src="./assets/images/autehnticationstep1.png"><br><br>
+                    <img class="steps-img" src="../assets/images/autehnticationstep1.png"><br><br>
                     <li>You will find the Token and API on the next page.Ensure to keep your Authentication Token secure and do not share it publicly.</li>
                     <li>You may now use these credentials while setting up your upload process to authenticate and interact with Seven Bridges through the API.</li>
                     <li>Picture below showing the API and Authentication Token:</li>
-                    <br><img class="steps-img" src="./assets/images/authenticationTokenStep2.png"><br>
+                    <br><img class="steps-img" src="../assets/images/authenticationTokenStep2.png"><br>
                 </ol>
             </div>
             <div class="card">
@@ -40,14 +39,14 @@
                         <p class="code">bash -c 'curl https://igor.sbgenomics.com/downloads/sb/install.sh -sSf | sudo -H sh'</p> </li>
                     <li>You may be prompted to input your device password then press <mark>enter</mark>.</li>
                     <li> If the tool is successfully installed, the below message will be printed out.<br>
-                    <img class="steps-img" src="./assets/images/CLI_successfull.png"></li>
+                    <img class="steps-img" src="../assets/images/CLI_successfull.png"></li>
                     <p><b>CLI Configuration</b></p>
                     <li>To authenticate your credential with the SB platform, launch the shell promt/terminal and enter:<br>
                     <p class="code">sb configure</p></li>
                     <li>The prompt will ask for the API endpoint and authentication token. Enter accordingly.</li>
                     <li>Enter the command below and it should display the output:<br>
                         <p class="code">sb</p>
-                    <img class="steps-img" src="./assets/images/sbCommandOutput.png"></li>
+                    <img class="steps-img" src="../assets/images/sbCommandOutput.png"></li>
                 </ol>
             </div>
 
@@ -58,8 +57,8 @@
                         <li>Navigate to the folder contain your project files using command line or terminal.</li>
                         <p>If unsure, please refer to the video below (MacOS user). If using Linux, please see the link <a href="https://opensource.com/article/21/8/navigate-linux-directories">here</a> on how to navigate to your project folder.</p>
                             <div class="video-container" >
-                            <video style="width: 500px;" controls poster = "./assets/videos/MacOS_navigateFolder.png">
-                            <source src="./assets/videos/web_navigatetoFolder.mov" type="video/mp4"></video></div>
+                            <video style="width: 500px;" controls poster = "../assets/videos/MacOS_navigateFolder.png">
+                            <source src="../assets/videos/web_navigatetoFolder.mov" type="video/mp4"></video></div>
                             <li>To get the directory path of your files, type command below: <p class="code">pwd</p></li>
                         <li>Enter command below to view the files available in current directory. <p class="code">ls</p></li>
                         <li>To check file integrity, enter the command below in your console: <p class="code">gunzip --test --verbose filename.fastq.gz</p>
@@ -69,8 +68,8 @@
                         </li>
                         <li>Once completed, the output for intact files would be "OK". If the file is corrupted, especially CRC error, please re-download the file from source and test again. </li>
                         <div class="video-container" >
-                            <video style="width: 500px;" controls poster = "./assets/videos/FIleIntegrityCheck.png">
-                            <source src="./assets/videos/integrityChecks.mov" type="video/mp4"></video></div>
+                            <video style="width: 500px;" controls poster = "../assets/videos/FIleIntegrityCheck.png">
+                            <source src="../assets/videos/integrityChecks.mov" type="video/mp4"></video></div>
             </ol>
             </div>
 
@@ -91,8 +90,8 @@
             <div class="card">
                 <h3>CLI Configuration and File Upload</h3>
                 <div class="video-container" >
-                    <video style="width: 500px;" controls poster = "./assets/videos/sbConfigure_FileUpload.png">
-                    <source src="./assets/videos/sbConfigure_FileUpload.mov" type="video/mp4"></video></div>
+                    <video style="width: 500px;" controls poster = "../assets/videos/sbConfigure_FileUpload.png">
+                    <source src="../assets/videos/sbConfigure_FileUpload.mov" type="video/mp4"></video></div>
             </div>
 
             <div class="scroll-top">

@@ -1,5 +1,5 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step3')"> Reference Input Files</button>
     <span>&rsaquo;</span>
@@ -11,39 +11,45 @@
         <span>Share your feedback</span>
     </div>
 </div>
-
 <div id="refCheckbox" class="section active">
     <h2>Reference File Information</h2>
     <div class="checkbox-section">
                     <h4>Please check the box that applies to your experimental assay type(s).</h4>
+                    <div class="alert alert-reference" display="none" id="alert-reference">
+                        <b>Please scroll down</b> to view the reference information.
+                      </div>
+                      
                     <label class="ref-container">WTA
-                        <input type="checkbox" id="assay1" name="assay1" value="wta" onclick="showCheckboxInfo('assay1', 'wtatext')">
+                        <input type="checkbox" id="assay1" name="assay1" value="wta" onclick="showCheckboxInfo('assay1', 'wtatext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">AbSeq
-                        <input type="checkbox" id="assay2" name="assay2" value="abseq" onclick="showCheckboxInfo('assay2', 'abseqtext')">
+                        <input type="checkbox" id="assay2" name="assay2" value="abseq" onclick="showCheckboxInfo('assay2', 'abseqtext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
-                    <label class="ref-container">Targeted
-                        <input type="checkbox" id="assay3" name="assay3" value="abseq" onclick="showCheckboxInfo('assay3', 'targetedtext')">
+                    <label class="ref-container">Targeted - Predesign Panel
+                        <input type="checkbox" id="assay3" name="assay3" value="abseq" onclick="showCheckboxInfo('assay3', 'targetedtext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
-                    <label class="ref-container">Custom Design Panel
-                        <input type="checkbox" id="assay4" name="assay4" value="supp" onclick="showCheckboxInfo('assay4', 'supptext')">
+                    <label class="ref-container">Targeted - Custom Design Panel
+                        <input type="checkbox" id="assay4" name="assay4" value="supp" onclick="showCheckboxInfo('assay4', 'supptext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">ATAC & ATAC-Multiome
-                        <input type="checkbox" id="assay5" name="assay5" value="atac" onclick="showCheckboxInfo('assay5', 'atactext')">
+                        <input type="checkbox" id="assay5" name="assay5" value="atac" onclick="showCheckboxInfo('assay5', 'atactext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">VDJ
-                        <input type="checkbox" id="assay7" name="assay7" value="vdj" onclick="showCheckboxInfo('assay7', 'vdjtext')">
+                        <input type="checkbox" id="assay7" name="assay7" value="vdj" onclick="showCheckboxInfo('assay7', 'vdjtext'), showAlert()">
                         <span class="checkmark"></span></label><br>
 
                     <label class="ref-container">SMK
-                        <input type="checkbox" id="assay8" name="assay8" value="smk" onclick="showCheckboxInfo('assay8', 'smktext')">
+                        <input type="checkbox" id="assay8" name="assay8" value="smk" onclick="showCheckboxInfo('assay8', 'smktext'), showAlert()">
                         <span class="checkmark"></span></label><br>
                 </div>
+
+                
+
                     <div class="card" id="wtatext" style="display:none; background-color: #f1f1f1;">
                         <h3>Reference files required for WTA </h3>
                         <p>There are pre-build BD Rhapsody&trade; reference for WTA.</p>
@@ -85,7 +91,7 @@
                             <br><li><b>Example of fasta file for AbSeq:</b>
                             <ol type="I">
                                 <li>Fastq header Image <br>
-                                <img class="steps-img" src="./assets/images/abseqRef_fasta.png"></li>
+                                <img class="steps-img" src="../assets/images/abseqRef_fasta.png"></li>
                                 <li>Detail on the FASTA header: <p class="notice">AntibodyName:clone|GeneSymbol|SeqID|pAbO</p></li>
                                 <ol type="i">
                                     <li><b>AntibodyName:clone</b>: The antibody and clone name in BD's catalog.</li>
