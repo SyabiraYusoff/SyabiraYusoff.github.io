@@ -1,16 +1,11 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step3')"> Reference Input Files</button>
     <span>&rsaquo;</span>
     <button onclick="loadSection('step3_AbSeq_Custom_Reference')" style="color:darkgrey">Custom Reference: AbSeq</button>
 </nav>
 <div id="topPage"></div>
-<div class="fab-container">
-    <div class="button iconbutton" onclick="loadStep('feedback')">
-        <span>Share your feedback</span>
-    </div>
-</div>
 
 <h2>AbSeq Reference</h2>
 
@@ -20,6 +15,7 @@
 <ol>
     <li>Navigate to <a href="https://abseq-ref-gen.genomics.bd.com/">BD AbSeq Panel Reference Generator</a> </li>
     <li>If BD® OMICS-One Protein Panel(s) or BD® AbSeq Immune Discovery Panel is used in the experiment, click “<” on the left of the Panel (highlighted in the red box) to add to the “My Panel” column.<br>
+
         <img class="steps-img" src="assets/images/AbSeqRef_step1.png" alt="Step 1"></li>
     <li>If other BD® AbSeq Antibody-Oligo(s) are used in the experiment, select the BD® AbSeq product(s) and click “>>” to add to the “My Panel” column.<br>
         <img class="steps-img" src="assets/images/AbSeqRef_step2.png" alt="Step 2"></li>

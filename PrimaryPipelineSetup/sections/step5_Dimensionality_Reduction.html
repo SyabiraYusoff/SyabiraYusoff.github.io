@@ -1,16 +1,11 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step5')"> Pipeline Output Files</button>
     <span>&rsaquo;</span>
     <button onclick="loadSection('step5_Dimensionality_Reduction')" style="color:darkgrey">Dimentionality Reduction</button>
 </nav>
 <div id="topPage"></div>
-<div class="fab-container">
-    <div class="button iconbutton" onclick="loadStep('feedback')">
-        <span>Share your feedback</span>
-    </div>
-</div>
 
 <h2>Dimentionality Reduction Coordinates</h2>
         <p>These files contain the coordinates of the cells in the tSNE and UMAP plots. The coordinates are used to visualize the data in two dimensions.</p>
