@@ -18,14 +18,31 @@ function loadHome() {
     window.location.href = '/PrimaryPipelineSetup/index.html';
 }
 
-function loadStep(step) {
-    const filePath = `/PrimaryPipelineSetup/steps/${step}.html`;
-    history.pushState(null, null, filePath);
+const stepSlugMap = {
+    step1: 'pipeline-setup',
+    step2: 'upload-files',
+    step3: 'reference-files',
+    step4: 'run-pipeline',
+    step5: 'output-files',
+    step6: 'html-review',
+    step7: 'troubleshooting'
+};
 
+const slugToStepMap = Object.fromEntries(
+    Object.entries(stepSlugMap).map(([k, v]) => [v, k])
+);
+
+function loadStep(step) {
+    const filePath = `steps/${step}.html`;
+    const stepName = stepSlugMap[step] || step;
+
+    history.pushState({ type: 'step', value: step }, '', `#step-${stepName}`);
+    
     fetch(filePath)
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
+            reinitializeScripts();
         });
 }
 
@@ -40,47 +57,19 @@ function toggleSubStep(step){
 }  
 
 function loadSection(section) {
-    const filePath = `/PrimaryPipelineSetup/sections/${section}.html`;
-    history.pushState(null, null, filePath);
+    const filePath = `sections/${section}.html`;
+    history.pushState({ type: 'section', value: section }, '', `#section-${section}`);
     
     fetch(filePath)
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
-            window.scrollTo(0, 0); // Scroll to the top of the page
+            reinitializeScripts();
+            window.scrollTo(0, 0);
         });
 }
 
-//not used???//
-function loadSteps(section) {
-    fetch(`steps/${section}.html`)
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('content').innerHTML = html;
-            window.scrollTo(0, 0); // Scroll to the top of the page
-        });
-}
 
-//not used!//
-function loadSectionID(section, targetId = null) {
-    fetch(`sections/${section}.html`)
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('content').innerHTML = html;
-            
-            // Wait a tick to let the browser render the inserted HTML
-            requestAnimationFrame(() => {
-                if (targetId) {
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            });
-        });
-}
 
 document.querySelectorAll('.sidebar-right button').forEach(button => {
     button.addEventListener('click', () => {
@@ -155,5 +144,28 @@ function displayTabbedCC(imgs, text) {
     var textElement = document.getElementById(text);
     textElement.style.display = "block";
 }
-    
-    
+
+window.onpopstate = function(event) {
+    if (event.state) {
+        if (event.state.type === 'step') {
+            loadStep(event.state.value);
+        } else if (event.state.type === 'section') {
+            loadSection(event.state.value);
+        }
+    }
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+
+    if (hash.startsWith("#step-")) {
+        const slug = hash.replace("#step-", "");
+        const step = slugToStepMap[slug];
+        if (step) {
+        loadStep(step);
+        }
+    } else if (hash.startsWith("#section-")) {
+        const section = hash.replace("#section-", "");
+        loadSection(section);
+    }
+});
