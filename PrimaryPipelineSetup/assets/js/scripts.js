@@ -5,6 +5,18 @@
 // step5: Pipeline output files
 // step6: HTML review
 // step7: Troubleshooting
+function reinitializeScripts() {
+    // Reinitialize any scripts that depend on the dynamically loaded content
+    document.querySelectorAll('.dynamic-button').forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Dynamic button clicked!');
+        });
+    });
+}
+
+function loadHome() {
+    window.location.href = '/PrimaryPipelineSetup/index.html';
+}
 
 const stepSlugMap = {
     step1: 'pipeline-setup',
@@ -74,6 +86,14 @@ function showCheckboxInfo(checkboxID, textID) {
     } else {
         text.style.display = "none";
     }
+}
+
+function showAlert() {
+    const alertBox = document.getElementById("alert-reference");
+    alertBox.style.display = "block";
+    setTimeout(function() {
+        alertBox.style.display = "none";
+    }, 2000); // Hide after 2 seconds
 }
 
 //button print image 

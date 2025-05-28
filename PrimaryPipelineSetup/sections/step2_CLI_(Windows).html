@@ -1,5 +1,5 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step2')"> Files Upload</button>
     <span>&rsaquo;</span>
@@ -11,7 +11,6 @@
         <span>Share your feedback</span>
     </div>
 </div>
-
 <h2>Command Line Interface Upload (Windows)</h2>
             <div class="notice">
                 There are TWO main steps to setup your file upload through Command Line Interface (CLI). 
@@ -31,6 +30,7 @@
                     <li>You may now use these credentials while setting up your upload process to authenticate and interact with Seven Bridges through the API.</li>
                     <li>Picture below showing the API and Authentication Token:</li>
                     <br><img class="steps-img" src="assets/images/authenticationTokenStep2.png"><br>
+
                 </ol>
             </div>
 
@@ -47,7 +47,9 @@
                     <li>Navigate to your working folder in the command prompt.If unsure, please click the link <a href="https://www.howtogeek.com/674537/how-to-find-and-open-files-using-command-prompt/">here</a> on how to find files using command prompt.</li>
                     <li>Enter command below to confirm the ".exe" and your files are in the correct folder. You should find the ".exe" file and the rest of the files you intend to upload listed on your console.<br>
                     <p class="code">DIR</p>
+
                 <img class="steps-img" src="assets/images/DIR_files.png"></li>
+
                 <p><b>Configure CLI</b></p>
                 <li>Use command below to configure CLI:
                     <p class="code">sb configure</p>
@@ -69,8 +71,11 @@
                         </li>
                         <li>Once completed, the output for intact files would be "OK". If the file is corrupted, especially CRC error, please re-download the file from source and test again. </li>
                         <div class="video-container" >
+
                             <video style="width: 500px;" controls poster = "assets/videos/FIleIntegrityCheck.png">
                             <source src="assets/videos/integrityChecks.mov" type="video/mp4"></video></div>
+
+      
             </ol>
             </div>
 

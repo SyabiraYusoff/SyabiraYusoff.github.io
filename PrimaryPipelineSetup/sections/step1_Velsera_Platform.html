@@ -1,5 +1,5 @@
 <nav class="breadcrumb">
-    <button onclick="window.location.href='index.html'"><i class="fa fa-fw fa-home"></i> Home</button>
+    <button onclick="loadHome()"><i class="fa fa-fw fa-home"></i> Home</button>
     <span>&rsaquo;</span>
     <button onclick="loadStep('step1')"> Pipeline Setup</button>
     <span>&rsaquo;</span>
@@ -11,7 +11,6 @@
         <span>Share your feedback</span>
     </div>
 </div>
-
 <h2>Velsera Platform Setup</h2>
 <p>Seven Bridges Genomics Platform or now moved to Velsera is one of the cloud based platform available to run BD Rhapsody&trade; Analysis pipeline, suited for new or experiences customers that unfamiliar with coding in Bioinformatics. This web browser interface platform will generate output HTML from FASTQ input files from your sequencing service. </p><br>
 <h3> Create an acccount on Velsera </h3>
@@ -24,13 +23,17 @@ to register your account.</li>
 <li>At the top of the dashboard, click Projects > Create a project.</li>
 <li>Enter a descriptive and concise project name for easy identification, and adjust the project URL if necessary.</li>
 <li>Ensure that the Billing Group and Location remain unchanged. Confirm that Spot instances and Memoization are enabled. Memoization facilitates the automatic reuse of intermediate files during reruns.</li><br>
+
 <img src = "assets/images/createproject.png" width = "400" height = "400"><br>
+
 
 <li>Click on Create. Seven Bridges Genomics will then present the new project dashboard.</li>
 <li>After the project is successfully created, if you wish to modify the retention period of intermediate files, navigate to Settings in the top right corner. Input an integer value between 1 and 120 in the Retention period box to specify the desired number of hours for retention, and then click "Save".</li>
 </ol>
 
 <div class="video-container" >
+
 <video style="width: 500px;" controls poster = "assets/videos/SB_createProject_cover.png">
 <source src="assets/videos/SB_createNewProject.mp4" type="video/mp4"></video>
+
 </div>
