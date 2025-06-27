@@ -23,12 +23,15 @@ jobs:
         
         - name: Install dependencies
         run: npm install
+        working-directory: Home
         
         - name: Clean dist folder
         run: rm -rf dist
+        working-directory: Home
         
         - name: Build app
         run: npm run build
+        working-directory: Home
 
         - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
