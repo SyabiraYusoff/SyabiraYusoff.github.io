@@ -56,32 +56,6 @@
                 </ol>
             </div>
 
-           <div class="card">
-                <h3>File Integrity Checks</h3>
-                <p>It is recommended to check your file integrity before upload to Velsera platform. Files that are corrupted, as an example FASTQ files would caused the pipeline failure.</p>
-                    <ol>
-                        <li>Navigate to the folder contain your project files using command line or terminal.</li>
-                        <p>If unsure, please refer to the video below (MacOS user). If using Linux, please see the link <a href="https://opensource.com/article/21/8/navigate-linux-directories">here</a> on how to navigate to your project folder.</p>
-                            <div class="video-container" >
-
-                            <video style="width: 500px;" controls poster = "assets/videos/MacOS_navigateFolder.png">
-                            <source src="assets/videos/web_navigatetoFolder.mov" type="video/mp4"></video></div>
-
-                            <li>To get the directory path of your files, type command below: <p class="code">pwd</p></li>
-                        <li>Enter command below to view the files available in current directory. <p class="code">ls</p></li>
-                        <li>To check file integrity, enter the command below in your console: <p class="code">gunzip --test --verbose filename.fastq.gz</p>
-                        <p>Please make sure to change the <mark>filename.fastq.gz</mark> to your own file name.</p></li>
-                        <li>To test more files, add a space between fastq files. Example code below: 
-                            <p class="code">gunzip --test --verbose filename1.fastq.gz filename2.fastq.gz filename3.fastq.gz</p>
-                        </li>
-                        <li>Once completed, the output for intact files would be "OK". If the file is corrupted, especially CRC error, please re-download the file from source and test again. </li>
-                        <div class="video-container" >
-
-                            <video style="width: 500px;" controls poster = "assets/videos/FIleIntegrityCheck.png">
-                            <source src="assets/videos/integrityChecks.mov" type="video/mp4"></video></div>
-
-            </ol>
-            </div>
 
             <div class="card" style="background-color: #f1f1f1;">
                 <h3>File Upload</h3>
